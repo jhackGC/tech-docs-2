@@ -6,6 +6,15 @@ markdown: kramdown
 highlighter: rouge
 # theme: minima  # Commented out to use custom layout
 
+# Kramdown configuration for better code highlighting
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    line_numbers: false
+    css_class: "highlight"
+    default_lang: javascript
+
 # Include files and directories
 include:
   - README.md
@@ -31,12 +40,12 @@ defaults:
       path: ""
       type: "pages"
     values:
-      layout: "default"
+      layout: "clean"
   - scope:
       path: ""
       type: "posts"
     values:
-      layout: "post"
+      layout: "clean"
 
 # Navigation
 navigation:

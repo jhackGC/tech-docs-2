@@ -69,29 +69,7 @@ Complete web development curriculum from HTML basics to modern full-stack applic
 
 #### 3. JavaScript Programming
 
-- [JavaScript Intro](WebDev/03%20-%20Javascript/16_JavaScript_Intro.md) - Language fundamentals and setup
-- [Data Types](WebDev/03%20-%20Javascript/17_Numbers_Strings_Booleans.md) - Numbers, strings, and booleans
-- [Control Flow](WebDev/03%20-%20Javascript/18_Control_Flow.md) - Conditionals and decision making
-- [Loops](WebDev/03%20-%20Javascript/19_Loops.md) - Iteration and repetition
-- [Functions](WebDev/03%20-%20Javascript/20_Functions.md) - Function declaration and expressions
-- [Scope](WebDev/03%20-%20Javascript/21_Scope.md) - Variable scope and closures
-- [Built-ins](WebDev/03%20-%20Javascript/22_Builtins.md) - Native JavaScript methods
-- [Objects](WebDev/03%20-%20Javascript/23_Objects.md) - Object creation and manipulation
-- [Context](WebDev/03%20-%20Javascript/24_Context.md) - `this` keyword and binding
-- [Arrays](WebDev/03%20-%20Javascript/25_Arrays.md) - Array methods and operations
-
-#### 4. DOM Manipulation
-
-- [The DOM](WebDev/04%20-%20All%20together/26_The_DOM.md) - Document Object Model fundamentals
-- [Events & Listeners](WebDev/04%20-%20All%20together/27_Events_and_Listeners.md) - User interaction handling
-- [Calculator Project](WebDev/04%20-%20All%20together/28_Calculator_Project.md) - Interactive web application
-
-#### 5. Server Communication
-
-- [JSON](WebDev/05%20-%20Talking%20to%20Servers/29_JSON.md) - Data interchange format
-- [AJAX](WebDev/05%20-%20Talking%20to%20Servers/30_AJAX.md) - Asynchronous HTTP requests
-- [Async/Await](WebDev/05%20-%20Talking%20to%20Servers/31_Async_Await.md) - Modern asynchronous JavaScript
-- [Word Masters Project](WebDev/05%20-%20Talking%20to%20Servers/32_Word_Masters_Project.md) - Full-stack application project
+- [**JavaScript Core Learning Path**](Javascript/Core/index.md) - Complete JavaScript curriculum from basics to advanced topics
 
 ### 🔧 Software Engineering
 
