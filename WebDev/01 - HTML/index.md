@@ -3,6 +3,13 @@ title: HTML Fundamentals
 layout: clean
 ---
 
+## 🔗 Navigation
+
+- [← Back to Main Documentation](../../index.html)
+- [Continue to CSS Styling →](../02%20-%20CSS/index.html)
+
+---
+
 # HTML Fundamentals
 
 Learn the foundation of web development with HTML (HyperText Markup Language). This section covers everything from basic HTML structure to semantic markup and best practices.
@@ -47,8 +54,8 @@ By the end of this section, you will be able to:
 
 ## 🔗 Navigation
 
-- [← Back to Main Documentation](../index.md)
-- [Continue to CSS Styling →](../02%20-%20CSS/index.md)
+- [← Back to Main Documentation](../../index.html)
+- [Continue to CSS Styling →](../02%20-%20CSS/index.html)
 
 ---
 

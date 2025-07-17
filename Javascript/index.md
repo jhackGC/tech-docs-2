@@ -36,8 +36,8 @@ Comprehensive JavaScript development resources covering modern JavaScript, frame
 
 ## Navigation
 
-- [← Back to Main Index](../index.md)
-- [Browse all documentation sections](../index.md#table-of-contents)
+- [← Back to Main Index](../index.html)
+- [Browse all documentation sections](../index.html#table-of-contents)
 
 ---
 

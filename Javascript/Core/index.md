@@ -172,8 +172,8 @@ _Start with [JavaScript Introduction](Intro.md) and follow the recommended seque
 
 ## Navigation
 
-- [← Back to JavaScript](../index.md)
-- [← Back to Main Index](../../index.md)
+- [← Back to JavaScript](../index.html)
+- [← Back to Main Index](../../index.html)
 
 ---
 

@@ -55,9 +55,9 @@ By the end of this section, you will be able to:
 
 ## 🔗 Navigation
 
-- [← Back to HTML Fundamentals](../01%20-%20HTML/index.md)
-- [← Back to Main Documentation](../index.md)
-- [Continue to JavaScript →](../../Javascript/Core/index.md)
+- [← Back to HTML Fundamentals](../01%20-%20HTML/index.html)
+- [← Back to Main Documentation](../../index.html)
+- [Continue to JavaScript →](../../Javascript/Core/index.html)
 
 ---
 

@@ -20,7 +20,7 @@ Complete web development curriculum from HTML basics to modern full-stack applic
 
 #### 1. HTML Fundamentals
 
-Learn the foundation of web development with HTML. **[View Complete HTML Curriculum](WebDev/01%20-%20HTML/index.md)**
+Learn the foundation of web development with HTML. **[View Complete HTML Curriculum](WebDev/01%20-%20HTML/index.html)**
 
 #### 2. CSS Styling
 
