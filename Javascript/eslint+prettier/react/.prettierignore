@@ -1,0 +1,12 @@
+
+# configs
+/.serverless
+/.next
+.serverless
+.serverless_nextjs
+.vercel
+
+# artifacts
+/.webpack
+build
+coverage

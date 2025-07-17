@@ -1,0 +1,11 @@
+
+# configs
+/.serverless
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# artifacts
+/.webpack
+build
+coverage

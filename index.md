@@ -43,6 +43,56 @@ A structured learning path from AI fundamentals to advanced applications. **[Vie
 - [MLOps & Deployment](AI/production/versioning.md) - Scaling and maintaining AI systems
 - [Advanced Topics](AI/advanced/reinforcement-learning.md) - RL, transfer learning, explainable AI
 
+### 🌐 Web Development
+
+Complete web development curriculum from HTML basics to modern full-stack applications.
+
+#### 1. HTML Fundamentals
+
+- [HTML Tags](WebDev/01%20-%20HTML/02_HTML_Tags.md) - Basic HTML structure and elements
+- [Types of Tags](WebDev/01%20-%20HTML/02_HTML_Types_of_Tags.md) - Different HTML tag categories
+- [Tag Attributes](WebDev/01%20-%20HTML/03_HTML_Tag_Attributes.md) - Adding functionality to HTML elements
+- [Organizing HTML](WebDev/01%20-%20HTML/04_Organizing_HTML.md) - Semantic structure and best practices
+- [Head & Meta Tags](WebDev/01%20-%20HTML/05_Head_and_Meta_Tags.md) - Document metadata and SEO
+- [HTML Project](WebDev/01%20-%20HTML/06_HTML_Project.md) - Hands-on HTML practice
+
+#### 2. CSS Styling
+
+- [CSS Rules](WebDev/02%20-%20CSS/07_CSS_Rules.md) - Basic CSS syntax and properties
+- [Selectors & Cascade](WebDev/02%20-%20CSS/08_Selectors_and_the_Cascade.md) - Targeting elements and specificity
+- [Pseudoclasses & Pseudoelements](WebDev/02%20-%20CSS/09_Pseudoclasses_and_Pseudoelements.md) - Advanced selectors
+- [Layout CSS](WebDev/02%20-%20CSS/10_Layout_CSS.md) - Positioning and layout fundamentals
+- [Flexbox](WebDev/02%20-%20CSS/11_Flex.md) - Modern flexible layouts
+- [CSS Grid](WebDev/02%20-%20CSS/12_Grid.md) - Two-dimensional layout system
+- [Animations](WebDev/02%20-%20CSS/13_Animations.md) - CSS transitions and keyframes
+- [CSS Project](WebDev/02%20-%20CSS/15_CSS_Project.md) - Complete styling project
+
+#### 3. JavaScript Programming
+
+- [JavaScript Intro](WebDev/03%20-%20Javascript/16_JavaScript_Intro.md) - Language fundamentals and setup
+- [Data Types](WebDev/03%20-%20Javascript/17_Numbers_Strings_Booleans.md) - Numbers, strings, and booleans
+- [Control Flow](WebDev/03%20-%20Javascript/18_Control_Flow.md) - Conditionals and decision making
+- [Loops](WebDev/03%20-%20Javascript/19_Loops.md) - Iteration and repetition
+- [Functions](WebDev/03%20-%20Javascript/20_Functions.md) - Function declaration and expressions
+- [Scope](WebDev/03%20-%20Javascript/21_Scope.md) - Variable scope and closures
+- [Built-ins](WebDev/03%20-%20Javascript/22_Builtins.md) - Native JavaScript methods
+- [Objects](WebDev/03%20-%20Javascript/23_Objects.md) - Object creation and manipulation
+- [Context](WebDev/03%20-%20Javascript/24_Context.md) - `this` keyword and binding
+- [Arrays](WebDev/03%20-%20Javascript/25_Arrays.md) - Array methods and operations
+
+#### 4. DOM Manipulation
+
+- [The DOM](WebDev/04%20-%20All%20together/26_The_DOM.md) - Document Object Model fundamentals
+- [Events & Listeners](WebDev/04%20-%20All%20together/27_Events_and_Listeners.md) - User interaction handling
+- [Calculator Project](WebDev/04%20-%20All%20together/28_Calculator_Project.md) - Interactive web application
+
+#### 5. Server Communication
+
+- [JSON](WebDev/05%20-%20Talking%20to%20Servers/29_JSON.md) - Data interchange format
+- [AJAX](WebDev/05%20-%20Talking%20to%20Servers/30_AJAX.md) - Asynchronous HTTP requests
+- [Async/Await](WebDev/05%20-%20Talking%20to%20Servers/31_Async_Await.md) - Modern asynchronous JavaScript
+- [Word Masters Project](WebDev/05%20-%20Talking%20to%20Servers/32_Word_Masters_Project.md) - Full-stack application project
+
 ### 🔧 Software Engineering
 
 Fundamental software engineering principles and methodologies for building maintainable code.
@@ -120,11 +170,12 @@ Architecture patterns and principles for scalable system design.
 
 ## 📖 How to Use This Documentation
 
-This documentation is organized into three main sections:
+This documentation is organized into four main sections:
 
-- **Software Engineering**: Focuses on coding practices, methodologies, and design patterns
-- **System Design**: Covers architecture principles, system design patterns, and platform-specific best practices
-- **Artificial Intelligence**: Modern AI technologies, generative AI, and intelligent application development
+- **Artificial Intelligence**: Structured learning path from AI fundamentals to production deployment
+- **Web Development**: Complete curriculum from HTML/CSS basics to full-stack applications
+- **Software Engineering**: Coding practices, methodologies, and design patterns
+- **System Design**: Architecture principles, system design patterns, and platform-specific best practices
 
 Each section contains both theoretical concepts and practical examples to help you understand and apply the knowledge in real-world scenarios.
 

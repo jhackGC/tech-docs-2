@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Rules Example</title>
+    <style>
+      /* CSS Rules Examples */
+
+      /* Basic selector targeting an element type */
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        background-color: #f8f9fa;
+      }
+
+      /* Targeting by element type */
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 10px;
+      }
+
+      /* Class selector (starts with .) */
+      .example-section {
+        background-color: white;
+        border: 2px solid #ddd;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .example-section h3 {
+        margin-top: 0;
+        color: #2c3e50;
+        border-bottom: 2px solid #e74c3c;
+        padding-bottom: 5px;
+      }
+
+      /* ID selector (starts with #) */
+      #special-paragraph {
+        background-color: #fff3cd;
+        border: 2px solid #ffc107;
+        padding: 15px;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      /* Targeting multiple elements */
+      h2,
+      h3,
+      h4 {
+        font-family: Georgia, serif;
+      }
+
+      /* Descendant selector (space between) */
+      .highlight-box p {
+        background-color: #d4edda;
+        padding: 10px;
+        border-left: 4px solid #28a745;
+        margin: 10px 0;
+      }
+
+      /* Child selector (>) */
+      .parent-container > .direct-child {
+        background-color: #cce5ff;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #007bff;
+      }
+
+      /* Class with specific styling */
+      .red-text {
+        color: #e74c3c;
+        font-weight: bold;
+      }
+
+      .blue-background {
+        background-color: #ebf3fd;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .large-text {
+        font-size: 1.2em;
+      }
+
+      /* Combining classes */
+      .red-text.large-text {
+        text-decoration: underline;
+      }
+
+      /* Attribute selector */
+      input[type="text"] {
+        padding: 8px;
+        border: 2px solid #ced4da;
+        border-radius: 4px;
+        margin: 5px 0;
+      }
+
+      input[type="text"]:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+      }
+
+      /* Universal selector */
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Pseudo-classes */
+      .button-example {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .button-example:hover {
+        background-color: #0056b3;
+      }
+
+      .button-example:active {
+        background-color: #004085;
+      }
+
+      /* Links styling */
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:visited {
+        color: #6f42c1;
+      }
+
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #e9ecef;
+        font-weight: bold;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      /* Media query example */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .example-section {
+          padding: 15px;
+        }
+      }
+
+      /* CSS Variables (Custom Properties) */
+      :root {
+        --primary-color: #007bff;
+        --secondary-color: #6c757d;
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+      }
+
+      .variable-example {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Rules Examples</h1>
+    <p>
+      This page demonstrates the CSS rules and selectors covered in the CSS
+      Rules lesson.
+    </p>
+
+    <div class="example-section">
+      <h3>Element Selectors</h3>
+      <p>This paragraph is styled using the element selector <code>p</code>.</p>
+      <h4>This heading uses the element selector <code>h4</code></h4>
+    </div>
+
+    <div class="example-section">
+      <h3>Class Selectors</h3>
+      <p class="red-text">
+        This paragraph has the class "red-text" - styled with
+        <code>.red-text</code>
+      </p>
+      <p class="blue-background">
+        This paragraph has the class "blue-background" - styled with
+        <code>.blue-background</code>
+      </p>
+      <p class="red-text large-text">
+        This paragraph has both "red-text" and "large-text" classes
+      </p>
+    </div>
+
+    <div class="example-section">
+      <h3>ID Selectors</h3>
+      <p id="special-paragraph">
+        This paragraph has the ID "special-paragraph" - styled with
+        <code>#special-paragraph</code>
+      </p>
+      <p><em>Note: IDs should be unique on a page!</em></p>
+    </div>
+
+    <div class="example-section">
+      <h3>Descendant Selectors</h3>
+      <div class="highlight-box">
+        <p>This paragraph is inside a div with class "highlight-box"</p>
+        <p>All paragraphs inside highlight-box get special styling</p>
+        <div>
+          <p>Even nested paragraphs get the styling</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Child Selectors</h3>
+      <div class="parent-container">
+        <div class="direct-child">I'm a direct child - I get the styling</div>
+        <div>
+          <div class="direct-child">
+            I'm NOT a direct child - no special styling
+          </div>
+        </div>
+        <div class="direct-child">
+          I'm also a direct child - I get the styling
+        </div>
+      </div>
+    </div>
+
+    <div class="example-section">
+      <h3>Attribute Selectors</h3>
+      <p>Text inputs have special styling:</p>
+      <input
+        type="text"
+        placeholder="I'm a text input - styled with [type='text']"
+      />
+      <input
+        type="email"
+        placeholder="I'm an email input - no special styling"
+      />
+      <input type="text" placeholder="Another text input with styling" />
+    </div>
+
+    <div class="example-section">
+      <h3>Pseudo-classes (:hover, :active, etc.)</h3>
+      <button class="button-example">Hover over me and click me!</button>
+      <p>Links also have pseudo-class styling:</p>
+      <a href="#nowhere">This link changes on hover</a>
+    </div>
+
+    <div class="example-section">
+      <h3>Multiple Selectors</h3>
+      <h2>This h2 uses a font family shared with h3 and h4</h2>
+      <h3>This h3 also uses the same font family</h3>
+      <h4>And this h4 too!</h4>
+      <p>
+        <em
+          >These are styled with:
+          <code>h2, h3, h4 { font-family: Georgia, serif; }</code></em
+        >
+      </p>
+    </div>
+
+    <div class="example-section">
+      <h3>CSS Properties Examples</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Example</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>color</td>
+            <td><span style="color: red">Red text</span></td>
+            <td>Sets text color</td>
+          </tr>
+          <tr>
+            <td>background-color</td>
+            <td>
+              <span style="background-color: yellow; padding: 2px"
+                >Yellow background</span
+              >
+            </td>
+            <td>Sets background color</td>
+          </tr>
+          <tr>
+            <td>font-size</td>
+            <td><span style="font-size: 24px">Large text</span></td>
+            <td>Sets text size</td>
+          </tr>
+          <tr>
+            <td>padding</td>
+            <td>
+              <span style="background-color: lightblue; padding: 10px"
+                >Padded content</span
+              >
+            </td>
+            <td>Space inside element</td>
+          </tr>
+          <tr>
+            <td>margin</td>
+            <td>
+              <span
+                style="
+                  background-color: lightgreen;
+                  margin: 20px;
+                  display: inline-block;
+                "
+                >Margined content</span
+              >
+            </td>
+            <td>Space outside element</td>
+          </tr>
+          <tr>
+            <td>border</td>
+            <td>
+              <span style="border: 3px solid purple; padding: 5px"
+                >Bordered content</span
+              >
+            </td>
+            <td>Border around element</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example-section">
+      <h3>CSS Variables (Custom Properties)</h3>
+      <div class="variable-example">
+        This uses a CSS variable for the background color:
+        <code>var(--primary-color)</code>
+      </div>
+      <p>
+        <em
+          >CSS variables make it easy to maintain consistent colors throughout
+          your site.</em
+        >
+      </p>
+    </div>
+
+    <div class="example-section">
+      <h3>Responsive Design with Media Queries</h3>
+      <p>
+        Try resizing your browser window to less than 600px wide. The padding
+        will change!
+      </p>
+      <p>
+        <em>This uses: <code>@media (max-width: 600px)</code></em>
+      </p>
+    </div>
+
+    <footer
+      style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #3498db"
+    >
+      <p>
+        <strong
+          >This example demonstrates CSS rules, selectors, and properties
+          covered in Lesson 10: CSS Rules</strong
+        >
+      </p>
+      <p><em>View the page source to see all the CSS code!</em></p>
+    </footer>
+  </body>
+</html>

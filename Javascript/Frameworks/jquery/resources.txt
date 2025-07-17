@@ -1,0 +1,161 @@
+JQuery
+----------
+https://api.jquery.com/
+
+All versions CDN
+------------------------------
+http://code.jquery.com/jquery/
+
+Objective:
+- Simplifies:
+	- AJAX
+	- Content manipulation
+	- Animations
+	- Smooths cross-browser dev issues
+	- easy syntax
+	- Uses CSS syntax
+	- Statement chaining.
+	- full of plug-in
+
+
+Common Patterns in Web, where Jquery helps.
+- initialise
+- actions on the page, and update results
+- fetch content from the server in order to update
+
+Onload
+-------------
+windows.onload waits for the full page has been downloadad, including images and other assets.
+$("document").ready(...) allows us to operate earlier as It does not wait for the images to load.
+
+
+jquery way
+------------
+$("document").ready(function() {
+    $("#content").append("<p>The page just loaded.</p>");
+});
+
+old way
+---------
+// Inserting content the old way using the DOM 
+window.addEventListener("DOMContentLoaded", function(evt) {
+    var elem = document.getElementById("content");
+    var para = document.createElement("p");
+    var text = document.createTextNode("The page just loaded.");
+    para.appendChild(text);
+    elem.appendChild(para);
+});
+
+common functions
+---------------
+
+
+Creating and modifying page content
+-----------------------------------
+create a DOM element: $("<p>");
+
+.html(); replaces html content of the element, whatever is in between opening and closing tags. Treated as HTML
+
+.text(...) : replaces html content of the element, whatever is in between opening and closing tags. Treated as Text, not treated as HTML
+
+.append: to the element, children ...
+
+.prepend(...) adds something ot the beginning of the inner html inside the element. <h2>Inserted with prepend. Hello World</h2>
+
+Event handling
+-----------------------------------
+$("document").ready(function() {
+    $("#example").on("mousemove", onMouseOver);
+    $("#example").on("click", onMouseClick);
+    $("#example").on("mouseleave", onMouseLeave);
+});
+
+function onMouseOver(evt) {
+    $("#example").text(evt.type + ": " + evt.pageX + ", " + evt.pageY + "\n" +
+                      "Button: " + evt.which + " Key: " + evt.metaKey);
+}
+function onMouseClick(evt) {
+    $("#example").text(evt.type + ": " + evt.pageX + ", " + evt.pageY);
+    $("#example").off("mousemove", onMouseOver);
+}
+function onMouseLeave(evt) {
+    $("#example").text("mouseleave");
+}
+
+
+Animations
+----------------
+
+$("document").ready(function() {
+    $("#go").click(function() {
+        $("#testDiv")
+            .animate({width: 400}, 300) // animate({css props and values}, duration in ms/keyword)
+            .animate({height: 300}, 400)
+            .animate({left: 200}, 500)
+            .animate({top: "+=100", borderWidth: 10}, "slow")
+    });
+});
+
+
+
+AJAX
+-------------------
+$("document").ready(function() {
+    $("#getcontent").click(getContent);
+    $("#loadhtml").click(loadHTML);
+});
+
+function getContent() {
+    $.ajax("sampletextcontent.txt", 
+           { success: setContent, 
+             type: "GET", 
+             dataType: "text" }
+           );
+}
+
+function setContent(data, status, jqxhr) {
+    $("#example").text(data);
+}
+
+function loadHTML() {
+    $("#example").load("samplehtml.html");
+}
+
+LOAD
+
+CALL
+-----
+$.ajax(url or file path, 
+       { 
+       	 success: setContent, 
+         type: "GET", 
+         dataType: "text" // expecting receiving datatype
+       }
+);
+
+RETURN
+------
+function setContent(data, status, jqxhr) {
+    $("#example").text(data);
+}
+jqxhr gives us acces to the underlying native XmlHttpRequest javascript object.
+
+
+SELECTORS
+------------
+Same as CSS
+
+$("tagName") All tagName elements
+$("#identifier") The element with the id attribute of identifier
+$(".className") All elements that have class className
+$("tag.className") Tag elements that have a classname
+$("tag#id.className") Tag element with id of id and class of className
+$("*") All elements in the page
+
+
+Chaining
+-----------
+every jquery functon returns $this, so it can get some more functions chained up.
+
+Events
+-----------

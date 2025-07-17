@@ -1,0 +1,199 @@
+egghead.io
+React Testing Cookbook
+
+================================
+npm install mocha expect react-addons-test-utils --save-dev
+
+mocha
+expect
+react-addons-test-utils
+
+mocha
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "expect": "^1.20.2",
+    "mocha": "^3.4.2",
+    "react-addons-test-utils": "^15.5.1",
+
+
+mocha - enzyme - chai
+ "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-airbnb": "^2.2.3",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^4.0.2",
+    "cheerio": "^1.0.0-rc.1",
+    "enzyme": "^2.8.2",
+    "expect": "^1.20.2",
+    "jsdom": "^11.0.0",
+    "mocha": "^3.4.2",
+    "react-addons-test-utils": "^15.5.1",
+    "react-scripts": "1.0.7",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
+
+
+ARROW FUNCTIONS IN TESTS: do not
+------------------------
+https://mochajs.org/#arrow-functions
+
+
+--------------------------------------------------------------------------------------------------
+
+https://medium.com/@jerrymao/testing-react-js-components-with-enzyme-mocha-and-chai-534c7f000976
+
+https://semaphoreci.com/community/tutorials/testing-react-components-with-enzyme-and-mocha
+
+
+Babel
+The Babel transpilation toolset lets you turn your ES6 code to ES5. To get it working, first we will need to install some libraries:
+
+$ npm install --save-dev babel-core babel-loader babel-preset-airbnb babel-preset-es2015 babel-preset-react babel-preset-stage-0
+
+
+- babel-core: core babel library.
+- babel-loader: loader plugin for Webpack.
+- The rest of the libraries are presets for Babel that allow tuning and customization.
+
+
+npm install --save-dev babel-cli babel-preset-env
+
+
+
+
+libraries:
+  enzyme: 
+  mocha: 
+  chai: 
+  jsdom: 
+  react-addons-test-utils
+  cheerio
+  babel-cli
+  babel-register
+  babel-preset-env
+  babel-preset-airbnb 
+  babel-preset-react 
+  babel-preset-es2015
+
+npm i enzyme mocha chai jsdom react-addons-test-utils cheerio babel-register babel-preset-airbnb babel-preset-react babel-preset-es2015 -D
+
+“react-addons-test-utils” are required for any test environment using React components, and Cheerio is need for Enzyme to work properly. We are also installing babel with a couple of presets in order for your tests to be properly read by node.
+
+
+
+
+Configuring Webpack
+--------------------------
+Now that we have Babel set up and installed some of the presets will need, we can configure Webpack. Webpack is a module bundling tool that we can use to ensure all of our different files get combined into one meaningful file we can use in the browser. As with Babel, Webpack is also a tool that deserves an entire tutorial in its own right, so we will not be going through every aspect of how it works or how to configure it.
+
+First, let's ensure we have installed Webpack and the Webpack development server:
+
+$ npm install --save-dev webpack webpack-dev-server
+
+Next, we need to create a configuration file for Webpack. It will contain options that will tell Webpack how to bundle our files, where the output should go, and other customizations.
+
+webpack.config.js
+
+const path = require('path');
+const webpack = require('webpack');
+
+// env
+const buildDirectory = './dist/';
+
+module.exports = {
+  entry: './lib/main.jsx',
+
+  //Configure webpack-dev-server, which is an extremely helpful tool that will serve up and help recompile our script for us as we work:
+  devServer: {
+    hot: true,
+    inline: true,
+    port: 7700,
+    historyApiFallback: true,
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
+
+
+  // This section is simply how we tell Webpack to create the final output of our application script. We are also telling Webpack that we will make our // script publicly available at http://localhost:7700/dist:
+  output: {
+    path: path.resolve(buildDirectory),
+    filename: 'app.js',
+    publicPath: 'http://localhost:7700/dist',
+  },
+
+  // externals. These will help enable enzyme to work properly.
+  externals: {
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
+
+  module: {
+    loaders: [{
+      test: /\.jsx?$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-0'],
+      },
+    }],
+  },
+  plugins: [],
+};
+
+
+Mocha and Company 3719_garchet_T1#
+
+---------------------
+The last setup we need to do before we are ready to start writing our tests is install mocha and some other modules to ensure we have everything ready for it to run our enzyme tests.
+
+We will install rest of testing tools: Mocha, jsdom, and react-addons-test-utils. Enzyme needs 'react-addons-test-utils' and 'jsdom' for some of its functionality in the way we will be using it.
+
+$ npm install --save-dev mocha jsdom react-addons-test-utils
+Lastly, we will create a setup file that will ensure we can test our components in a realistic browser environment using jsdom.
+
+
+
+TESTING FILE
+-------------
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { mount, shallow } from 'enzyme';
+import {expect} from 'chai';
+
+
+it('renders without crashing', () => {
+  const div = document.createElement('div');
+  ReactDOM.render(<App />, div);
+});
+
+describe('<App/>', function () {
+  it('should have a main tag to display the content', function () {
+    const wrapper = shallow(<App/>);
+    expect(wrapper.find('main')).to.have.length(1);
+  });
+
+  it('should have a footer tag to display the footer content', function () {
+    const wrapper = shallow(<App/>);
+    expect(wrapper.find('footer')).to.have.length(1);
+  });
+});
+
+const wrapper = shallow(<Avatar/>);
+
+The shallow method from enzyme will allow us to "shallowly" render a component. This type of rendering is used to isolate one component for testing and ensure child components do not affect assertions. You can think of it as rendering "just" the component you want it to.
+
+
+Enzyme gives us several ways to render components for testing: using shallow, mount, and static. We have already discussed shallow rendering. Mount is "real" rendering that will actually render your component into a browser environment. If you are creating full React components (and not just stateless components), you will want to use mount to do testing on the lifecycle methods of your component. We are using jsdom to accomplish rendering in a browser-like environment, but you could just as easily run it in a browser of your choosing.
+
+The last major top-level rendering method enzyme gives us static, which is used for analyzing the actual HTML output of a component and will not be used in our tests. Both shallow and mount return wrappers that give us many helpful methods we can use to find child components, check props, set state, and perform other testing tasks. We will use chai's expect assertion-style on these methods in our tests.
+

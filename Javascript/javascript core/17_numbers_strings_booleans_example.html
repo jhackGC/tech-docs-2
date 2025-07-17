@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript: Numbers, Strings, and Booleans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .page-title {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #f39c12;
+            padding-bottom: 15px;
+        }
+
+        .section-header {
+            color: #34495e;
+            background-color: #ecf0f1;
+            padding: 15px;
+            margin: 30px 0 20px 0;
+            border-left: 4px solid #f39c12;
+            border-radius: 5px;
+        }
+
+        .demo-container {
+            margin: 20px 0;
+            border: 2px solid #f39c12;
+            background-color: #fef9e7;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .code-display {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+
+        .output-display {
+            background-color: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .interactive-section {
+            background-color: #e8f6f3;
+            border: 2px solid #16a085;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            max-width: 300px;
+            padding: 8px 12px;
+            border: 2px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+        }
+
+        .btn-success:hover {
+            background-color: #229954;
+        }
+
+        .result-display {
+            background-color: #f8f9fa;
+            border: 2px solid #6c757d;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            min-height: 50px;
+        }
+
+        .info-box {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning-box {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .highlight-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .data-type-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .type-card {
+            background-color: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .type-card.string-card {
+            border-color: #3498db;
+            background-color: #ebf3fd;
+        }
+
+        .type-card.number-card {
+            border-color: #e74c3c;
+            background-color: #ffeaa7;
+        }
+
+        .type-card.boolean-card {
+            border-color: #27ae60;
+            background-color: #d5f4e6;
+        }
+
+        .console-output {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            border: 2px solid #444;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .console-line {
+            margin: 5px 0;
+        }
+
+        .console-input {
+            color: #569cd6;
+        }
+
+        .console-output-text {
+            color: #ce9178;
+        }
+
+        .console-error {
+            color: #f44747;
+        }
+
+        .playground {
+            background-color: #f5f5f5;
+            border: 2px dashed #999;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .playground textarea {
+            width: 100%;
+            height: 150px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            resize: vertical;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="page-title">💻 JavaScript: Numbers, Strings, and Booleans</h1>
+
+        <div class="info-box">
+            <p><strong>Welcome to JavaScript Fundamentals!</strong> This page demonstrates the three basic data types in JavaScript: strings, numbers, and booleans. Try out the interactive examples to see how they work!</p>
+        </div>
+
+        <h2 class="section-header">📝 Strings - Working with Text</h2>
+        <div class="demo-container">
+            <h3>What are Strings?</h3>
+            <p>Strings are sequences of characters used to represent text data like names, messages, or any textual information.</p>
+
+            <h4>Three Ways to Create Strings:</h4>
+            <div class="code-display">
+const doubleQuotes = "Hello World";
+const singleQuotes = 'Hello World';
+const backTicks = `Hello World`;
+
+console.log(doubleQuotes); // "Hello World"
+console.log(singleQuotes); // 'Hello World'
+console.log(backTicks);    // `Hello World`
+            </div>
+
+            <div class="interactive-section">
+                <h4>🎮 Try String Operations:</h4>
+                <div class="input-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" value="Brian" placeholder="Enter first name">
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" value="Holt" placeholder="Enter last name">
+                </div>
+                <button class="btn" onclick="demonstrateStrings()">Create Sentences</button>
+                <div id="stringResults" class="result-display"></div>
+            </div>
+
+            <h4>String Concatenation - Old vs New Way:</h4>
+            <div class="code-display">
+// Old way with + operator
+const sentence1 = "Hello " + firstName + " " + lastName + "!";
+
+// Modern way with template literals (backticks)
+const sentence2 = `Hello ${firstName} ${lastName}!`;
+
+// Template literals support expressions
+const sentence3 = `Hello ${firstName.toUpperCase()} ${lastName}!`;
+            </div>
+        </div>
+
+        <h2 class="section-header">🔢 Numbers - Mathematical Operations</h2>
+        <div class="demo-container">
+            <h3>JavaScript Numbers</h3>
+            <p>JavaScript has one number type that can represent both integers and decimals (floating-point numbers).</p>
+
+            <div class="code-display">
+const age = 25;           // Integer
+const price = 19.99;      // Decimal
+const negative = -42;     // Negative number
+const scientific = 1e6;   // Scientific notation (1,000,000)
+
+// Basic mathematical operations
+const sum = 10 + 5;       // 15
+const difference = 10 - 5; // 5
+const product = 10 * 5;    // 50
+const quotient = 10 / 5;   // 2
+const remainder = 10 % 3;  // 1 (modulo)
+const power = 2 ** 3;      // 8 (exponentiation)
+            </div>
+
+            <div class="interactive-section">
+                <h4>🧮 Calculator:</h4>
+                <div class="input-group">
+                    <label for="num1">First Number:</label>
+                    <input type="number" id="num1" value="10" placeholder="Enter first number">
+                </div>
+                <div class="input-group">
+                    <label for="operation">Operation:</label>
+                    <select id="operation">
+                        <option value="+">Addition (+)</option>
+                        <option value="-">Subtraction (-)</option>
+                        <option value="*">Multiplication (*)</option>
+                        <option value="/">Division (/)</option>
+                        <option value="%">Modulo (%)</option>
+                        <option value="**">Power (**)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="num2">Second Number:</label>
+                    <input type="number" id="num2" value="5" placeholder="Enter second number">
+                </div>
+                <button class="btn" onclick="calculate()">Calculate</button>
+                <div id="calcResults" class="result-display"></div>
+            </div>
+
+            <div class="warning-box">
+                <h4>⚠️ Special Number Values:</h4>
+                <ul>
+                    <li><strong>NaN</strong> - "Not a Number" (result of invalid math operations)</li>
+                    <li><strong>Infinity</strong> - Represents positive infinity</li>
+                    <li><strong>-Infinity</strong> - Represents negative infinity</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-header">✅ Booleans - True or False</h2>
+        <div class="demo-container">
+            <h3>Boolean Values</h3>
+            <p>Booleans represent binary logic - something is either true or false. They're essential for making decisions in your code.</p>
+
+            <div class="code-display">
+const isLoggedIn = true;
+const hasPermission = false;
+
+// Boolean expressions
+const isAdult = age >= 18;        // true if age is 18 or greater
+const isEqual = 5 === 5;          // true (strict equality)
+const isNotEqual = 5 !== "5";     // true (different types)
+const isGreater = 10 > 5;         // true
+const isLessOrEqual = 5 <= 10;    // true
+
+// Logical operators
+const canAccess = isLoggedIn && hasPermission;  // AND
+const showContent = isLoggedIn || isGuest;      // OR
+const isHidden = !isVisible;                    // NOT
+            </div>
+
+            <div class="interactive-section">
+                <h4>🔍 Boolean Logic Tester:</h4>
+                <div class="input-group">
+                    <label for="value1">First Value:</label>
+                    <input type="text" id="value1" value="5" placeholder="Enter a value">
+                </div>
+                <div class="input-group">
+                    <label for="comparison">Comparison:</label>
+                    <select id="comparison">
+                        <option value="===">Strict Equal (===)</option>
+                        <option value="!==">Strict Not Equal (!==)</option>
+                        <option value==">Equal (==)</option>
+                        <option value="!=">Not Equal (!=)</option>
+                        <option value=">">Greater Than (>)</option>
+                        <option value="<">Less Than (<)</option>
+                        <option value=">=">Greater or Equal (>=)</option>
+                        <option value="<=">Less or Equal (<=)</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="value2">Second Value:</label>
+                    <input type="text" id="value2" value="5" placeholder="Enter a value">
+                </div>
+                <button class="btn" onclick="testBoolean()">Test Comparison</button>
+                <div id="booleanResults" class="result-display"></div>
+            </div>
+        </div>
+
+        <h2 class="section-header">🔍 Type Detection and Conversion</h2>
+        <div class="demo-container">
+            <h3>Checking Data Types</h3>
+            <div class="code-display">
+typeof "Hello"      // "string"
+typeof 42           // "number"
+typeof true         // "boolean"
+typeof undefined    // "undefined"
+typeof null         // "object" (this is a known quirk!)
+            </div>
+
+            <div class="interactive-section">
+                <h4>🔬 Type Detective:</h4>
+                <div class="input-group">
+                    <label for="typeTest">Enter any value:</label>
+                    <input type="text" id="typeTest" placeholder="Try: 42, 'hello', true, null">
+                </div>
+                <button class="btn" onclick="detectType()">Detect Type</button>
+                <div id="typeResults" class="result-display"></div>
+            </div>
+
+            <h3>Type Conversion</h3>
+            <div class="code-display">
+// Converting to strings
+String(42)          // "42"
+String(true)        // "true"
+42 + ""             // "42" (implicit conversion)
+
+// Converting to numbers
+Number("42")        // 42
+Number("42.5")      // 42.5
+Number("hello")     // NaN
+parseInt("42")      // 42
+parseFloat("42.5")  // 42.5
+
+// Converting to booleans
+Boolean(1)          // true
+Boolean(0)          // false
+Boolean("")         // false
+Boolean("hello")    // true
+!!value             // Double NOT for boolean conversion
+            </div>
+        </div>
+
+        <h2 class="section-header">🚀 Interactive Playground</h2>
+        <div class="playground">
+            <h3>Try Your Own JavaScript Code:</h3>
+            <textarea id="codeInput" placeholder="Write some JavaScript code here and click 'Run Code' to see the result!
+
+Try examples like:
+const name = 'Your Name';
+const age = 25;
+const isStudent = true;
+
+console.log(`Hello ${name}, you are ${age} years old`);
+console.log('Type of name:', typeof name);
+console.log('Is adult?', age >= 18);
+console.log('Math example:', 5 + 3 * 2);"></textarea>
+            <button class="btn btn-success" onclick="runUserCode()">Run Code</button>
+            <button class="btn btn-danger" onclick="clearConsole()">Clear Console</button>
+            
+            <h4>Console Output:</h4>
+            <div id="consoleOutput" class="console-output">
+                <div class="console-line">Ready to run your code! 🚀</div>
+            </div>
+        </div>
+
+        <h2 class="section-header">📊 Data Types Summary</h2>
+        <div class="data-type-demo">
+            <div class="type-card string-card">
+                <h3>🔤 Strings</h3>
+                <p><strong>Purpose:</strong> Store text data</p>
+                <p><strong>Examples:</strong> "Hello", 'World', `Template`</p>
+                <p><strong>Use Cases:</strong> Names, messages, URLs</p>
+            </div>
+            
+            <div class="type-card number-card">
+                <h3>🔢 Numbers</h3>
+                <p><strong>Purpose:</strong> Store numeric data</p>
+                <p><strong>Examples:</strong> 42, 3.14, -7, 1e6</p>
+                <p><strong>Use Cases:</strong> Ages, prices, calculations</p>
+            </div>
+            
+            <div class="type-card boolean-card">
+                <h3>✅ Booleans</h3>
+                <p><strong>Purpose:</strong> Store true/false values</p>
+                <p><strong>Examples:</strong> true, false</p>
+                <p><strong>Use Cases:</strong> Conditions, flags, switches</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>💡 Key Takeaways:</h3>
+            <ul>
+                <li><strong>Strings:</strong> Use backticks (`) for template literals with ${} interpolation</li>
+                <li><strong>Numbers:</strong> JavaScript has one number type for integers and decimals</li>
+                <li><strong>Booleans:</strong> Essential for conditional logic and decision making</li>
+                <li><strong>typeof:</strong> Use to check the data type of any value</li>
+                <li><strong>Conversion:</strong> JavaScript can convert between types automatically or explicitly</li>
+            </ul>
+        </div>
+
+        <footer style="margin-top: 40px; padding: 20px; background-color: #34495e; color: white; border-radius: 8px; text-align: center;">
+            <p>🎯 <strong>Next Steps:</strong> Now that you understand basic data types, you're ready to learn about variables, functions, and control flow!</p>
+        </footer>
+    </div>
+
+    <script>
+        function demonstrateStrings() {
+            const firstName = document.getElementById('firstName').value || 'John';
+            const lastName = document.getElementById('lastName').value || 'Doe';
+            
+            const oldWay = '"Hello " + firstName + " " + lastName + "!"';
+            const newWay = '`Hello ${firstName} ${lastName}!`';
+            const upperCase = '`Hello ${firstName.toUpperCase()} ${lastName}!`';
+            
+            const results = `
+                <strong>Old Way (+ operator):</strong><br>
+                ${oldWay}<br>
+                Result: "Hello ${firstName} ${lastName}!"<br><br>
+                
+                <strong>New Way (template literals):</strong><br>
+                ${newWay}<br>
+                Result: Hello ${firstName} ${lastName}!<br><br>
+                
+                <strong>With expressions:</strong><br>
+                ${upperCase}<br>
+                Result: Hello ${firstName.toUpperCase()} ${lastName}!<br><br>
+                
+                <strong>String length:</strong> ${(firstName + ' ' + lastName).length} characters
+            `;
+            
+            document.getElementById('stringResults').innerHTML = results;
+        }
+
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value) || 0;
+            const num2 = parseFloat(document.getElementById('num2').value) || 0;
+            const operation = document.getElementById('operation').value;
+            
+            let result;
+            let expression;
+            
+            switch(operation) {
+                case '+':
+                    result = num1 + num2;
+                    expression = `${num1} + ${num2}`;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    expression = `${num1} - ${num2}`;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    expression = `${num1} * ${num2}`;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    expression = `${num1} / ${num2}`;
+                    break;
+                case '%':
+                    result = num1 % num2;
+                    expression = `${num1} % ${num2}`;
+                    break;
+                case '**':
+                    result = num1 ** num2;
+                    expression = `${num1} ** ${num2}`;
+                    break;
+            }
+            
+            const resultHTML = `
+                <strong>Expression:</strong> ${expression}<br>
+                <strong>Result:</strong> ${result}<br>
+                <strong>Type:</strong> ${typeof result}<br>
+                ${isNaN(result) ? '<span style="color: red;">⚠️ Result is NaN (Not a Number)</span>' : ''}
+                ${result === Infinity ? '<span style="color: orange;">⚠️ Result is Infinity</span>' : ''}
+            `;
+            
+            document.getElementById('calcResults').innerHTML = resultHTML;
+        }
+
+        function testBoolean() {
+            const value1 = document.getElementById('value1').value;
+            const value2 = document.getElementById('value2').value;
+            const comparison = document.getElementById('comparison').value;
+            
+            // Try to convert to numbers if they look like numbers
+            const val1 = isNaN(value1) ? value1 : Number(value1);
+            const val2 = isNaN(value2) ? value2 : Number(value2);
+            
+            let result;
+            let expression = `${JSON.stringify(val1)} ${comparison} ${JSON.stringify(val2)}`;
+            
+            try {
+                switch(comparison) {
+                    case '===':
+                        result = val1 === val2;
+                        break;
+                    case '!==':
+                        result = val1 !== val2;
+                        break;
+                    case '==':
+                        result = val1 == val2;
+                        break;
+                    case '!=':
+                        result = val1 != val2;
+                        break;
+                    case '>':
+                        result = val1 > val2;
+                        break;
+                    case '<':
+                        result = val1 < val2;
+                        break;
+                    case '>=':
+                        result = val1 >= val2;
+                        break;
+                    case '<=':
+                        result = val1 <= val2;
+                        break;
+                }
+            } catch (e) {
+                result = 'Error in comparison';
+            }
+            
+            const resultHTML = `
+                <strong>Expression:</strong> ${expression}<br>
+                <strong>Result:</strong> <span style="color: ${result ? 'green' : 'red'}; font-weight: bold;">${result}</span><br>
+                <strong>Type of result:</strong> ${typeof result}<br>
+                <strong>Value 1 type:</strong> ${typeof val1}<br>
+                <strong>Value 2 type:</strong> ${typeof val2}
+            `;
+            
+            document.getElementById('booleanResults').innerHTML = resultHTML;
+        }
+
+        function detectType() {
+            const input = document.getElementById('typeTest').value;
+            let value = input;
+            
+            // Try to interpret the input
+            if (input === 'true') value = true;
+            else if (input === 'false') value = false;
+            else if (input === 'null') value = null;
+            else if (input === 'undefined') value = undefined;
+            else if (input === '') value = '';
+            else if (!isNaN(input) && input !== '') value = Number(input);
+            
+            const resultHTML = `
+                <strong>Input:</strong> "${input}"<br>
+                <strong>Interpreted as:</strong> ${JSON.stringify(value)}<br>
+                <strong>Type:</strong> ${typeof value}<br>
+                <strong>Truthy/Falsy:</strong> ${value ? 'Truthy' : 'Falsy'}<br>
+                <strong>As String:</strong> "${String(value)}"<br>
+                <strong>As Number:</strong> ${Number(value)} ${isNaN(Number(value)) ? '(NaN)' : ''}<br>
+                <strong>As Boolean:</strong> ${Boolean(value)}
+            `;
+            
+            document.getElementById('typeResults').innerHTML = resultHTML;
+        }
+
+        function runUserCode() {
+            const code = document.getElementById('codeInput').value;
+            const consoleOutput = document.getElementById('consoleOutput');
+            
+            // Create a mock console.log function
+            const originalLog = console.log;
+            const logs = [];
+            
+            console.log = function(...args) {
+                logs.push(args.map(arg => 
+                    typeof arg === 'string' ? arg : JSON.stringify(arg)
+                ).join(' '));
+                originalLog.apply(console, args);
+            };
+            
+            try {
+                // Add input to console
+                consoleOutput.innerHTML += `<div class="console-line console-input">> ${code.replace(/\n/g, '<br>  ')}</div>`;
+                
+                // Execute the code
+                eval(code);
+                
+                // Add outputs to console
+                logs.forEach(log => {
+                    consoleOutput.innerHTML += `<div class="console-line console-output-text">${log}</div>`;
+                });
+                
+                if (logs.length === 0) {
+                    consoleOutput.innerHTML += `<div class="console-line console-output-text">Code executed successfully (no output)</div>`;
+                }
+                
+            } catch (error) {
+                consoleOutput.innerHTML += `<div class="console-line console-error">Error: ${error.message}</div>`;
+            }
+            
+            // Restore original console.log
+            console.log = originalLog;
+            
+            // Scroll to bottom
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        function clearConsole() {
+            document.getElementById('consoleOutput').innerHTML = '<div class="console-line">Console cleared! 🧹</div>';
+        }
+
+        // Initialize with default examples
+        window.onload = function() {
+            demonstrateStrings();
+            calculate();
+            testBoolean();
+            detectType();
+        };
+    </script>
+</body>
+</html>

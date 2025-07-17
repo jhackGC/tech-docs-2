@@ -1,0 +1,20 @@
+
+
+---------------------------
+NOde,ja, gulp y demas
+---------------------------
+Parate en el root del proyecto de laravel, donde se encuentra gulpfile.js
+
+Instala las dependencias del npm (o copialas de otro proyecto ?)
+>npm install
+
+Despues hace 
+>npm install gulp
+
+Y proba gulp
+>gulp
+
+
+gulp watch
+------------
+> gulp watch

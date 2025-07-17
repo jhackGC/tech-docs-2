@@ -1,0 +1,18 @@
+libraries
+----------
+react
+
+react-native
+
+redux: state management
+
+react-redux: interaction between react and redux
+
+redux thunk: asynch state management. Manages Asynch action creators
+
+react-native-router-flux @ 3.38.0: navigation
+
+
+firebase: https://www.npmjs.com/package/firebase. Out of the box back end, auth, etc (JSON).
+
+

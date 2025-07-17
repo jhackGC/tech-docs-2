@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Functions Complete Guide</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .page-title {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #9b59b6;
+        padding-bottom: 15px;
+      }
+
+      .section-header {
+        color: #34495e;
+        background-color: #ecf0f1;
+        padding: 15px;
+        margin: 30px 0 20px 0;
+        border-left: 4px solid #9b59b6;
+        border-radius: 5px;
+      }
+
+      .demo-container {
+        margin: 20px 0;
+        border: 2px solid #9b59b6;
+        background-color: #f8f5ff;
+        padding: 20px;
+        border-radius: 8px;
+      }
+
+      .code-display {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        overflow-x: auto;
+        font-size: 14px;
+      }
+
+      .output-display {
+        background-color: #27ae60;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        font-size: 14px;
+      }
+
+      .interactive-section {
+        background-color: #e8f6f3;
+        border: 2px solid #16a085;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .input-group {
+        margin: 15px 0;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .input-group input,
+      .input-group select,
+      .input-group textarea {
+        width: 100%;
+        max-width: 400px;
+        padding: 8px 12px;
+        border: 2px solid #bdc3c7;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .input-group textarea {
+        height: 100px;
+        font-family: "Courier New", monospace;
+        resize: vertical;
+      }
+
+      .btn {
+        background-color: #9b59b6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #8e44ad;
+      }
+
+      .btn-success {
+        background-color: #27ae60;
+      }
+
+      .btn-success:hover {
+        background-color: #229954;
+      }
+
+      .btn-danger {
+        background-color: #e74c3c;
+      }
+
+      .btn-danger:hover {
+        background-color: #c0392b;
+      }
+
+      .btn-info {
+        background-color: #3498db;
+      }
+
+      .btn-info:hover {
+        background-color: #2980b9;
+      }
+
+      .result-display {
+        background-color: #f8f9fa;
+        border: 2px solid #6c757d;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        min-height: 50px;
+      }
+
+      .function-anatomy {
+        background-color: #fff3cd;
+        border: 2px solid #ffeaa7;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .function-part {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+      }
+
+      .keyword {
+        background-color: #e74c3c;
+        color: white;
+      }
+      .name {
+        background-color: #3498db;
+        color: white;
+      }
+      .parameters {
+        background-color: #f39c12;
+        color: white;
+      }
+      .body {
+        background-color: #27ae60;
+        color: white;
+      }
+      .return {
+        background-color: #9b59b6;
+        color: white;
+      }
+
+      .examples-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .example-card {
+        background-color: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+      }
+
+      .example-card h4 {
+        color: #9b59b6;
+        margin-bottom: 10px;
+      }
+
+      .console-output {
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        border: 2px solid #444;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .console-line {
+        margin: 5px 0;
+      }
+
+      .console-input {
+        color: #569cd6;
+      }
+
+      .console-output-text {
+        color: #ce9178;
+      }
+
+      .console-error {
+        color: #f44747;
+      }
+
+      .info-box {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .highlight-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .warning-box {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .playground {
+        background-color: #f5f5f5;
+        border: 2px dashed #999;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 2px solid #ddd;
+        margin-bottom: 20px;
+      }
+
+      .tab {
+        padding: 10px 20px;
+        cursor: pointer;
+        border: none;
+        background-color: #f8f9fa;
+        border-bottom: 2px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .tab.active {
+        background-color: #9b59b6;
+        color: white;
+        border-bottom-color: #9b59b6;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-title">⚡ JavaScript Functions Complete Guide</h1>
+
+      <div class="info-box">
+        <p>
+          <strong>Functions are the building blocks of JavaScript!</strong>
+          They're reusable pieces of code that perform specific tasks. Think of
+          them as recipes - you write them once and can use them over and over
+          with different ingredients (parameters).
+        </p>
+      </div>
+
+      <h2 class="section-header">🔍 Function Anatomy</h2>
+      <div class="function-anatomy">
+        <h3>Parts of a Function:</h3>
+        <div style="font-size: 18px; margin: 20px 0">
+          <span class="function-part keyword">function</span>
+          <span class="function-part name">functionName</span>
+          <span class="function-part parameters">(parameters)</span>
+          <span class="function-part body">{ code }</span>
+          <span class="function-part return">return value;</span>
+        </div>
+
+        <div class="code-display">
+          function addTwo(number) { return number + 2; } const result =
+          addTwo(5); // result is 7
+        </div>
+
+        <ul>
+          <li>
+            <span class="function-part keyword">function</span> - Keyword that
+            declares a function
+          </li>
+          <li>
+            <span class="function-part name">addTwo</span> - The function name
+            (should be descriptive!)
+          </li>
+          <li>
+            <span class="function-part parameters">(number)</span> - Input
+            parameters the function accepts
+          </li>
+          <li>
+            <span class="function-part body">{ }</span> - Function body
+            containing the code to execute
+          </li>
+          <li>
+            <span class="function-part return">return</span> - Sends a value
+            back to whoever called the function
+          </li>
+        </ul>
+      </div>
+
+      <h2 class="section-header">🎯 Different Types of Functions</h2>
+
+      <div class="tabs">
+        <button class="tab active" onclick="showTab('declaration')">
+          Function Declaration
+        </button>
+        <button class="tab" onclick="showTab('expression')">
+          Function Expression
+        </button>
+        <button class="tab" onclick="showTab('arrow')">Arrow Function</button>
+        <button class="tab" onclick="showTab('anonymous')">
+          Anonymous Function
+        </button>
+      </div>
+
+      <div id="declaration" class="tab-content active">
+        <div class="demo-container">
+          <h3>Function Declaration</h3>
+          <p>
+            The classic way to define a function. Can be called before it's
+            defined (hoisting).
+          </p>
+
+          <div class="code-display">
+            // Function declaration function greet(name) { return `Hello,
+            ${name}!`; } // Can be called before definition due to hoisting
+            console.log(greet("Alice")); // "Hello, Alice!"
+          </div>
+
+          <div class="interactive-section">
+            <h4>🎮 Try Function Declaration:</h4>
+            <div class="input-group">
+              <label for="declName">Your Name:</label>
+              <input
+                type="text"
+                id="declName"
+                value="Alice"
+                placeholder="Enter your name"
+              />
+            </div>
+            <button class="btn" onclick="testDeclaration()">
+              Call Function
+            </button>
+            <div id="declResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="expression" class="tab-content">
+        <div class="demo-container">
+          <h3>Function Expression</h3>
+          <p>
+            Assign a function to a variable. Cannot be called before it's
+            defined.
+          </p>
+
+          <div class="code-display">
+            // Function expression const multiply = function(a, b) { return a *
+            b; }; console.log(multiply(4, 5)); // 20
+          </div>
+
+          <div class="interactive-section">
+            <h4>🧮 Try Function Expression:</h4>
+            <div class="input-group">
+              <label for="exprNum1">Number 1:</label>
+              <input type="number" id="exprNum1" value="4" />
+            </div>
+            <div class="input-group">
+              <label for="exprNum2">Number 2:</label>
+              <input type="number" id="exprNum2" value="5" />
+            </div>
+            <button class="btn" onclick="testExpression()">Multiply</button>
+            <div id="exprResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="arrow" class="tab-content">
+        <div class="demo-container">
+          <h3>Arrow Function (ES6+)</h3>
+          <p>
+            Modern, concise syntax. Great for short functions and callbacks.
+          </p>
+
+          <div class="code-display">
+            // Arrow function - full syntax const divide = (a, b) => { return a
+            / b; }; // Arrow function - concise syntax (implicit return) const
+            square = x => x * x; // Arrow function - no parameters const
+            getRandomNumber = () => Math.random(); console.log(divide(10, 2));
+            // 5 console.log(square(4)); // 16 console.log(getRandomNumber());
+            // random number
+          </div>
+
+          <div class="interactive-section">
+            <h4>🏹 Try Arrow Functions:</h4>
+            <div class="input-group">
+              <label for="arrowNum">Number to Square:</label>
+              <input type="number" id="arrowNum" value="4" />
+            </div>
+            <button class="btn" onclick="testArrow()">Square It!</button>
+            <button class="btn btn-info" onclick="testRandom()">
+              Random Number
+            </button>
+            <div id="arrowResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="anonymous" class="tab-content">
+        <div class="demo-container">
+          <h3>Anonymous Functions</h3>
+          <p>Functions without names, often used as callbacks.</p>
+
+          <div class="code-display">
+            // Anonymous function as callback setTimeout(function() {
+            console.log("This runs after 2 seconds"); }, 2000); // Anonymous
+            arrow function as callback const numbers = [1, 2, 3, 4, 5]; const
+            doubled = numbers.map(x => x * 2); console.log(doubled); // [2, 4,
+            6, 8, 10]
+          </div>
+
+          <div class="interactive-section">
+            <h4>🔄 Try Anonymous Functions:</h4>
+            <button class="btn" onclick="testAnonymous()">
+              Start 3-Second Timer
+            </button>
+            <button class="btn btn-info" onclick="testMap()">
+              Double Array [1,2,3,4,5]
+            </button>
+            <div id="anonResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-header">📥 Parameters and Arguments</h2>
+      <div class="demo-container">
+        <h3>Functions with Multiple Parameters</h3>
+        <div class="code-display">
+          function createGreeting(firstName, lastName, title, greeting) { return
+          `${greeting} ${title} ${lastName}! Nice to meet you, ${firstName}.`; }
+          // Arguments are passed in the same order as parameters
+          console.log(createGreeting("Brian", "Holt", "Mr.", "Hello")); //
+          "Hello Mr. Holt! Nice to meet you, Brian."
+        </div>
+
+        <div class="interactive-section">
+          <h4>🎭 Create Custom Greetings:</h4>
+          <div class="input-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" value="Brian" />
+          </div>
+          <div class="input-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" value="Holt" />
+          </div>
+          <div class="input-group">
+            <label for="title">Title:</label>
+            <select id="title">
+              <option value="Mr.">Mr.</option>
+              <option value="Ms.">Ms.</option>
+              <option value="Dr.">Dr.</option>
+              <option value="Captain">Captain</option>
+              <option value="Lord">Lord</option>
+              <option value="Professor">Professor</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="greeting">Greeting:</label>
+            <select id="greeting">
+              <option value="Hello">Hello</option>
+              <option value="Greetings">Greetings</option>
+              <option value="Salutations">Salutations</option>
+              <option value="Welcome">Welcome</option>
+              <option value="Good day">Good day</option>
+            </select>
+          </div>
+          <button class="btn" onclick="testGreeting()">Create Greeting</button>
+          <div id="greetingResult" class="result-display"></div>
+        </div>
+      </div>
+
+      <h2 class="section-header">🔄 Return Values</h2>
+      <div class="demo-container">
+        <h3>Understanding Return Statements</h3>
+        <div class="code-display">
+          function addNumbers(a, b) { return a + b; // Returns the sum }
+          function greetUser(name) { return `Welcome, ${name}!`; // Returns a
+          string } function checkAge(age) { if (age >= 18) { return "adult"; //
+          Early return } return "minor"; // Default return } function noReturn()
+          { console.log("This function doesn't return anything"); // Implicitly
+          returns undefined }
+        </div>
+
+        <div class="examples-grid">
+          <div class="example-card">
+            <h4>Function with Number Return</h4>
+            <div class="input-group">
+              <input
+                type="number"
+                id="retNum1"
+                value="15"
+                style="width: 80px"
+              />
+              <span> + </span>
+              <input
+                type="number"
+                id="retNum2"
+                value="25"
+                style="width: 80px"
+              />
+            </div>
+            <button class="btn" onclick="testReturnNumber()">Calculate</button>
+            <div id="retNumResult" class="result-display"></div>
+          </div>
+
+          <div class="example-card">
+            <h4>Function with String Return</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                id="retName"
+                value="Alex"
+                placeholder="Your name"
+              />
+            </div>
+            <button class="btn" onclick="testReturnString()">Greet</button>
+            <div id="retStrResult" class="result-display"></div>
+          </div>
+
+          <div class="example-card">
+            <h4>Function with Conditional Return</h4>
+            <div class="input-group">
+              <input type="number" id="retAge" value="25" placeholder="Age" />
+            </div>
+            <button class="btn" onclick="testReturnCondition()">
+              Check Age
+            </button>
+            <div id="retCondResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-header">🧩 Function Scope</h2>
+      <div class="demo-container">
+        <h3>Variables Inside and Outside Functions</h3>
+        <div class="code-display">
+          let globalVariable = "I'm global!"; function demonstrateScope() { let
+          localVariable = "I'm local!"; console.log(globalVariable); // Can
+          access global console.log(localVariable); // Can access local return
+          localVariable; } console.log(globalVariable); // Works fine //
+          console.log(localVariable); // Error! Not accessible outside function
+        </div>
+
+        <div class="warning-box">
+          <h4>⚠️ Scope Rules:</h4>
+          <ul>
+            <li>
+              <strong>Global variables:</strong> Accessible everywhere in your
+              code
+            </li>
+            <li>
+              <strong>Local variables:</strong> Only accessible inside the
+              function where they're defined
+            </li>
+            <li>
+              <strong>Parameters:</strong> Act like local variables inside the
+              function
+            </li>
+            <li>
+              <strong>Avoid global variables:</strong> They can cause conflicts
+              and bugs
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="section-header">🛠️ Practical Examples</h2>
+      <div class="demo-container">
+        <div class="examples-grid">
+          <div class="example-card">
+            <h4>Calculator Functions</h4>
+            <div class="code-display" style="font-size: 12px">
+              const calculator = { add: (a, b) => a + b, subtract: (a, b) => a -
+              b, multiply: (a, b) => a * b, divide: (a, b) => b !== 0 ? a / b :
+              "Cannot divide by zero" };
+            </div>
+            <button class="btn btn-success" onclick="testCalculator()">
+              Try Calculator
+            </button>
+            <div id="calcResult" class="result-display"></div>
+          </div>
+
+          <div class="example-card">
+            <h4>String Utilities</h4>
+            <div class="code-display" style="font-size: 12px">
+              function capitalize(str) { return str.charAt(0).toUpperCase() +
+              str.slice(1); } function reverseString(str) { return
+              str.split('').reverse().join(''); }
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                id="utilString"
+                value="hello world"
+                placeholder="Enter text"
+              />
+            </div>
+            <button class="btn btn-success" onclick="testStringUtils()">
+              Transform
+            </button>
+            <div id="utilResult" class="result-display"></div>
+          </div>
+
+          <div class="example-card">
+            <h4>Array Functions</h4>
+            <div class="code-display" style="font-size: 12px">
+              function findMax(numbers) { return Math.max(...numbers); }
+              function getAverage(numbers) { return numbers.reduce((sum, num) =>
+              sum + num, 0) / numbers.length; }
+            </div>
+            <button class="btn btn-success" onclick="testArrayFunctions()">
+              Analyze [1,5,3,9,2]
+            </button>
+            <div id="arrayResult" class="result-display"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-header">🚀 Function Playground</h2>
+      <div class="playground">
+        <h3>Write and Test Your Own Functions:</h3>
+        <textarea
+          id="functionCode"
+          placeholder="Write your function here! Try examples like:
+
+function sayHello(name) {
+    return 'Hello ' + name + '!';
+}
+
+console.log(sayHello('World'));
+
+// Or try arrow functions:
+const double = x => x * 2;
+console.log(double(5));
+
+// Or more complex functions:
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(10));"
+        ></textarea>
+        <button class="btn btn-success" onclick="runFunctionCode()">
+          Run Code
+        </button>
+        <button class="btn btn-danger" onclick="clearFunctionConsole()">
+          Clear Console
+        </button>
+
+        <h4>Console Output:</h4>
+        <div id="functionConsole" class="console-output">
+          <div class="console-line">Ready to run your functions! 🚀</div>
+        </div>
+      </div>
+
+      <h2 class="section-header">💡 Best Practices</h2>
+      <div class="highlight-box">
+        <h3>Function Best Practices:</h3>
+        <ul>
+          <li>
+            <strong>Use descriptive names:</strong>
+            <code>calculateTax()</code> instead of <code>calc()</code>
+          </li>
+          <li>
+            <strong>Keep functions small:</strong> One function should do one
+            thing well
+          </li>
+          <li>
+            <strong>Use arrow functions for short operations:</strong> Great for
+            callbacks and one-liners
+          </li>
+          <li>
+            <strong>Always return something meaningful:</strong> Even if it's
+            just <code>true</code> or <code>false</code>
+          </li>
+          <li>
+            <strong>Validate parameters:</strong> Check if inputs are what you
+            expect
+          </li>
+          <li>
+            <strong>Avoid global variables:</strong> Pass data through
+            parameters instead
+          </li>
+          <li>
+            <strong>Document complex functions:</strong> Add comments explaining
+            what they do
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h3>🎯 Common Use Cases for Functions:</h3>
+        <ul>
+          <li>
+            <strong>Calculations:</strong> Math operations, conversions,
+            validations
+          </li>
+          <li>
+            <strong>Data manipulation:</strong> Formatting, filtering, sorting
+            arrays/objects
+          </li>
+          <li>
+            <strong>Event handling:</strong> Responding to user interactions
+          </li>
+          <li><strong>API calls:</strong> Fetching data from servers</li>
+          <li><strong>Utilities:</strong> Helper functions for common tasks</li>
+          <li>
+            <strong>Validation:</strong> Checking if data meets certain criteria
+          </li>
+        </ul>
+      </div>
+
+      <footer
+        style="
+          margin-top: 40px;
+          padding: 20px;
+          background-color: #34495e;
+          color: white;
+          border-radius: 8px;
+          text-align: center;
+        "
+      >
+        <p>
+          🎯
+          <strong>Master Functions and You Master JavaScript!</strong> Functions
+          are the building blocks that make your code reusable, organized, and
+          powerful. Practice writing them daily!
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Tab functionality
+      function showTab(tabName) {
+        // Hide all tab contents
+        const contents = document.querySelectorAll(".tab-content");
+        contents.forEach((content) => content.classList.remove("active"));
+
+        // Remove active class from all tabs
+        const tabs = document.querySelectorAll(".tab");
+        tabs.forEach((tab) => tab.classList.remove("active"));
+
+        // Show selected tab content
+        document.getElementById(tabName).classList.add("active");
+
+        // Add active class to clicked tab
+        event.target.classList.add("active");
+      }
+
+      // Function examples
+      function greet(name) {
+        return `Hello, ${name}!`;
+      }
+
+      const multiply = function (a, b) {
+        return a * b;
+      };
+
+      const square = (x) => x * x;
+      const getRandomNumber = () => Math.random();
+
+      function createGreeting(firstName, lastName, title, greeting) {
+        return `${greeting} ${title} ${lastName}! Nice to meet you, ${firstName}.`;
+      }
+
+      function addNumbers(a, b) {
+        return a + b;
+      }
+
+      function greetUser(name) {
+        return `Welcome, ${name}!`;
+      }
+
+      function checkAge(age) {
+        if (age >= 18) {
+          return "adult";
+        }
+        return "minor";
+      }
+
+      // Test functions
+      function testDeclaration() {
+        const name = document.getElementById("declName").value || "Anonymous";
+        const result = greet(name);
+        document.getElementById("declResult").innerHTML = `
+                <strong>Function called:</strong> greet("${name}")<br>
+                <strong>Result:</strong> "${result}"
+            `;
+      }
+
+      function testExpression() {
+        const num1 = parseFloat(document.getElementById("exprNum1").value) || 0;
+        const num2 = parseFloat(document.getElementById("exprNum2").value) || 0;
+        const result = multiply(num1, num2);
+        document.getElementById("exprResult").innerHTML = `
+                <strong>Function called:</strong> multiply(${num1}, ${num2})<br>
+                <strong>Result:</strong> ${result}
+            `;
+      }
+
+      function testArrow() {
+        const num = parseFloat(document.getElementById("arrowNum").value) || 0;
+        const result = square(num);
+        document.getElementById("arrowResult").innerHTML = `
+                <strong>Arrow function called:</strong> square(${num})<br>
+                <strong>Result:</strong> ${result}
+            `;
+      }
+
+      function testRandom() {
+        const result = getRandomNumber();
+        document.getElementById("arrowResult").innerHTML = `
+                <strong>Arrow function called:</strong> getRandomNumber()<br>
+                <strong>Result:</strong> ${result}
+            `;
+      }
+
+      function testAnonymous() {
+        document.getElementById("anonResult").innerHTML = `
+                <strong>Timer started!</strong> Check console in 3 seconds...<br>
+                <em>Anonymous function: setTimeout(function() { ... }, 3000)</em>
+            `;
+
+        setTimeout(function () {
+          document.getElementById(
+            "anonResult"
+          ).innerHTML += `<br><strong>Timer finished!</strong> Anonymous function executed!`;
+          console.log("Anonymous function executed after 3 seconds!");
+        }, 3000);
+      }
+
+      function testMap() {
+        const numbers = [1, 2, 3, 4, 5];
+        const doubled = numbers.map((x) => x * 2);
+        document.getElementById("anonResult").innerHTML = `
+                <strong>Original array:</strong> [${numbers.join(", ")}]<br>
+                <strong>Anonymous arrow function:</strong> x => x * 2<br>
+                <strong>Result:</strong> [${doubled.join(", ")}]
+            `;
+      }
+
+      function testGreeting() {
+        const firstName = document.getElementById("firstName").value || "John";
+        const lastName = document.getElementById("lastName").value || "Doe";
+        const title = document.getElementById("title").value;
+        const greeting = document.getElementById("greeting").value;
+
+        const result = createGreeting(firstName, lastName, title, greeting);
+        document.getElementById("greetingResult").innerHTML = `
+                <strong>Function called:</strong><br>
+                createGreeting("${firstName}", "${lastName}", "${title}", "${greeting}")<br><br>
+                <strong>Result:</strong><br>
+                "${result}"
+            `;
+      }
+
+      function testReturnNumber() {
+        const num1 = parseFloat(document.getElementById("retNum1").value) || 0;
+        const num2 = parseFloat(document.getElementById("retNum2").value) || 0;
+        const result = addNumbers(num1, num2);
+        document.getElementById("retNumResult").innerHTML = `
+                <strong>addNumbers(${num1}, ${num2})</strong><br>
+                <strong>Returns:</strong> ${result} (type: ${typeof result})
+            `;
+      }
+
+      function testReturnString() {
+        const name = document.getElementById("retName").value || "Guest";
+        const result = greetUser(name);
+        document.getElementById("retStrResult").innerHTML = `
+                <strong>greetUser("${name}")</strong><br>
+                <strong>Returns:</strong> "${result}" (type: ${typeof result})
+            `;
+      }
+
+      function testReturnCondition() {
+        const age = parseInt(document.getElementById("retAge").value) || 0;
+        const result = checkAge(age);
+        document.getElementById("retCondResult").innerHTML = `
+                <strong>checkAge(${age})</strong><br>
+                <strong>Returns:</strong> "${result}" (type: ${typeof result})<br>
+                <strong>Logic:</strong> ${
+                  age >= 18
+                    ? 'age >= 18, so return "adult"'
+                    : 'age < 18, so return "minor"'
+                }
+            `;
+      }
+
+      function testCalculator() {
+        const calculator = {
+          add: (a, b) => a + b,
+          subtract: (a, b) => a - b,
+          multiply: (a, b) => a * b,
+          divide: (a, b) => (b !== 0 ? a / b : "Cannot divide by zero"),
+        };
+
+        const results = `
+                <strong>Calculator functions:</strong><br>
+                calculator.add(10, 5) = ${calculator.add(10, 5)}<br>
+                calculator.subtract(10, 5) = ${calculator.subtract(10, 5)}<br>
+                calculator.multiply(10, 5) = ${calculator.multiply(10, 5)}<br>
+                calculator.divide(10, 5) = ${calculator.divide(10, 5)}<br>
+                calculator.divide(10, 0) = ${calculator.divide(10, 0)}
+            `;
+        document.getElementById("calcResult").innerHTML = results;
+      }
+
+      function testStringUtils() {
+        const str =
+          document.getElementById("utilString").value || "hello world";
+
+        function capitalize(str) {
+          return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        function reverseString(str) {
+          return str.split("").reverse().join("");
+        }
+
+        const results = `
+                <strong>Original:</strong> "${str}"<br>
+                <strong>capitalize():</strong> "${capitalize(str)}"<br>
+                <strong>reverseString():</strong> "${reverseString(str)}"
+            `;
+        document.getElementById("utilResult").innerHTML = results;
+      }
+
+      function testArrayFunctions() {
+        const numbers = [1, 5, 3, 9, 2];
+
+        function findMax(numbers) {
+          return Math.max(...numbers);
+        }
+
+        function getAverage(numbers) {
+          return numbers.reduce((sum, num) => sum + num, 0) / numbers.length;
+        }
+
+        const results = `
+                <strong>Array:</strong> [${numbers.join(", ")}]<br>
+                <strong>findMax():</strong> ${findMax(numbers)}<br>
+                <strong>getAverage():</strong> ${getAverage(numbers).toFixed(2)}
+            `;
+        document.getElementById("arrayResult").innerHTML = results;
+      }
+
+      function runFunctionCode() {
+        const code = document.getElementById("functionCode").value;
+        const consoleOutput = document.getElementById("functionConsole");
+
+        // Create a mock console.log function
+        const originalLog = console.log;
+        const logs = [];
+
+        console.log = function (...args) {
+          logs.push(
+            args
+              .map((arg) =>
+                typeof arg === "string" ? arg : JSON.stringify(arg)
+              )
+              .join(" ")
+          );
+          originalLog.apply(console, args);
+        };
+
+        try {
+          // Add input to console
+          consoleOutput.innerHTML += `<div class="console-line console-input">> ${code.replace(
+            /\n/g,
+            "<br>  "
+          )}</div>`;
+
+          // Execute the code
+          eval(code);
+
+          // Add outputs to console
+          logs.forEach((log) => {
+            consoleOutput.innerHTML += `<div class="console-line console-output-text">${log}</div>`;
+          });
+
+          if (logs.length === 0) {
+            consoleOutput.innerHTML += `<div class="console-line console-output-text">Code executed successfully (no console output)</div>`;
+          }
+        } catch (error) {
+          consoleOutput.innerHTML += `<div class="console-line console-error">Error: ${error.message}</div>`;
+        }
+
+        // Restore original console.log
+        console.log = originalLog;
+
+        // Scroll to bottom
+        consoleOutput.scrollTop = consoleOutput.scrollHeight;
+      }
+
+      function clearFunctionConsole() {
+        document.getElementById("functionConsole").innerHTML =
+          '<div class="console-line">Console cleared! 🧹</div>';
+      }
+
+      // Initialize with default examples
+      window.onload = function () {
+        testDeclaration();
+        testExpression();
+        testArrow();
+        testGreeting();
+        testReturnNumber();
+        testReturnString();
+        testReturnCondition();
+      };
+    </script>
+  </body>
+</html>

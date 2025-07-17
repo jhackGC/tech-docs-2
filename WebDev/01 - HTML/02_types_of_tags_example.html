@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Types of HTML Tags Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .example-section {
+        border: 2px solid #ddd;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+      }
+      .example-section h3 {
+        margin-top: 0;
+        color: #2c3e50;
+        border-bottom: 2px solid #3498db;
+        padding-bottom: 5px;
+      }
+      .color-box {
+        width: 100px;
+        height: 100px;
+        background-color: limegreen;
+        border: 2px solid #333;
+        margin: 10px 0;
+      }
+      .button-demo {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .button-demo:hover {
+        background-color: #2980b9;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 10px 0;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Types of HTML Tags - Complete Examples</h1>
+    <p>
+      This page demonstrates all the different types of HTML tags covered in the
+      lesson.
+    </p>
+
+    <div class="example-section">
+      <h3>Heading Tags (h1-h6)</h3>
+      <h1>This is an h1!</h1>
+      <h2>This is an h2!</h2>
+      <h3>This is an h3!</h3>
+      <h4>This is an h4!</h4>
+      <h5>This is an h5!</h5>
+      <h6>This is an h6!</h6>
+    </div>
+
+    <div class="example-section">
+      <h3>Paragraph Tags</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt modi
+        est sapiente in optio quia inventore quis maxime ullam tenetur?
+      </p>
+      <p>
+        Maxime quibusdam, dolorum quaerat ducimus inventore sunt pariatur et
+        dolore ipsam. Distinctio eum nobis officiis quam quasi exercitationem
+        eaque?
+      </p>
+
+      <h4>Correct way to create line breaks:</h4>
+      <p>This is some text.</p>
+      <p>This is some more text.</p>
+
+      <h4>Old way (not recommended):</h4>
+      <p>This is some text.<br />This is some more text.</p>
+    </div>
+
+    <div class="example-section">
+      <h3>Anchor Tags (Links)</h3>
+      <a href="https://www.frontendmasters.com">Frontend Masters</a><br /><br />
+      <a href="https://aka.ms/visual-studio-code">Visual Studio Code</a
+      ><br /><br />
+      <a href="https://www.codepen.io">CodePen</a>
+    </div>
+
+    <div class="example-section">
+      <h3>Container Tags</h3>
+      <h4>Div (like a cardboard box):</h4>
+      <div
+        style="
+          background-color: lightblue;
+          padding: 15px;
+          border: 2px solid navy;
+        "
+      >
+        <p>This content is inside a div container.</p>
+        <p>Divs are block-level elements that group content together.</p>
+      </div>
+
+      <h4>Span (like a Ziploc bag):</h4>
+      <p>
+        This is
+        <span style="background-color: yellow"
+          >important text highlighted with a span</span
+        >
+        in the middle of a paragraph.
+      </p>
+    </div>
+
+    <div class="example-section">
+      <h3>List Tags</h3>
+      <h4>Ordered List (numbered):</h4>
+      <ol>
+        <li>The First One</li>
+        <li>The Second One</li>
+        <li>The Third One</li>
+      </ol>
+
+      <h4>Unordered List (bulleted):</h4>
+      <ul>
+        <li>An Item in the List</li>
+        <li>Another Item in the List</li>
+        <li>A Yet Different Item in the List</li>
+      </ul>
+    </div>
+
+    <div class="example-section">
+      <h3>Interactive Tags</h3>
+      <button
+        class="button-demo"
+        onclick="alert('Hello! You clicked the button!')"
+      >
+        Click me! I do something
+      </button>
+      <p><em>Try clicking the button above!</em></p>
+    </div>
+
+    <div class="example-section">
+      <h3>Image Tags</h3>
+      <img
+        src="http://pets-images.dev-apis.com/pets/dog25.jpg"
+        alt="an adorable puppy"
+        style="max-width: 200px; border-radius: 10px"
+      />
+      <img
+        src="http://pets-images.dev-apis.com/pets/dog26.jpg"
+        alt="an adorable puppy"
+        style="max-width: 200px; border-radius: 10px; margin-left: 10px"
+      />
+      <img
+        src="http://pets-images.dev-apis.com/pets/dog27.jpg"
+        alt="an adorable puppy"
+        style="max-width: 200px; border-radius: 10px; margin-left: 10px"
+      />
+      <p><em>These images are loaded from an external API!</em></p>
+    </div>
+
+    <div class="example-section">
+      <h3>Input Tags</h3>
+      <h4>Different types of input fields:</h4>
+
+      <p><strong>Text input:</strong></p>
+      <input type="text" placeholder="Type some text here" />
+
+      <p><strong>Color picker:</strong></p>
+      <input type="color" value="#3498db" />
+
+      <p><strong>File picker:</strong></p>
+      <input type="file" />
+
+      <p><strong>Number input:</strong></p>
+      <input type="number" placeholder="Enter a number" />
+
+      <p><strong>Date picker:</strong></p>
+      <input type="datetime-local" />
+
+      <p><strong>Radio buttons:</strong></p>
+      <input type="radio" name="choice" id="option1" />
+      <label for="option1">Option 1</label><br />
+      <input type="radio" name="choice" id="option2" />
+      <label for="option2">Option 2</label>
+
+      <p><strong>Checkbox:</strong></p>
+      <input type="checkbox" id="agree" />
+      <label for="agree">I agree to the terms</label>
+
+      <p><strong>Textarea for longer text:</strong></p>
+      <textarea
+        placeholder="Type a longer message here..."
+        rows="4"
+        cols="50"
+      ></textarea>
+    </div>
+
+    <div class="example-section">
+      <h3>Select Tags (Dropdown)</h3>
+      <p><strong>Choose a city:</strong></p>
+      <select>
+        <option value="seattle">Seattle</option>
+        <option value="portland">Portland</option>
+        <option value="san-francisco">San Francisco</option>
+      </select>
+    </div>
+
+    <div class="example-section">
+      <h3>Form Tags</h3>
+      <form
+        style="background-color: #ecf0f1; padding: 15px; border-radius: 5px"
+      >
+        <h4>Contact Form Example</h4>
+        <input
+          type="text"
+          placeholder="First Name"
+          style="margin: 5px; padding: 8px"
+        /><br />
+        <input
+          type="text"
+          placeholder="Last Name"
+          style="margin: 5px; padding: 8px"
+        /><br />
+        <input
+          type="email"
+          placeholder="Email Address"
+          style="margin: 5px; padding: 8px"
+        /><br />
+        <button
+          type="submit"
+          style="
+            margin: 5px;
+            padding: 8px 15px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 3px;
+          "
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <div class="example-section">
+      <h3>Table Tags</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Points</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Team 1</td>
+            <td>5</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>Ravenclaw</td>
+            <td>6</td>
+            <td>Leading</td>
+          </tr>
+          <tr>
+            <td>Gryffindor</td>
+            <td>4</td>
+            <td>Trailing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="example-section">
+      <h3>Comments in HTML</h3>
+      <!-- This is a comment - you can't see it on the page but it's in the HTML source -->
+      <p>
+        There's an HTML comment right above this paragraph. You can see it if
+        you view the page source!
+      </p>
+      <p>
+        <em
+          >Comments are useful for leaving notes to yourself or other
+          developers.</em
+        >
+      </p>
+    </div>
+
+    <div class="example-section">
+      <h3>HTML5 Semantic Tags</h3>
+      <p><strong>These tags give meaning to your content structure:</strong></p>
+
+      <h4>Page Structure Tags:</h4>
+      <div
+        style="
+          border: 1px solid #ddd;
+          padding: 15px;
+          margin: 10px 0;
+          background-color: #f8f9fa;
+        "
+      >
+        <header
+          style="background-color: #e9ecef; padding: 10px; margin-bottom: 10px"
+        >
+          <h5>&lt;header&gt; - Page Header</h5>
+          <nav style="background-color: #dee2e6; padding: 5px">
+            <strong>&lt;nav&gt;</strong> - Navigation:
+            <a href="#home" style="margin: 0 10px">Home</a>
+            <a href="#about" style="margin: 0 10px">About</a>
+            <a href="#contact" style="margin: 0 10px">Contact</a>
+          </nav>
+        </header>
+
+        <main style="background-color: #f8f9fa; padding: 10px; margin: 10px 0">
+          <strong>&lt;main&gt;</strong> - Main Content Area
+
+          <section
+            style="background-color: #e9ecef; padding: 10px; margin: 10px 0"
+          >
+            <h6>&lt;section&gt; - Thematic Section</h6>
+            <p>This represents a thematic grouping of content.</p>
+
+            <article
+              style="background-color: #dee2e6; padding: 10px; margin: 10px 0"
+            >
+              <strong>&lt;article&gt;</strong> - Self-contained Content
+              <p>This could be a blog post, news article, or forum post.</p>
+              <time datetime="2025-07-15" style="font-style: italic"
+                >&lt;time&gt; July 15, 2025</time
+              >
+            </article>
+          </section>
+
+          <aside
+            style="background-color: #e9ecef; padding: 10px; margin: 10px 0"
+          >
+            <strong>&lt;aside&gt;</strong> - Sidebar Content
+            <p>Related links, advertisements, or tangential information.</p>
+          </aside>
+        </main>
+
+        <footer
+          style="background-color: #e9ecef; padding: 10px; margin-top: 10px"
+        >
+          <strong>&lt;footer&gt;</strong> - Page Footer
+          <p style="margin: 0; font-size: 0.9em">
+            © 2025 - Contact info and links
+          </p>
+        </footer>
+      </div>
+
+      <h4>Text-Level Semantic Tags:</h4>
+      <p>
+        Here is some text with a
+        <mark>&lt;mark&gt; highlighted section</mark> for emphasis.
+      </p>
+      <p>
+        Event date:
+        <time datetime="2025-12-25">&lt;time&gt; December 25, 2025</time>
+      </p>
+
+      <figure
+        style="
+          border: 1px solid #ddd;
+          padding: 10px;
+          text-align: center;
+          margin: 15px 0;
+        "
+      >
+        <div
+          style="
+            width: 200px;
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+          "
+        >
+          Sample Image/Chart
+        </div>
+        <figcaption>
+          <strong>&lt;figcaption&gt;</strong> - This is a caption for the figure
+          above
+        </figcaption>
+      </figure>
+
+      <h4>Interactive Content Tags:</h4>
+      <details style="border: 1px solid #ddd; padding: 10px; margin: 10px 0">
+        <summary style="cursor: pointer; font-weight: bold">
+          &lt;details&gt; and &lt;summary&gt; - Click to expand
+        </summary>
+        <p>
+          This content is hidden by default and only shows when you click the
+          summary!
+        </p>
+        <p>Perfect for FAQ sections or collapsible content.</p>
+      </details>
+
+      <dialog
+        id="example-dialog"
+        style="border: 2px solid #3498db; padding: 20px; border-radius: 5px"
+      >
+        <p><strong>&lt;dialog&gt;</strong> - This is a dialog box!</p>
+        <button onclick="document.getElementById('example-dialog').close()">
+          Close Dialog
+        </button>
+      </dialog>
+      <button
+        onclick="document.getElementById('example-dialog').showModal()"
+        style="
+          margin: 10px 0;
+          padding: 8px 15px;
+          background-color: #3498db;
+          color: white;
+          border: none;
+          border-radius: 3px;
+        "
+      >
+        Open Dialog Example
+      </button>
+
+      <h4>Progress and Meter Tags:</h4>
+      <p><strong>&lt;progress&gt;</strong> - Task completion:</p>
+      <progress value="70" max="100" style="width: 200px">70%</progress>
+      <span style="margin-left: 10px">70% complete</span>
+
+      <p><strong>&lt;meter&gt;</strong> - Measurement within a range:</p>
+      <p>
+        Disk usage: <meter value="0.6" style="width: 150px">60%</meter> (60%
+        full)
+      </p>
+      <p>
+        Score:
+        <meter value="8" min="0" max="10" style="width: 150px">
+          8 out of 10
+        </meter>
+      </p>
+
+      <h4>Complete Semantic Structure Example:</h4>
+      <div
+        style="
+          border: 2px solid #2c3e50;
+          padding: 15px;
+          background-color: #ecf0f1;
+          font-size: 0.9em;
+        "
+      >
+        <div
+          style="
+            background-color: #34495e;
+            color: white;
+            padding: 8px;
+            margin-bottom: 8px;
+          "
+        >
+          <strong>Semantic HTML5 Page Structure</strong>
+        </div>
+        <div
+          style="
+            background-color: #3498db;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+          "
+        >
+          header
+        </div>
+        <div
+          style="
+            background-color: #9b59b6;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+            margin-left: 20px;
+          "
+        >
+          nav
+        </div>
+        <div
+          style="
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+          "
+        >
+          main
+        </div>
+        <div
+          style="
+            background-color: #f39c12;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+            margin-left: 20px;
+          "
+        >
+          article
+        </div>
+        <div
+          style="
+            background-color: #1abc9c;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+            margin-left: 40px;
+          "
+        >
+          section
+        </div>
+        <div
+          style="
+            background-color: #95a5a6;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+            margin-left: 20px;
+          "
+        >
+          aside
+        </div>
+        <div
+          style="
+            background-color: #2c3e50;
+            color: white;
+            padding: 5px;
+            margin: 2px 0;
+          "
+        >
+          footer
+        </div>
+      </div>
+
+      <h4>Benefits of Semantic HTML5:</h4>
+      <ul>
+        <li>
+          <strong>Accessibility:</strong> Screen readers understand content
+          structure
+        </li>
+        <li>
+          <strong>SEO:</strong> Search engines better index semantic content
+        </li>
+        <li><strong>Maintainability:</strong> Code is self-documenting</li>
+        <li><strong>Styling:</strong> CSS can target meaningful elements</li>
+        <li>
+          <strong>Future-proofing:</strong> Works better with new technologies
+        </li>
+      </ul>
+
+      <p>
+        <em
+          >Compare this to using generic &lt;div&gt; elements - semantic tags
+          provide meaning!</em
+        >
+      </p>
+    </div>
+
+    <footer
+      style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #3498db"
+    >
+      <p>
+        <strong
+          >This example demonstrates all the HTML tag types covered in Lesson 5:
+          Types of Tags</strong
+        >
+      </p>
+      <p>
+        <em
+          >Try interacting with the different elements to see how they work!</em
+        >
+      </p>
+    </footer>
+  </body>
+</html>

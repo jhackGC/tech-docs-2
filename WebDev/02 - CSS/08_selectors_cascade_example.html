@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selectors and the Cascade Examples</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header Styles */
+      .page-title {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 3px solid #3498db;
+        padding-bottom: 15px;
+      }
+
+      /* Section Headers */
+      .section-header {
+        color: #34495e;
+        background-color: #ecf0f1;
+        padding: 15px;
+        margin: 30px 0 20px 0;
+        border-left: 4px solid #3498db;
+        border-radius: 5px;
+      }
+
+      /* Demonstration boxes */
+      .demo-box {
+        border: 2px solid #e74c3c;
+        background-color: #fff5f5;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .code-display {
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+
+      /* CLASS SELECTOR EXAMPLES */
+      .branding {
+        color: red;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .blog-post-title {
+        color: limegreen;
+        font-style: italic;
+        text-decoration: underline;
+      }
+
+      .red-paragraph {
+        color: red;
+        background-color: #ffe6e6;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .blue-paragraph {
+        color: blue;
+        background-color: #e6f3ff;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      /* ID SELECTOR EXAMPLES */
+      #unique-header {
+        color: purple;
+        background: linear-gradient(45deg, #9b59b6, #8e44ad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 2em;
+        text-align: center;
+      }
+
+      #special-paragraph {
+        background-color: #f39c12;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      /* ATTRIBUTE SELECTOR EXAMPLES */
+      input[type="text"] {
+        border: 2px solid #3498db;
+        padding: 8px;
+        border-radius: 4px;
+      }
+
+      input[type="email"] {
+        border: 2px solid #e74c3c;
+        padding: 8px;
+        border-radius: 4px;
+        background-color: #ffeaea;
+      }
+
+      a[href^="https://"]
+      {
+        color: #27ae60;
+        font-weight: bold;
+      }
+
+      a[href^="mailto:"] {
+        color: #e67e22;
+        text-decoration: none;
+        background-color: #fef5e7;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+
+      /* DESCENDANT SELECTOR EXAMPLES */
+      .nav-menu li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 15px;
+      }
+
+      .nav-menu a {
+        text-decoration: none;
+        color: #2c3e50;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+
+      .nav-menu a:hover {
+        background-color: #3498db;
+        color: white;
+      }
+
+      .sidebar p {
+        background-color: #d5dbdb;
+        padding: 10px;
+        margin: 5px 0;
+        border-left: 3px solid #95a5a6;
+      }
+
+      /* PSEUDO-CLASS EXAMPLES */
+      .button:hover {
+        background-color: #2980b9;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .button {
+        background-color: #3498db;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 5px;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .list-item:nth-child(odd) {
+        background-color: #ecf0f1;
+      }
+
+      .list-item:nth-child(even) {
+        background-color: #bdc3c7;
+      }
+
+      .list-item {
+        padding: 10px;
+        margin: 2px 0;
+        border-radius: 4px;
+      }
+
+      /* CASCADE DEMONSTRATION */
+      .cascade-demo {
+        color: blue; /* This will be overridden */
+      }
+
+      .cascade-demo {
+        color: green; /* This overrides the blue */
+        font-size: 16px;
+      }
+
+      .cascade-demo.specific {
+        color: red; /* This is more specific, so it wins */
+      }
+
+      #very-specific {
+        color: purple !important; /* !important overrides everything */
+      }
+
+      /* SPECIFICITY EXAMPLES */
+      p {
+        color: black;
+      }
+
+      .text-blue {
+        color: blue;
+      }
+
+      .container .text-blue {
+        color: green;
+      }
+
+      #override-example {
+        color: red;
+      }
+
+      /* Multiple classes */
+      .highlight.important {
+        background-color: yellow;
+        font-weight: bold;
+        border: 2px solid orange;
+        padding: 5px;
+      }
+
+      /* Complex selectors */
+      .article > .content > p:first-child {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+
+      .article {
+        border: 1px solid #bdc3c7;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+      }
+
+      .content {
+        margin: 10px 0;
+      }
+
+      /* Universal selector example */
+      .reset-section * {
+        margin: 0;
+        padding: 0;
+        border: 1px dotted #ccc;
+      }
+
+      .info-box {
+        background-color: #d1ecf1;
+        border: 1px solid #bee5eb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .warning-box {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+
+      .highlight-box {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-title">🎯 CSS Selectors and the Cascade</h1>
+
+      <div class="info-box">
+        <p>
+          <strong>Welcome!</strong> This page demonstrates various CSS selectors
+          and how the cascade works. Each example shows both the CSS code and
+          the result.
+        </p>
+      </div>
+
+      <h2 class="section-header">1. Basic Tag Selectors vs Class Selectors</h2>
+      <div class="demo-box">
+        <p>This paragraph uses default styling (tag selector).</p>
+        <p class="red-paragraph">This paragraph uses a red class.</p>
+        <p class="blue-paragraph">This paragraph uses a blue class.</p>
+
+        <div class="code-display">
+          p { color: #333; /* Default for all paragraphs */ } .red-paragraph {
+          color: red; background-color: #ffe6e6; } .blue-paragraph { color:
+          blue; background-color: #e6f3ff; }
+        </div>
+      </div>
+
+      <h2 class="section-header">2. Different Classes for Same Elements</h2>
+      <div class="demo-box">
+        <h1 class="branding">My Super Cool Brand</h1>
+        <h1 class="blog-post-title">My Cool Blog Post</h1>
+
+        <div class="code-display">
+          .branding { color: red; font-weight: bold; } .blog-post-title { color:
+          limegreen; font-style: italic; }
+        </div>
+      </div>
+
+      <h2 class="section-header">3. ID Selectors (Use Sparingly!)</h2>
+      <div class="demo-box">
+        <h2 id="unique-header">This heading has a unique ID</h2>
+        <p id="special-paragraph">This paragraph also has a unique ID</p>
+
+        <div class="code-display">
+          #unique-header { color: purple; background: linear-gradient(45deg,
+          #9b59b6, #8e44ad); } #special-paragraph { background-color: #f39c12;
+          color: white; }
+        </div>
+
+        <div class="warning-box">
+          <strong>Note:</strong> IDs should be unique per page and used
+          sparingly. Classes are preferred for styling.
+        </div>
+      </div>
+
+      <h2 class="section-header">4. Attribute Selectors</h2>
+      <div class="demo-box">
+        <form>
+          <label
+            >Text Input:
+            <input type="text" placeholder="I have blue border" /></label
+          ><br /><br />
+          <label
+            >Email Input:
+            <input type="email" placeholder="I have red border" /></label
+          ><br /><br />
+        </form>
+
+        <p>
+          Links: <a href="https://www.example.com">HTTPS link (green)</a> |
+          <a href="mailto:test@example.com">Email link (orange)</a>
+        </p>
+
+        <div class="code-display">
+          input[type="text"] { border: 2px solid #3498db; } input[type="email"]
+          { border: 2px solid #e74c3c; } a[href^="https://"] { color: #27ae60; }
+          a[href^="mailto:"] { color: #e67e22; }
+        </div>
+      </div>
+
+      <h2 class="section-header">5. Descendant Selectors</h2>
+      <div class="demo-box">
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="sidebar">
+          <p>This paragraph is inside the sidebar.</p>
+          <p>This paragraph is also inside the sidebar.</p>
+        </div>
+
+        <div class="code-display">
+          .nav-menu li { display: inline-block; margin: 0 15px; } .nav-menu a {
+          text-decoration: none; padding: 8px 16px; } .sidebar p {
+          background-color: #d5dbdb; border-left: 3px solid #95a5a6; }
+        </div>
+      </div>
+
+      <h2 class="section-header">6. Pseudo-classes</h2>
+      <div class="demo-box">
+        <p>Hover over these buttons to see the effect:</p>
+        <a href="#" class="button">Hover Me!</a>
+        <button class="button">Click Me!</button>
+
+        <h4>List with alternating colors:</h4>
+        <div class="list-item">Item 1 (odd)</div>
+        <div class="list-item">Item 2 (even)</div>
+        <div class="list-item">Item 3 (odd)</div>
+        <div class="list-item">Item 4 (even)</div>
+
+        <div class="code-display">
+          .button:hover { background-color: #2980b9; transform:
+          translateY(-2px); } .list-item:nth-child(odd) { background-color:
+          #ecf0f1; } .list-item:nth-child(even) { background-color: #bdc3c7; }
+        </div>
+      </div>
+
+      <h2 class="section-header">7. The Cascade in Action</h2>
+      <div class="demo-box">
+        <p class="cascade-demo">This text shows basic cascade rules</p>
+        <p class="cascade-demo specific">
+          This text shows specificity in action
+        </p>
+        <p class="cascade-demo" id="very-specific">
+          This text shows !important override
+        </p>
+
+        <div class="code-display">
+          .cascade-demo { color: blue; /* This will be overridden */ }
+          .cascade-demo { color: green; /* This overrides blue (later in CSS) */
+          } .cascade-demo.specific { color: red; /* More specific selector wins
+          */ } #very-specific { color: purple !important; /* !important
+          overrides everything */ }
+        </div>
+      </div>
+
+      <h2 class="section-header">8. Specificity Examples</h2>
+      <div class="demo-box">
+        <p class="text-blue">
+          Basic class selector (blue → green due to descendant)
+        </p>
+        <p class="text-blue" id="override-example">
+          ID selector overrides class
+        </p>
+        <p class="highlight important">Multiple classes combined</p>
+
+        <div class="article">
+          <div class="content">
+            <p>First paragraph (larger and bold due to complex selector)</p>
+            <p>Second paragraph (normal styling)</p>
+          </div>
+        </div>
+
+        <div class="code-display">
+          /* Specificity from lowest to highest: */ p { color: black; } /* 1
+          point */ .text-blue { color: blue; } /* 10 points */ .container
+          .text-blue { color: green; } /* 20 points */ #override-example {
+          color: red; } /* 100 points */ /* Multiple classes */
+          .highlight.important { background-color: yellow; font-weight: bold; }
+          /* Complex selectors */ .article > .content > p:first-child {
+          font-size: 1.2em; font-weight: bold; }
+        </div>
+      </div>
+
+      <h2 class="section-header">9. Universal Selector (*)</h2>
+      <div class="demo-box">
+        <div class="reset-section">
+          <h4>Section with universal selector</h4>
+          <p>Notice the dotted borders on all elements</p>
+          <span>Including this span</span>
+        </div>
+
+        <div class="code-display">
+          .reset-section * { margin: 0; padding: 0; border: 1px dotted #ccc; }
+        </div>
+      </div>
+
+      <h2 class="section-header">🏆 Best Practices</h2>
+      <div class="highlight-box">
+        <h3>What to Use (in order of preference):</h3>
+        <ol>
+          <li><strong>Classes (.class-name)</strong> - Use 95% of the time</li>
+          <li>
+            <strong>Pseudo-classes (:hover, :focus)</strong> - For interactive
+            states
+          </li>
+          <li>
+            <strong>Attribute selectors ([type="text"])</strong> - For form
+            elements
+          </li>
+          <li>
+            <strong>Descendant selectors (.parent .child)</strong> - For
+            specific contexts
+          </li>
+          <li>
+            <strong>Tag selectors (p, h1)</strong> - Only for global styles
+          </li>
+          <li><strong>ID selectors (#id)</strong> - Rarely, prefer classes</li>
+        </ol>
+      </div>
+
+      <div class="warning-box">
+        <h3>Avoid:</h3>
+        <ul>
+          <li>Overusing !important (breaks the cascade)</li>
+          <li>Overly specific selectors (hard to maintain)</li>
+          <li>Styling with IDs (use classes instead)</li>
+          <li>Inline styles (use external CSS)</li>
+        </ul>
+      </div>
+
+      <footer
+        style="
+          margin-top: 40px;
+          padding: 20px;
+          background-color: #34495e;
+          color: white;
+          border-radius: 8px;
+          text-align: center;
+        "
+      >
+        <p>
+          <strong>Remember:</strong> Classes are your best friend! Use them for
+          almost all styling needs. The cascade flows from top to bottom, and
+          specificity determines which rules apply when there are conflicts.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

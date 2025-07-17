@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Attributes Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .the-red-one {
+        color: red;
+        font-weight: bold;
+      }
+
+      .the-blue-one {
+        color: blue;
+        font-style: italic;
+      }
+
+      .highlight {
+        background-color: yellow;
+        padding: 2px 4px;
+      }
+
+      .big-text {
+        font-size: 1.5em;
+      }
+
+      .input-section {
+        margin: 20px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .form-group {
+        margin: 10px 0;
+      }
+
+      label {
+        display: inline-block;
+        width: 150px;
+        font-weight: bold;
+      }
+
+      input {
+        margin: 5px;
+        padding: 5px;
+      }
+
+      #unique-element {
+        background-color: lightcyan;
+        border: 2px solid teal;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .link-examples {
+        margin: 20px 0;
+      }
+
+      .link-examples a {
+        margin: 0 10px;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+      }
+
+      .link-examples a:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HTML Attributes Examples</h1>
+
+      <section>
+        <h2>Class Attributes</h2>
+        <p>Classes are reusable and can be applied to multiple elements:</p>
+
+        <h3 class="the-red-one">This heading is red and bold</h3>
+        <h3 class="the-blue-one">This heading is blue and italic</h3>
+        <p class="the-red-one">This paragraph also uses the red class</p>
+
+        <h4>Multiple Classes</h4>
+        <p class="the-red-one highlight">
+          This has both red and highlight classes
+        </p>
+        <p class="the-blue-one big-text">
+          This has both blue and big-text classes
+        </p>
+      </section>
+
+      <section>
+        <h2>ID Attributes</h2>
+        <p>IDs are unique and should only be used once per page:</p>
+        <div id="unique-element">
+          This div has a unique ID and special styling
+        </div>
+      </section>
+
+      <section>
+        <h2>Link Attributes (href)</h2>
+        <div class="link-examples">
+          <a href="https://www.frontendmasters.com">Frontend Masters</a>
+          <a href="https://developer.mozilla.org">MDN Docs</a>
+          <a href="mailto:test@example.com">Send Email</a>
+          <a href="tel:+1234567890">Call Us</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Input Type Attributes</h2>
+        <div class="input-section">
+          <h3>Different Input Types</h3>
+
+          <div class="form-group">
+            <label for="text-input">Text Input:</label>
+            <input type="text" id="text-input" placeholder="Enter text here" />
+          </div>
+
+          <div class="form-group">
+            <label for="email-input">Email Input:</label>
+            <input type="email" id="email-input" placeholder="your@email.com" />
+          </div>
+
+          <div class="form-group">
+            <label for="password-input">Password Input:</label>
+            <input type="password" id="password-input" placeholder="Password" />
+          </div>
+
+          <div class="form-group">
+            <label for="number-input">Number Input:</label>
+            <input
+              type="number"
+              id="number-input"
+              min="1"
+              max="100"
+              value="50"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="date-input">Date Input:</label>
+            <input type="date" id="date-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="time-input">Time Input:</label>
+            <input type="time" id="time-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="datetime-input">DateTime Input:</label>
+            <input type="datetime-local" id="datetime-input" />
+          </div>
+
+          <div class="form-group">
+            <label for="color-input">Color Input:</label>
+            <input type="color" id="color-input" value="#ff0000" />
+          </div>
+
+          <div class="form-group">
+            <label for="file-input">File Input:</label>
+            <input type="file" id="file-input" accept=".jpg,.png,.gif" />
+          </div>
+
+          <div class="form-group">
+            <label for="range-input">Range Input:</label>
+            <input type="range" id="range-input" min="0" max="100" value="50" />
+          </div>
+
+          <div class="form-group">
+            <label>Radio Buttons:</label>
+            <input type="radio" id="option1" name="choice" value="1" />
+            <label for="option1">Option 1</label>
+            <input type="radio" id="option2" name="choice" value="2" />
+            <label for="option2">Option 2</label>
+          </div>
+
+          <div class="form-group">
+            <label>Checkboxes:</label>
+            <input type="checkbox" id="check1" value="html" />
+            <label for="check1">HTML</label>
+            <input type="checkbox" id="check2" value="css" />
+            <label for="check2">CSS</label>
+            <input type="checkbox" id="check3" value="js" />
+            <label for="check3">JavaScript</label>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Other Common Attributes</h2>
+
+        <h3>Title Attribute (Hover for tooltip)</h3>
+        <p title="This is a tooltip that appears on hover">
+          Hover over this text to see the title attribute in action!
+        </p>
+
+        <h3>Alt Attribute for Images</h3>
+        <img
+          src="https://via.placeholder.com/200x100/4CAF50/FFFFFF?text=Sample+Image"
+          alt="A sample green placeholder image"
+          style="border: 1px solid #ddd; border-radius: 4px"
+        />
+
+        <h3>Target Attribute for Links</h3>
+        <a href="https://www.example.com" target="_blank">
+          This link opens in a new tab (target="_blank")
+        </a>
+      </section>
+
+      <section>
+        <h2>Data Attributes</h2>
+        <p>Custom data attributes can store extra information:</p>
+        <div
+          data-user-id="123"
+          data-user-role="admin"
+          style="padding: 10px; background-color: #e9ecef; border-radius: 4px"
+        >
+          This div has custom data attributes (data-user-id and data-user-role)
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
