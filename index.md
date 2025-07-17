@@ -14,58 +14,17 @@ Welcome to the Technical Documentation Hub - a comprehensive collection of softw
 
 A structured learning path from AI fundamentals to advanced applications. **[View Complete Learning Path](AI/index.md)**
 
-#### Level 1: AI Fundamentals (Beginner)
-
-- Core Concepts - Introduction to AI, types, and ethics
-- Math Foundation - Linear algebra, statistics, and calculus
-- Python for AI - Essential programming skills
-
-#### Level 2: Machine Learning (Intermediate)
-
-- Supervised Learning - Regression, classification algorithms
-- Unsupervised Learning - Clustering and dimensionality reduction
-- Model Evaluation - Testing and improving models
-
-#### Level 3: Deep Learning (Intermediate-Advanced)
-
-- Neural Networks - Fundamentals and architectures
-- Advanced Architectures - CNNs, RNNs, Transformers
-- Frameworks - TensorFlow, PyTorch, Keras
-
-#### Level 4: Generative AI (Advanced)
-
-- Large Language Models - Understanding and working with LLMs
-- RAG Systems - Retrieval-Augmented Generation
-- Fine-tuning & Prompt Engineering - Model customization
-
-#### Level 5: Production AI (Expert)
-
-- MLOps & Deployment - Scaling and maintaining AI systems
-- Advanced Topics - RL, transfer learning, explainable AI
-
 ### 🌐 Web Development
 
 Complete web development curriculum from HTML basics to modern full-stack applications.
 
 #### 1. HTML Fundamentals
 
-- [HTML Tags](WebDev/01%20-%20HTML/02_HTML_Tags.md) - Basic HTML structure and elements
-- [Types of Tags](WebDev/01%20-%20HTML/02_HTML_Types_of_Tags.md) - Different HTML tag categories
-- [Tag Attributes](WebDev/01%20-%20HTML/03_HTML_Tag_Attributes.md) - Adding functionality to HTML elements
-- [Organizing HTML](WebDev/01%20-%20HTML/04_Organizing_HTML.md) - Semantic structure and best practices
-- [Head & Meta Tags](WebDev/01%20-%20HTML/05_Head_and_Meta_Tags.md) - Document metadata and SEO
-- [HTML Project](WebDev/01%20-%20HTML/06_HTML_Project.md) - Hands-on HTML practice
+Learn the foundation of web development with HTML. **[View Complete HTML Curriculum](WebDev/01%20-%20HTML/index.md)**
 
 #### 2. CSS Styling
 
-- [CSS Rules](WebDev/02%20-%20CSS/07_CSS_Rules.md) - Basic CSS syntax and properties
-- [Selectors & Cascade](WebDev/02%20-%20CSS/08_Selectors_and_the_Cascade.md) - Targeting elements and specificity
-- [Pseudoclasses & Pseudoelements](WebDev/02%20-%20CSS/09_Pseudoclasses_and_Pseudoelements.md) - Advanced selectors
-- [Layout CSS](WebDev/02%20-%20CSS/10_Layout_CSS.md) - Positioning and layout fundamentals
-- [Flexbox](WebDev/02%20-%20CSS/11_Flex.md) - Modern flexible layouts
-- [CSS Grid](WebDev/02%20-%20CSS/12_Grid.md) - Two-dimensional layout system
-- [Animations](WebDev/02%20-%20CSS/13_Animations.md) - CSS transitions and keyframes
-- [CSS Project](WebDev/02%20-%20CSS/15_CSS_Project.md) - Complete styling project
+Master the art of styling web pages with CSS. **[View Complete CSS Curriculum](WebDev/02%20-%20CSS/index.md)**
 
 #### 3. JavaScript Programming
 

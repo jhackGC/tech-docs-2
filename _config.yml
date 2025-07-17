@@ -20,6 +20,17 @@ include:
   - README.md
   - index.md
 
+# Exclude problematic files with React/JavaScript syntax that conflicts with Liquid
+exclude:
+  - Javascript/Frameworks/react-native/
+  - Javascript/Frameworks/react/
+  - node_modules/
+  - vendor/
+  - .git/
+  - .github/
+  - Gemfile
+  - Gemfile.lock
+
 # Process markdown files in all directories
 plugins:
   - jekyll-feed
