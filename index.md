@@ -4,11 +4,44 @@ layout: clean
 permalink: /
 ---
 
-# Technical Documentation Hub
+# Technical Documentation Hub - WORK IN PROGRESS
 
 Welcome to the Technical Documentation Hub - a comprehensive collection of software engineering principles, system design patterns, and development best practices.
 
 ## 📚 Table of Contents
+
+### 🤖 Artificial Intelligence
+
+A structured learning path from AI fundamentals to advanced applications. **[View Complete Learning Path](AI/index.md)**
+
+#### Level 1: AI Fundamentals (Beginner)
+
+- [Core Concepts](AI/fundamentals/what-is-ai.md) - Introduction to AI, types, and ethics
+- [Math Foundation](AI/math/linear-algebra.md) - Linear algebra, statistics, and calculus
+- [Python for AI](AI/programming/python-basics.md) - Essential programming skills
+
+#### Level 2: Machine Learning (Intermediate)
+
+- [Supervised Learning](AI/ml/linear-regression.md) - Regression, classification algorithms
+- [Unsupervised Learning](AI/ml/kmeans.md) - Clustering and dimensionality reduction
+- [Model Evaluation](AI/ml/cross-validation.md) - Testing and improving models
+
+#### Level 3: Deep Learning (Intermediate-Advanced)
+
+- [Neural Networks](AI/deep-learning/perceptron.md) - Fundamentals and architectures
+- [Advanced Architectures](AI/deep-learning/cnn.md) - CNNs, RNNs, Transformers
+- [Frameworks](AI/frameworks/tensorflow.md) - TensorFlow, PyTorch, Keras
+
+#### Level 4: Generative AI (Advanced)
+
+- [Large Language Models](AI/generative/llm-basics.md) - Understanding and working with LLMs
+- [RAG Systems](AI/advanced/rag.md) - Retrieval-Augmented Generation
+- [Fine-tuning & Prompt Engineering](AI/advanced/fine-tuning.md) - Model customization
+
+#### Level 5: Production AI (Expert)
+
+- [MLOps & Deployment](AI/production/versioning.md) - Scaling and maintaining AI systems
+- [Advanced Topics](AI/advanced/reinforcement-learning.md) - RL, transfer learning, explainable AI
 
 ### 🔧 Software Engineering
 
@@ -87,10 +120,11 @@ Architecture patterns and principles for scalable system design.
 
 ## 📖 How to Use This Documentation
 
-This documentation is organized into two main sections:
+This documentation is organized into three main sections:
 
 - **Software Engineering**: Focuses on coding practices, methodologies, and design patterns
 - **System Design**: Covers architecture principles, system design patterns, and platform-specific best practices
+- **Artificial Intelligence**: Modern AI technologies, generative AI, and intelligent application development
 
 Each section contains both theoretical concepts and practical examples to help you understand and apply the knowledge in real-world scenarios.
 
