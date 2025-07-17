@@ -312,7 +312,7 @@ function registerUser(email) {
 }
 ```
 
-### 3. Use Default Parameters (Advanced)
+### 3. Use Default Parameters
 
 ```javascript
 function greetUser(name = "Guest", timeOfDay = "day") {
@@ -361,4 +361,4 @@ function processNumbers(numbers) {
 }
 ```
 
-Functions are one of the most important concepts in programming. They help you write cleaner, more organized, and more maintainable code. Master functions, and you'll be well on your way to becoming a proficient programmer!
+Functions are one of the most important concepts in programming. They help you write cleaner, more organized, and more maintainable code.

@@ -1,0 +1,196 @@
+<!-- Runnable Code Block Component -->
+<div
+  class="runnable-code"
+  data-language="{{ include.language | default: 'javascript' }}"
+>
+  <div class="code-header">
+    <span class="code-title"
+      >{{ include.title | default: 'JavaScript Code' }}</span
+    >
+    <button class="run-button" onclick="runCode(this)">▶ Run Code</button>
+    <button class="reset-button" onclick="resetCode(this)">↻ Reset</button>
+  </div>
+
+  <div class="code-container">
+    <pre
+      class="code-block"
+    ><code class="language-{{ include.language | default: 'javascript' }}">{{ include.code }}</code></pre>
+
+    <div class="output-container">
+      <div class="output-header">Output:</div>
+      <pre class="output-block"></pre>
+    </div>
+  </div>
+</div>
+
+<style>
+  .runnable-code {
+    border: 1px solid var(--border-primary);
+    border-radius: 6px;
+    margin: 16px 0;
+    background: var(--bg-secondary);
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-primary);
+    border-radius: 6px 6px 0 0;
+  }
+
+  .code-title {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .run-button,
+  .reset-button {
+    background: var(--accent-blue);
+    color: var(--text-primary);
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 8px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+  }
+
+  .run-button:hover,
+  .reset-button:hover {
+    background: var(--accent-green);
+    transform: translateY(-1px);
+  }
+
+  .reset-button {
+    background: var(--accent-purple);
+  }
+
+  .reset-button:hover {
+    background: var(--accent-orange);
+  }
+
+  .code-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .code-block {
+    margin: 0;
+    padding: 16px;
+    background: var(--code-bg);
+    border-right: 1px solid var(--border-primary);
+    overflow-x: auto;
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-primary);
+  }
+
+  .output-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .output-header {
+    background: var(--bg-tertiary);
+    padding: 8px 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-primary);
+    font-size: 12px;
+  }
+
+  .output-block {
+    margin: 0;
+    padding: 16px;
+    background: var(--bg-primary);
+    color: var(--accent-green);
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100px;
+    overflow-x: auto;
+    border: 1px solid var(--border-primary);
+    border-top: none;
+  }
+
+  @media (max-width: 768px) {
+    .code-container {
+      grid-template-columns: 1fr;
+    }
+
+    .code-block {
+      border-right: none;
+      border-bottom: 1px solid var(--border-primary);
+    }
+  }
+</style>
+
+<script>
+  function runCode(button) {
+    const container = button.closest(".runnable-code");
+    const codeBlock = container.querySelector(".code-block code");
+    const outputBlock = container.querySelector(".output-block");
+    const language = container.getAttribute("data-language");
+
+    // Clear previous output
+    outputBlock.textContent = "";
+
+    // Get the code content
+    const code = codeBlock.textContent.trim();
+
+    if (language === "javascript") {
+      // Create a custom console for capturing output
+      const output = [];
+      const originalConsole = console.log;
+
+      // Override console.log temporarily
+      console.log = function (...args) {
+        output.push(
+          args
+            .map((arg) =>
+              typeof arg === "object"
+                ? JSON.stringify(arg, null, 2)
+                : String(arg)
+            )
+            .join(" ")
+        );
+      };
+
+      try {
+        // Execute the code
+        eval(code);
+
+        // Display output
+        if (output.length > 0) {
+          outputBlock.textContent = output.join("\n");
+        } else {
+          outputBlock.textContent =
+            "Code executed successfully (no console output)";
+        }
+      } catch (error) {
+        outputBlock.textContent = `Error: ${error.message}`;
+        outputBlock.style.color = "var(--accent-red)";
+      } finally {
+        // Restore original console.log
+        console.log = originalConsole;
+      }
+    } else {
+      outputBlock.textContent = `Running ${language} code is not supported in this demo.`;
+    }
+  }
+
+  function resetCode(button) {
+    const container = button.closest(".runnable-code");
+    const outputBlock = container.querySelector(".output-block");
+
+    outputBlock.textContent = "";
+    outputBlock.style.color = "var(--accent-green)";
+  }
+</script>

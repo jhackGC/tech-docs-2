@@ -236,7 +236,3 @@ button.addEventListener("click", handleButtonClick);
 - Event objects contain useful information about what happened
 - Event delegation helps manage multiple similar elements efficiently
 - Choose the right event type for your needs (keyup vs keydown, click vs change)
-
-## Next Steps
-
-With events and listeners, you can create truly interactive web experiences. Next, we'll build a project that puts DOM manipulation and events together!

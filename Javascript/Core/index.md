@@ -3,33 +3,31 @@ title: JavaScript Core Concepts
 layout: clean
 ---
 
-# JavaScript Core - Complete Guide
+# JavaScript Core
 
 A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced concepts. This section covers core language features that every JavaScript developer should master.
 
-## 📚 **Learning Path Structure**
+### **🎯 JavaScript Fundamentals**
 
-Follow this progressive learning path to build solid JavaScript foundations:
-
-### **🎯 Level 1: JavaScript Fundamentals** (Beginner)
-
-#### 1.1 Getting Started
+#### Getting Started
 
 - [JavaScript Introduction](Intro.md) - What is programming and JavaScript basics
 - [Learning Resources](Resources.md) - Essential JavaScript learning materials
 
-#### 1.2 Core Data Types
+#### Data Types & Variables
 
+- [Variables & Declarations](Variables.md) - var, let, const, hoisting
+- [Type Coercion](Type_Coercion.md) - How JavaScript converts types
 - [Numbers, Strings & Booleans](Numbers_Strings_Booleans.md) - Fundamental data types
 
-#### 1.3 Program Control
+#### Program Control
 
 - [Control Flow](Control_Flow.md) - Conditionals and decision making
 - [Loops](Loops.md) - Iteration and repetition patterns
 
-### **🔧 Level 2: Functions & Scope** (Intermediate)
+### **🔧 Functions & Scope**
 
-#### 2.1 Functions
+#### Functions
 
 - [Functions](Functions.md) - Creating reusable code blocks
 - [Scope](Scope.md) - Variable visibility and closures
@@ -39,24 +37,52 @@ Follow this progressive learning path to build solid JavaScript foundations:
 - [Built-in Functions](Builtins.md) - JavaScript's native methods (beginner-friendly)
 - [Built-in Reference](Builtins.md) - Quick reference guide (advanced)
 
-### **🏗️ Level 3: Objects & Context** (Intermediate-Advanced)
+### **🏗️ Objects & Context**
 
 #### 3.1 Data Structures
 
-- [Objects](Objects.md) - Creating and manipulating objects
+- [Objects & Prototypes](Objects.md) - Creating and manipulating objects
 - [Arrays](Arrays.md) - Working with collections of data
 
-#### 3.2 Advanced Concepts
+### **🏛️ Level 4.5: Object-Oriented Programming** (Advanced)
+
+- [Prototypes](Prototypes.md) - JavaScript inheritance
+- [Classes](Classes.md) - ES6 class syntax
+- [Modules](Modules.md) - Code organization and imports
+
+#### Advanced Concepts
 
 - [Context (`this` keyword)](Context.md) - Understanding JavaScript context
 - [Events](Events.md) - Event handling and propagation
+- Modules and imports
 
-### **🌐 Level 4: DOM & Interaction** (Advanced)
+### **🛠️ Level 3.5: Advanced Functions** (Intermediate-Advanced)
+
+- [Arrow Functions](Arrow_Functions.md) - Modern function syntax
+- [Higher-Order Functions](Higher_Order_Functions.md) - Functions as values
+- [Closures](Closures.md) - Function scope and memory
+
+### **⚡ Asynchronous JavaScript**
+
+- [Callbacks & Promises](Async_Basics.md) - Handling async operations
+- [Async/Await](Async_Advanced.md) - Modern async syntax
+- [Event Loop](Event_Loop.md) - How JavaScript handles timing
+
+### **🔧 Error Handling & Debugging**
+
+- [Error Handling](Error_Handling.md) - Try/catch and error types
+- [Debugging](Debugging.md) - Tools and techniques
+
+#### ES6
+
+- ES6+ features (destructuring, spread operator)
+- Advanced array methods (map, filter, reduce)
+
+### **🌐 DOM, Interaction & AJAX**
 
 #### 4.1 Browser Integration
 
-- [Events & Listeners](Events.html) - Interactive DOM manipulation
-- [Events Guide](Events.md) - Comprehensive event handling reference
+- [Events](Events.md) - Comprehensive event handling reference
 
 #### 4.2 Advanced Topics
 

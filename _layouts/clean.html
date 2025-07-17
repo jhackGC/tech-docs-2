@@ -5,55 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title | default: site.title }}</title>
     <style>
+      /* Dark Theme Variables */
+      :root {
+        --bg-primary: #0d1117;
+        --bg-secondary: #161b22;
+        --bg-tertiary: #21262d;
+        --text-primary: #f0f6fc;
+        --text-secondary: #7d8590;
+        --text-muted: #6e7681;
+        --border-primary: #30363d;
+        --border-secondary: #21262d;
+        --accent-blue: #58a6ff;
+        --accent-green: #3fb950;
+        --accent-purple: #a5a3ff;
+        --accent-red: #f85149;
+        --accent-orange: #ff8c42;
+        --code-bg: #161b22;
+        --highlight-bg: #264f78;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           Oxygen, Ubuntu, Cantarell, sans-serif;
         line-height: 1.6;
-        color: #333;
+        color: var(--text-primary);
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
-        background-color: #fff;
+        background-color: var(--bg-primary);
+        transition: all 0.3s ease;
       }
 
       h1 {
-        color: #2c3e50;
-        border-bottom: 3px solid #3498db;
+        color: var(--text-primary);
+        border-bottom: 3px solid var(--accent-blue);
         padding-bottom: 10px;
         margin-bottom: 30px;
       }
 
       h2 {
-        color: #34495e;
+        color: var(--accent-green);
         margin-top: 40px;
         margin-bottom: 20px;
       }
 
       h3 {
-        color: #2980b9;
+        color: var(--accent-blue);
         margin-top: 30px;
         margin-bottom: 15px;
       }
 
       h4 {
-        color: #7f8c8d;
+        color: var(--accent-purple);
         margin-top: 25px;
         margin-bottom: 10px;
       }
 
       h5 {
-        color: #95a5a6;
+        color: var(--text-secondary);
         margin-top: 20px;
         margin-bottom: 8px;
       }
 
       a {
-        color: #3498db;
+        color: var(--accent-blue);
         text-decoration: none;
+        transition: color 0.2s ease;
       }
 
       a:hover {
-        color: #2980b9;
+        color: var(--accent-green);
         text-decoration: underline;
       }
 
@@ -66,48 +87,55 @@
       }
 
       .container {
-        background: #fff;
+        background: var(--bg-secondary);
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         padding: 40px;
         margin: 20px 0;
+        border: 1px solid var(--border-primary);
       }
 
       .getting-started {
-        background: #f8f9fa;
-        border-left: 4px solid #3498db;
+        background: var(--bg-tertiary);
+        border-left: 4px solid var(--accent-blue);
         padding: 20px;
         margin: 30px 0;
         border-radius: 4px;
+        border: 1px solid var(--border-primary);
       }
 
       .how-to-use {
-        background: #fff3cd;
-        border-left: 4px solid #ffc107;
+        background: var(--bg-tertiary);
+        border-left: 4px solid var(--accent-orange);
         padding: 20px;
         margin: 30px 0;
         border-radius: 4px;
+        border: 1px solid var(--border-primary);
       }
 
       hr {
         border: none;
         height: 2px;
-        background: linear-gradient(to right, #3498db, #2ecc71);
+        background: linear-gradient(
+          to right,
+          var(--accent-blue),
+          var(--accent-green)
+        );
         margin: 40px 0;
       }
 
       .footer {
         text-align: center;
-        color: #7f8c8d;
+        color: var(--text-secondary);
         font-style: italic;
         margin-top: 40px;
       }
 
-      /* Syntax Highlighting for Code Blocks */
+      /* Syntax Highlighting for Code Blocks - Dark Theme */
       .highlight {
-        background: #f8f8f8;
-        border: 1px solid #e1e1e1;
-        border-radius: 4px;
+        background: var(--code-bg);
+        border: 1px solid var(--border-primary);
+        border-radius: 6px;
         padding: 16px;
         margin: 16px 0;
         overflow-x: auto;
@@ -117,7 +145,7 @@
       }
 
       .highlighter-rouge .highlight {
-        background: #f8f8f8;
+        background: var(--code-bg);
       }
 
       /* Fix for Jekyll's div.highlighter-rouge wrapper */
@@ -138,7 +166,7 @@
       pre code {
         background: transparent;
         padding: 0;
-        color: #333;
+        color: var(--text-primary);
         font-size: 14px;
         line-height: 1.5;
         display: block;
@@ -149,37 +177,39 @@
       code {
         font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
         font-size: 14px;
-        background: #f1f1f1;
-        padding: 2px 4px;
+        background: var(--code-bg);
+        padding: 2px 6px;
         border-radius: 3px;
-        color: #c7254e;
+        color: var(--accent-orange);
+        border: 1px solid var(--border-primary);
       }
 
       .highlight code {
         background: transparent;
         padding: 0;
         color: inherit;
+        border: none;
       }
 
-      /* Rouge Syntax Highlighting Colors */
+      /* Rouge Syntax Highlighting Colors - Dark Theme */
       .highlight .c {
-        color: #6a737d;
+        color: #7c7c7c;
         font-style: italic;
       } /* Comment */
       .highlight .err {
-        color: #a61717;
-        background-color: #e3d2d2;
+        color: var(--accent-red);
+        background-color: rgba(248, 81, 73, 0.1);
       } /* Error */
       .highlight .k {
-        color: #d73a49;
+        color: var(--accent-purple);
         font-weight: bold;
       } /* Keyword */
       .highlight .o {
-        color: #005cc5;
+        color: var(--accent-blue);
         font-weight: bold;
       } /* Operator */
       .highlight .cm {
-        color: #6a737d;
+        color: #7c7c7c;
         font-style: italic;
       } /* Comment.Multiline */
       .highlight .cp {
@@ -257,20 +287,20 @@
         color: #009999;
       } /* Literal.Number */
       .highlight .s {
-        color: #032f62;
+        color: var(--accent-green);
       } /* Literal.String */
       .highlight .na {
-        color: #6f42c1;
+        color: var(--accent-orange);
       } /* Name.Attribute */
       .highlight .nb {
-        color: #005cc5;
+        color: var(--accent-blue);
       } /* Name.Builtin */
       .highlight .nc {
-        color: #6f42c1;
+        color: var(--accent-purple);
         font-weight: bold;
       } /* Name.Class */
       .highlight .no {
-        color: #005cc5;
+        color: var(--accent-blue);
       } /* Name.Constant */
       .highlight .nd {
         color: #3c5d5d;
@@ -284,114 +314,199 @@
         font-weight: bold;
       } /* Name.Exception */
       .highlight .nf {
-        color: #990000;
+        color: var(--accent-blue);
         font-weight: bold;
       } /* Name.Function */
-      .highlight .nl {
-        color: #990000;
-        font-weight: bold;
-      } /* Name.Label */
-      .highlight .nn {
-        color: #555555;
-      } /* Name.Namespace */
-      .highlight .nt {
-        color: #000080;
-      } /* Name.Tag */
       .highlight .nv {
-        color: #008080;
+        color: var(--accent-orange);
       } /* Name.Variable */
-      .highlight .ow {
-        color: #000000;
-        font-weight: bold;
-      } /* Operator.Word */
-      .highlight .w {
-        color: #bbbbbb;
-      } /* Text.Whitespace */
-      .highlight .mf {
-        color: #009999;
-      } /* Literal.Number.Float */
-      .highlight .mh {
-        color: #009999;
-      } /* Literal.Number.Hex */
-      .highlight .mi {
-        color: #009999;
-      } /* Literal.Number.Integer */
-      .highlight .mo {
-        color: #009999;
-      } /* Literal.Number.Oct */
-      .highlight .sb {
-        color: #d01040;
-      } /* Literal.String.Backtick */
-      .highlight .sc {
-        color: #d01040;
-      } /* Literal.String.Char */
-      .highlight .sd {
-        color: #d01040;
-      } /* Literal.String.Doc */
+      .highlight .s1,
       .highlight .s2 {
-        color: #d01040;
-      } /* Literal.String.Double */
-      .highlight .se {
-        color: #d01040;
-      } /* Literal.String.Escape */
-      .highlight .sh {
-        color: #d01040;
-      } /* Literal.String.Heredoc */
-      .highlight .si {
-        color: #d01040;
-      } /* Literal.String.Interpol */
-      .highlight .sx {
-        color: #d01040;
-      } /* Literal.String.Other */
-      .highlight .sr {
-        color: #009926;
-      } /* Literal.String.Regex */
-      .highlight .s1 {
-        color: #d01040;
-      } /* Literal.String.Single */
-      .highlight .ss {
-        color: #990073;
-      } /* Literal.String.Symbol */
-      .highlight .bp {
-        color: #999999;
-      } /* Name.Builtin.Pseudo */
-      .highlight .vc {
-        color: #008080;
-      } /* Name.Variable.Class */
-      .highlight .vg {
-        color: #008080;
-      } /* Name.Variable.Global */
-      .highlight .vi {
-        color: #008080;
-      } /* Name.Variable.Instance */
-      .highlight .il {
-        color: #009999;
-      } /* Literal.Number.Integer.Long */
+        color: var(--accent-green);
+      } /* Literal.String.Single/Double */
+      .highlight .mi {
+        color: var(--accent-orange);
+      } /* Literal.Number.Integer */
+      .highlight .mf {
+        color: var(--accent-orange);
+      } /* Literal.Number.Float */
 
-      /* JavaScript-specific highlighting improvements */
+      /* JavaScript-specific highlighting improvements - Dark Theme */
       .highlight .language-javascript .k {
-        color: #0000ff;
+        color: var(--accent-purple);
       } /* JavaScript keywords */
       .highlight .language-javascript .kd {
-        color: #0000ff;
+        color: var(--accent-purple);
       } /* var, let, const */
       .highlight .language-javascript .nx {
-        color: #000000;
+        color: var(--text-primary);
       } /* Variables */
       .highlight .language-javascript .s1,
       .highlight .language-javascript .s2 {
-        color: #008000;
+        color: var(--accent-green);
       } /* Strings */
       .highlight .language-javascript .mi {
-        color: #ff6600;
+        color: var(--accent-orange);
       } /* Numbers */
       .highlight .language-javascript .c1 {
-        color: #008000;
+        color: #7c7c7c;
         font-style: italic;
       } /* Comments */
+
+      /* Additional Dark Theme Elements */
+      blockquote {
+        background: var(--bg-tertiary);
+        border-left: 4px solid var(--accent-blue);
+        padding: 16px;
+        margin: 20px 0;
+        color: var(--text-secondary);
+        border-radius: 4px;
+      }
+
+      table {
+        background: var(--bg-secondary);
+        border-collapse: collapse;
+        width: 100%;
+        margin: 20px 0;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      th {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      td {
+        color: var(--text-secondary);
+      }
+
+      tr:hover {
+        background: var(--bg-tertiary);
+      }
+
+      /* Selection styling */
+      ::selection {
+        background: var(--highlight-bg);
+        color: var(--text-primary);
+      }
+
+      /* Scrollbar styling for webkit browsers */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--border-primary);
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--text-muted);
+      }
+
+      /* Theme Toggle Button */
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--bg-tertiary);
+        border: 2px solid var(--border-primary);
+        border-radius: 50px;
+        padding: 8px 16px;
+        cursor: pointer;
+        color: var(--text-primary);
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .theme-toggle:hover {
+        background: var(--accent-blue);
+        border-color: var(--accent-blue);
+        transform: scale(1.05);
+      }
+
+      /* Light theme styles (when toggled) */
+      body.light-theme {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f6f8fa;
+        --bg-tertiary: #f1f3f4;
+        --text-primary: #24292e;
+        --text-secondary: #586069;
+        --text-muted: #6e7681;
+        --border-primary: #e1e4e8;
+        --border-secondary: #d0d7de;
+        --accent-blue: #0366d6;
+        --accent-green: #28a745;
+        --accent-purple: #6f42c1;
+        --accent-red: #d73a49;
+        --accent-orange: #fd7e14;
+        --code-bg: #f6f8fa;
+        --highlight-bg: #fff5b4;
+      }
     </style>
   </head>
   <body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">🌙</span>
+      <span id="theme-text">Dark</span>
+    </button>
+
     <div class="container">{{ content }}</div>
+
+    <script>
+      function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById("theme-icon");
+        const themeText = document.getElementById("theme-text");
+
+        body.classList.toggle("light-theme");
+
+        if (body.classList.contains("light-theme")) {
+          themeIcon.textContent = "☀️";
+          themeText.textContent = "Light";
+          localStorage.setItem("theme", "light");
+        } else {
+          themeIcon.textContent = "🌙";
+          themeText.textContent = "Dark";
+          localStorage.setItem("theme", "dark");
+        }
+      }
+
+      // Load saved theme on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const savedTheme = localStorage.getItem("theme");
+        const themeIcon = document.getElementById("theme-icon");
+        const themeText = document.getElementById("theme-text");
+
+        if (savedTheme === "light") {
+          document.body.classList.add("light-theme");
+          themeIcon.textContent = "☀️";
+          themeText.textContent = "Light";
+        } else {
+          themeIcon.textContent = "🌙";
+          themeText.textContent = "Dark";
+        }
+      });
+    </script>
   </body>
 </html>
