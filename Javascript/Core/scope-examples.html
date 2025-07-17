@@ -281,30 +281,30 @@
           <p style="margin-bottom: 0; font-size: 14px">
             This page allows you to run JavaScript code in your browser for
             educational purposes. Basic security measures are in place, but only
-            run code you trust. The code executes only in your browser and cannot
-            access external resources.
+            run code you trust. The code executes only in your browser and
+            cannot access external resources.
           </p>
         </div>
 
-      <section id="function-scope">
-        <h2>Function Scope</h2>
-        <div class="description">
-          Every function creates its own scope. Variables defined inside a
-          function are not accessible outside.
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Function Scope Example</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
-            </div>
+        <section id="function-scope">
+          <h2>Function Scope</h2>
+          <div class="description">
+            Every function creates its own scope. Variables defined inside a
+            function are not accessible outside.
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Function Scope Example</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 function addFive(number) {
   const someVariable = "you can't see me outside this function";
   console.log("Inside function:", someVariable);
@@ -319,34 +319,34 @@ try {
 } catch (error) {
   console.log("Error:", error.message);
 }</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="block-scope">
-        <h2>Block Scope</h2>
-        <div class="description">
-          Variables declared with <code>let</code> and <code>const</code> are
-          confined to their block.
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Block Scope with let</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="block-scope">
+          <h2>Block Scope</h2>
+          <div class="description">
+            Variables declared with <code>let</code> and <code>const</code> are
+            confined to their block.
+          </div>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Block Scope with let</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 let friendsAtYourParty = 0;
 
 for (let i = 0; i <= 10; i++) {
@@ -363,26 +363,26 @@ try {
 } catch (error) {
   console.log("Error:", error.message);
 }</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">var vs let in Loops</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">var vs let in Loops</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== Using var (function scope) ===");
 for (var i = 0; i < 3; i++) {
   console.log("Inside loop with var:", i);
@@ -399,34 +399,34 @@ try {
 } catch (error) {
   console.log("Error:", error.message);
 }</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="scope-chain">
-        <h2>Scope Chain</h2>
-        <div class="description">
-          JavaScript looks for variables in this order: current scope → outer
-          scope → global scope → error.
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Scope Chain Example</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="scope-chain">
+          <h2>Scope Chain</h2>
+          <div class="description">
+            JavaScript looks for variables in this order: current scope → outer
+            scope → global scope → error.
+          </div>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Scope Chain Example</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 const global = "I'm global";
 
 function outer() {
@@ -457,30 +457,30 @@ function outer() {
 }
 
 outer();</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="common-issues">
-        <h2>Common Scope Issues</h2>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Accidental Global Variables</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="common-issues">
+          <h2>Common Scope Issues</h2>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Accidental Global Variables</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 function problematic() {
   // Forgot to declare with const/let - creates global variable!
   accidentalGlobal = "Oops! I'm global now";
@@ -505,32 +505,32 @@ try {
 } catch (error) {
   console.log("Error:", error.message);
 }</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="practical-examples">
-        <h2>Practical Examples</h2>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title"
-              >Shopping Cart with Private Variables</span
-            >
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="practical-examples">
+          <h2>Practical Examples</h2>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >Shopping Cart with Private Variables</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 function createShoppingCart() {
   let items = []; // Private to this function
   let total = 0;  // Private to this function
@@ -578,26 +578,26 @@ try {
 } catch (error) {
   console.log("Error accessing private items:", error.message);
 }</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Counter with Closure</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Counter with Closure</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 function createCounter(startValue = 0, step = 1) {
   let count = startValue; // Private variable
   
@@ -650,38 +650,39 @@ console.log("Counter 2 value:", counter2.value()); // 105
 
 counter1.reset();
 console.log("Counter 1 after reset:", counter1.value()); // 0</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="setinterval-examples">
-        <h2>setTimeout/setInterval: Scope + Event Loop</h2>
-        <div class="description">
-          These examples demonstrate TWO fundamental concepts working together:
-          <br /><strong>1. Scope issues</strong> - How variable capture works
-          with closures <br /><strong>2. Event Loop</strong> - How asynchronous
-          callbacks are executed after synchronous code
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title"
-              >The Classic Problem: Scope + Event Loop</span
-            >
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="setinterval-examples">
+          <h2>setTimeout/setInterval: Scope + Event Loop</h2>
+          <div class="description">
+            These examples demonstrate TWO fundamental concepts working
+            together:
+            <br /><strong>1. Scope issues</strong> - How variable capture works
+            with closures <br /><strong>2. Event Loop</strong> - How
+            asynchronous callbacks are executed after synchronous code
+          </div>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >The Classic Problem: Scope + Event Loop</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== DEMONSTRATING TWO CONCEPTS ===");
 console.log("1. Scope issue (var vs let)");
 console.log("2. Event Loop & Asynchronous execution");
@@ -721,26 +722,26 @@ console.log("• They capture a REFERENCE to the variable i");
 console.log("• When they finally execute, i has changed to 5");
 console.log("");
 console.log("⏰ Now watch the setTimeout callbacks execute...");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Variable Creation: var vs let</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Variable Creation: var vs let</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== HOW MANY VARIABLES ARE CREATED? ===");
 console.log("");
 
@@ -803,28 +804,28 @@ console.log("");
 console.log("🎯 THE KEY DIFFERENCE:");
 console.log("• var: 1 variable shared by all callbacks → all print same value");
 console.log("• let: 3 variables, each callback has its own → each prints different value");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title"
-              >Visual Analogy: Shared vs Private Notepads</span
-            >
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >Visual Analogy: Shared vs Private Notepads</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== VISUAL ANALOGY: NOTEPADS ===");
 console.log("");
 
@@ -882,26 +883,26 @@ console.log("");
 console.log("🎯 ANALOGY SUMMARY:");
 console.log("• var = Everyone shares 1 notepad → everyone sees final value");
 console.log("• let = Everyone gets their own notepad → everyone keeps their value");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Event Loop Demonstration</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Event Loop Demonstration</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== EVENT LOOP ORDER OF EXECUTION ===");
 console.log("");
 
@@ -928,28 +929,28 @@ console.log("📝 KEY INSIGHT:");
 console.log("• ALL synchronous code runs first (1️⃣ → 2️⃣ → 3️⃣)");
 console.log("• THEN asynchronous callbacks execute (4️⃣ → 5️⃣ → 6️⃣)");
 console.log("• Even setTimeout(fn, 0) waits for sync code to finish!");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title"
-              >Solution 1: Using let (Block Scope)</span
-            >
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >Solution 1: Using let (Block Scope)</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== Solution 1: Using let ===");
 console.log("This will correctly print 0,1,2,3,4");
 
@@ -961,26 +962,28 @@ for (let i = 0; i < 5; i++) {
 
 console.log("Why it works: 'let' creates a new binding for each iteration");
 console.log("Each setTimeout callback captures its own copy of i");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Solution 2: Using IIFE (Closure)</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >Solution 2: Using IIFE (Closure)</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 console.log("=== Solution 2: Using IIFE (Immediately Invoked Function Expression) ===");
 console.log("This will also correctly print 0,1,2,3,4");
 
@@ -994,28 +997,28 @@ for (var i = 0; i < 5; i++) {
 
 console.log("Why it works: The IIFE creates a new scope for each iteration");
 console.log("The parameter 'index' captures the current value of i");</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title"
-              >Real setInterval Example (Auto-cleanup)</span
-            >
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title"
+                >Real setInterval Example (Auto-cleanup)</span
+              >
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 // Clear any existing intervals first
 if (window.scopeIntervalIds) {
   window.scopeIntervalIds.forEach(id => clearInterval(id));
@@ -1065,30 +1068,30 @@ setTimeout(() => {
     }, 2500);
   }
 }, 3000);</textarea
-            >
-          </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="complex-example">
-        <h2>Complex Scope Example</h2>
-
-        <div class="example-container">
-          <div class="example-header">
-            <span class="example-title">Multi-Scope Variable Access</span>
-            <div class="example-buttons">
-              <button class="btn" onclick="runCode(this)">Run</button>
-              <button class="btn btn-clear" onclick="clearOutput(this)">
-                Clear
-              </button>
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
             </div>
           </div>
-          <div class="code-editor">
-            <textarea>
+        </section>
+
+        <section id="complex-example">
+          <h2>Complex Scope Example</h2>
+
+          <div class="example-container">
+            <div class="example-header">
+              <span class="example-title">Multi-Scope Variable Access</span>
+              <div class="example-buttons">
+                <button class="btn" onclick="runCode(this)">Run</button>
+                <button class="btn btn-clear" onclick="clearOutput(this)">
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div class="code-editor">
+              <textarea>
 const A = "A"; // Global scope
 let F; // Global scope
 
@@ -1151,28 +1154,30 @@ try {
 }
 
 console.log("F after function:", F); // ✅ Works - F is global</textarea
-            >
+              >
+            </div>
+            <div class="output-container">
+              <div class="output-header">Output:</div>
+              <div class="output-content"></div>
+            </div>
           </div>
-          <div class="output-container">
-            <div class="output-header">Output:</div>
-            <div class="output-content"></div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- Variable Creation Demonstration -->
-      <div class="example-container">
-        <div class="example-header">
-          <span class="example-title">Variable Creation Count: var vs let</span>
-          <div class="example-buttons">
-            <button class="btn" onclick="runCode(this)">Run</button>
-            <button class="btn btn-clear" onclick="clearOutput(this)">
-              Clear
-            </button>
+        <!-- Variable Creation Demonstration -->
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title"
+              >Variable Creation Count: var vs let</span
+            >
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
           </div>
-        </div>
-        <div class="code-editor">
-          <textarea>
+          <div class="code-editor">
+            <textarea>
 console.log("=== VARIABLE CREATION DEMONSTRATION ===");
 console.log("");
 
@@ -1232,13 +1237,13 @@ console.log("• var in loop: 1 variable, modified 3 times");
 console.log("• let in loop: 3 variables, each with its own value");
 console.log("• This is why callbacks with 'var' all see the final value");
 console.log("• And callbacks with 'let' each see their captured value");</textarea
-          >
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
         </div>
-        <div class="output-container">
-          <div class="output-header">Output:</div>
-          <div class="output-content"></div>
-        </div>
-      </div>
       </div>
     </div>
 
