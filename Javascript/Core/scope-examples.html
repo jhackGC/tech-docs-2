@@ -170,13 +170,17 @@
       }
 
       .navigation {
-        position: sticky;
+        position: fixed;
         top: 20px;
+        right: 20px;
+        width: 250px;
         background-color: var(--code-bg);
         padding: 15px;
         border-radius: 8px;
-        margin-bottom: 20px;
         border: 1px solid var(--border-color);
+        z-index: 1000;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
       }
 
       .navigation h3 {
@@ -212,12 +216,41 @@
           gap: 10px;
           align-items: flex-start;
         }
+
+        .navigation {
+          position: static;
+          width: 100%;
+          margin-bottom: 20px;
+          right: auto;
+          top: auto;
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
       <h1>JavaScript Scope Examples - Interactive</h1>
+
+      <div
+        class="security-warning"
+        style="
+          background-color: #2a2a2a;
+          border: 2px solid var(--warning-color);
+          border-radius: 8px;
+          padding: 15px;
+          margin-bottom: 20px;
+        "
+      >
+        <h3 style="color: var(--warning-color); margin-top: 0">
+          ⚠️ Security Notice
+        </h3>
+        <p style="margin-bottom: 0; font-size: 14px">
+          This page allows you to run JavaScript code in your browser for
+          educational purposes. Basic security measures are in place, but only
+          run code you trust. The code executes only in your browser and cannot
+          access external resources.
+        </p>
+      </div>
 
       <div class="navigation">
         <h3>Quick Navigation</h3>
@@ -607,16 +640,18 @@ console.log("Counter 1 after reset:", counter1.value()); // 0</textarea
       </section>
 
       <section id="setinterval-examples">
-        <h2>setTimeout/setInterval Scope Issues</h2>
+        <h2>setTimeout/setInterval: Scope + Event Loop</h2>
         <div class="description">
-          These examples demonstrate the classic closure problem with timing
-          functions.
+          These examples demonstrate TWO fundamental concepts working together:
+          <br /><strong>1. Scope issues</strong> - How variable capture works
+          with closures <br /><strong>2. Event Loop</strong> - How asynchronous
+          callbacks are executed after synchronous code
         </div>
 
         <div class="example-container">
           <div class="example-header">
             <span class="example-title"
-              >The Classic Problem (var with setTimeout)</span
+              >The Classic Problem: Scope + Event Loop</span
             >
             <div class="example-buttons">
               <button class="btn" onclick="runCode(this)">Run</button>
@@ -627,18 +662,250 @@ console.log("Counter 1 after reset:", counter1.value()); // 0</textarea
           </div>
           <div class="code-editor">
             <textarea>
-console.log("=== The Problem: Using var with setTimeout ===");
-console.log("This will print '5' five times instead of 0,1,2,3,4");
+console.log("=== DEMONSTRATING TWO CONCEPTS ===");
+console.log("1. Scope issue (var vs let)");
+console.log("2. Event Loop & Asynchronous execution");
+console.log("");
+
+console.log("🔄 SYNCHRONOUS: Starting the loop...");
 
 for (var i = 0; i < 5; i++) {
+  console.log(`🔄 SYNCHRONOUS: Loop iteration ${i}, scheduling setTimeout`);
+  
   setTimeout(function() {
-    console.log('Value of i with var:', i);
+    console.log(`⏰ ASYNCHRONOUS: setTimeout callback executed, i = ${i}`);
   }, 100 * (i + 1));
 }
 
-console.log("Loop finished, i =", i);
-console.log("Why? Because 'var' has function scope, not block scope");
-console.log("By the time setTimeout callbacks run, the loop has finished and i = 5");</textarea
+console.log("🔄 SYNCHRONOUS: Loop finished! i =", i);
+console.log("🔄 SYNCHRONOUS: All setTimeout calls scheduled");
+console.log("");
+console.log("📚 WHY 'var' CREATES THE PROBLEM:");
+console.log("• 'var' has FUNCTION SCOPE, not block scope");
+console.log("• This means there is only ONE 'i' variable for the entire function");
+console.log("• All 5 setTimeout callbacks reference this SAME variable");
+console.log("• Think of it like 5 people sharing 1 notepad");
+console.log("");
+console.log("📝 DETAILED STEP-BY-STEP BREAKDOWN:");
+console.log("• Iteration 0: i=0, create callback that will read 'i' later");
+console.log("• Iteration 1: i=1, create callback that will read 'i' later");
+console.log("• Iteration 2: i=2, create callback that will read 'i' later");
+console.log("• Iteration 3: i=3, create callback that will read 'i' later");
+console.log("• Iteration 4: i=4, create callback that will read 'i' later");
+console.log("• Loop check: i=5, condition false, exit loop");
+console.log("• All callbacks execute later and find i=5 (the final value)");
+console.log("");
+console.log("🔍 KEY INSIGHT:");
+console.log("• Callbacks don't capture the VALUE of i (0,1,2,3,4)");
+console.log("• They capture a REFERENCE to the variable i");
+console.log("• When they finally execute, i has changed to 5");
+console.log("");
+console.log("⏰ Now watch the setTimeout callbacks execute...");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Variable Creation: var vs let</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== HOW MANY VARIABLES ARE CREATED? ===");
+console.log("");
+
+console.log("🔴 WITH 'var' - Creates ONE variable:");
+console.log("for (var i = 0; i < 3; i++) { ... }");
+console.log("• JavaScript creates 1 variable 'i' in function scope");
+console.log("• All loop iterations share this same variable");
+console.log("• All callbacks reference the same memory location");
+console.log("");
+
+// Demonstrating with var
+var callbacks = [];
+for (var i = 0; i < 3; i++) {
+  console.log(`Creating callback #${i}, current i = ${i}`);
+  
+  callbacks.push(function() {
+    return `Callback sees i = ${i}`;
+  });
+}
+
+console.log("After loop, i =", i);
+console.log("Now calling all callbacks:");
+callbacks.forEach((callback, index) => {
+  console.log(`Callback ${index}: ${callback()}`);
+});
+
+console.log("");
+console.log("🟢 WITH 'let' - Creates MULTIPLE variables:");
+console.log("for (let j = 0; j < 3; j++) { ... }");
+console.log("• JavaScript creates a NEW 'j' for each iteration");
+console.log("• Each callback gets its own copy of the variable");
+console.log("• Each callback references different memory locations");
+console.log("");
+console.log("🔍 WHY 'let' SOLVES THE PROBLEM:");
+console.log("• 'let' has BLOCK SCOPE (limited to the { } of each iteration)");
+console.log("• Each loop iteration creates a SEPARATE variable 'j'");
+console.log("• Callback in iteration 0 captures j₀ = 0");
+console.log("• Callback in iteration 1 captures j₁ = 1");  
+console.log("• Callback in iteration 2 captures j₂ = 2");
+console.log("• Think of it like each person getting their own notepad");
+console.log("");
+
+// Demonstrating with let
+var letCallbacks = [];
+for (let j = 0; j < 3; j++) {
+  console.log(`Creating callback #${j}, current j = ${j}`);
+  
+  letCallbacks.push(function() {
+    return `Callback sees j = ${j}`;
+  });
+}
+
+console.log("After loop, j is not accessible outside");
+console.log("Now calling all callbacks:");
+letCallbacks.forEach((callback, index) => {
+  console.log(`Callback ${index}: ${callback()}`);
+});
+
+console.log("");
+console.log("🎯 THE KEY DIFFERENCE:");
+console.log("• var: 1 variable shared by all callbacks → all print same value");
+console.log("• let: 3 variables, each callback has its own → each prints different value");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Visual Analogy: Shared vs Private Notepads</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== VISUAL ANALOGY: NOTEPADS ===");
+console.log("");
+
+console.log("🗒️ SCENARIO WITH 'var' (Shared Notepad):");
+console.log("• There's 1 notepad in the room labeled 'i'");
+console.log("• 5 people (callbacks) are told: 'remember what's on notepad i'");
+console.log("• A writer quickly changes the notepad: 0 → 1 → 2 → 3 → 4 → 5");
+console.log("• Later, when the 5 people check the notepad, it says '5'");
+console.log("• So all 5 people report '5'");
+console.log("");
+
+// Simulating the shared notepad scenario
+console.log("📝 SIMULATING SHARED NOTEPAD (var):");
+var sharedNotepad = { value: "empty" };
+var people = [];
+
+for (var step = 0; step < 5; step++) {
+  sharedNotepad.value = step;
+  console.log(`Writer writes '${step}' on shared notepad`);
+  
+  people.push(function() {
+    return `Person sees: '${sharedNotepad.value}' on shared notepad`;
+  });
+}
+
+sharedNotepad.value = "FINAL VALUE";
+console.log("Writer finishes, notepad shows: 'FINAL VALUE'");
+console.log("");
+console.log("Later, people check the notepad:");
+people.forEach((person, index) => {
+  console.log(`Person ${index}: ${person()}`);
+});
+
+console.log("");
+console.log("📝 SIMULATING PRIVATE NOTEPADS (let behavior):");
+var privateNotepadPeople = [];
+
+for (let step = 0; step < 5; step++) {
+  // Simulating: each person gets their own private notepad
+  let privateNotepad = step;
+  console.log(`Person ${step} gets private notepad with '${privateNotepad}'`);
+  
+  privateNotepadPeople.push(function() {
+    return `Person sees: '${privateNotepad}' on their private notepad`;
+  });
+}
+
+console.log("");
+console.log("Later, people check their private notepads:");
+privateNotepadPeople.forEach((person, index) => {
+  console.log(`Person ${index}: ${person()}`);
+});
+
+console.log("");
+console.log("🎯 ANALOGY SUMMARY:");
+console.log("• var = Everyone shares 1 notepad → everyone sees final value");
+console.log("• let = Everyone gets their own notepad → everyone keeps their value");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Event Loop Demonstration</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== EVENT LOOP ORDER OF EXECUTION ===");
+console.log("");
+
+console.log("1️⃣ SYNCHRONOUS: This runs first");
+
+setTimeout(() => {
+  console.log("4️⃣ ASYNC: setTimeout 0ms - runs after all sync code");
+}, 0);
+
+setTimeout(() => {
+  console.log("5️⃣ ASYNC: setTimeout 100ms - runs after shorter delays");
+}, 100);
+
+console.log("2️⃣ SYNCHRONOUS: This runs second");
+
+// Even with 0ms delay, setTimeout is asynchronous
+setTimeout(() => {
+  console.log("6️⃣ ASYNC: Another setTimeout 0ms - queued after the first one");
+}, 0);
+
+console.log("3️⃣ SYNCHRONOUS: This runs third (last sync code)");
+console.log("");
+console.log("📝 KEY INSIGHT:");
+console.log("• ALL synchronous code runs first (1️⃣ → 2️⃣ → 3️⃣)");
+console.log("• THEN asynchronous callbacks execute (4️⃣ → 5️⃣ → 6️⃣)");
+console.log("• Even setTimeout(fn, 0) waits for sync code to finish!");</textarea
             >
           </div>
           <div class="output-container">
@@ -870,6 +1137,77 @@ console.log("F after function:", F); // ✅ Works - F is global</textarea
           </div>
         </div>
       </section>
+
+      <!-- Variable Creation Demonstration -->
+      <div class="example-block">
+        <div class="code-block">
+          <span class="example-title">Variable Creation Count: var vs let</span>
+          <textarea class="code-input">
+console.log("=== VARIABLE CREATION DEMONSTRATION ===");
+console.log("");
+
+// Counter to simulate variable creation
+var variableCount = 0;
+
+console.log("🔴 WITH 'var' - FUNCTION SCOPE:");
+console.log("Creating variables with 'var i'...");
+
+function demonstrateVar() {
+  // Simulate: var creates ONE variable for the entire function
+  var varVariable = "var_variable_1";
+  variableCount = 1;
+  
+  console.log(`Variables created: ${variableCount}`);
+  console.log("var i: ONE variable for entire function");
+  
+  for (var i = 0; i < 3; i++) {
+    console.log(`  Loop iteration ${i}: still using the SAME variable 'i'`);
+    console.log(`  Variable count remains: ${variableCount}`);
+  }
+  
+  console.log(`After loop: i = ${i} (same variable, modified value)`);
+  console.log(`Total variables created with 'var': ${variableCount}`);
+}
+
+demonstrateVar();
+
+console.log("");
+console.log("🟢 WITH 'let' - BLOCK SCOPE:");
+console.log("Creating variables with 'let i'...");
+
+function demonstrateLet() {
+  let letVariableCount = 0;
+  
+  for (let i = 0; i < 3; i++) {
+    letVariableCount++; // Each iteration creates a new variable
+    console.log(`  Loop iteration ${i}: NEW variable 'i${letVariableCount}' created`);
+    console.log(`  Variable count now: ${letVariableCount}`);
+  }
+  
+  console.log(`Total variables created with 'let': ${letVariableCount}`);
+  console.log("After loop: 'i' is not accessible (block scoped)");
+  
+  try {
+    console.log(i); // This would cause an error
+  } catch(e) {
+    console.log("✓ Confirmed: 'i' is not accessible outside the loop");
+  }
+}
+
+demonstrateLet();
+
+console.log("");
+console.log("📊 SUMMARY:");
+console.log("• var in loop: 1 variable, modified 3 times");
+console.log("• let in loop: 3 variables, each with its own value");
+console.log("• This is why callbacks with 'var' all see the final value");
+console.log("• And callbacks with 'let' each see their captured value");</textarea
+        </div>
+        <div class="output-container">
+          <div class="output-header">Output:</div>
+          <div class="output-content"></div>
+        </div>
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
@@ -923,14 +1261,70 @@ console.log("F after function:", F); // ✅ Works - F is global</textarea
         const code = textarea.value;
         const customConsole = createCustomConsole(outputContent);
 
-        try {
-          // Create a new function scope with custom console
-          const func = new Function("console", code);
-          func(customConsole);
-        } catch (error) {
+        // Basic security checks
+        const dangerousPatterns = [
+          /document\.cookie/i,
+          /localStorage/i,
+          /sessionStorage/i,
+          /window\.location/i,
+          /document\.write/i,
+          /innerHTML/i,
+          /outerHTML/i,
+          /eval\s*\(/i,
+          /new\s+Function/i,
+          /while\s*\(\s*true/i,
+          /for\s*\(\s*;\s*;\s*\)/i,
+        ];
+
+        const foundDangerous = dangerousPatterns.find((pattern) =>
+          pattern.test(code)
+        );
+        if (foundDangerous) {
           const errorSpan = document.createElement("span");
           errorSpan.className = "error";
-          errorSpan.textContent = "SYNTAX ERROR: " + error.message + "\n";
+          errorSpan.textContent =
+            "SECURITY WARNING: Potentially dangerous code detected and blocked.\n";
+          outputContent.appendChild(errorSpan);
+          return;
+        }
+
+        // Execution timeout to prevent infinite loops
+        const timeoutId = setTimeout(() => {
+          const errorSpan = document.createElement("span");
+          errorSpan.className = "error";
+          errorSpan.textContent =
+            "TIMEOUT: Code execution took too long and was stopped.\n";
+          outputContent.appendChild(errorSpan);
+        }, 5000); // 5 second timeout
+
+        try {
+          // Create a restricted environment
+          const restrictedEnv = {
+            console: customConsole,
+            setTimeout: (fn, delay) => setTimeout(fn, Math.min(delay, 5000)), // Limit delay
+            setInterval: (fn, delay) => setInterval(fn, Math.max(delay, 100)), // Minimum interval
+            clearTimeout: clearTimeout,
+            clearInterval: clearInterval,
+            Math: Math,
+            Date: Date,
+            JSON: JSON,
+            String: String,
+            Number: Number,
+            Boolean: Boolean,
+            Array: Array,
+            Object: Object,
+          };
+
+          // Create a new function scope with restricted environment
+          const func = new Function(...Object.keys(restrictedEnv), code);
+          func(...Object.values(restrictedEnv));
+
+          clearTimeout(timeoutId);
+        } catch (error) {
+          clearTimeout(timeoutId);
+          const errorSpan = document.createElement("span");
+          errorSpan.className = "error";
+          errorSpan.textContent = "RUNTIME ERROR: " + error.message + "\n";
           outputContent.appendChild(errorSpan);
         }
       }

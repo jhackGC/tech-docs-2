@@ -351,12 +351,135 @@ function debugExample() {
 }
 ```
 
+## The Classic `var` vs `let` Problem: Hoisting & Scope
+
+One of the most confusing aspects of JavaScript scope involves the difference between `var` and `let`, especially in loops with asynchronous callbacks.
+
+### The Problem: `var` and Hoisting
+
+Even though you write `var i` inside a loop definition, **`var` completely ignores block boundaries** due to hoisting:
+
+```javascript
+// What you write:
+for (var i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i); // Will print 5, 5, 5, 5, 5
+  }, 100);
+}
+
+// What JavaScript effectively treats it as:
+var i; // hoisted to function/global scope
+
+for (i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i); // All callbacks reference the same variable
+  }, 100);
+}
+```
+
+### Why This Happens
+
+1. **`var` has function scope, not block scope** - The `{ }` brackets don't matter
+2. **Variable hoisting** - `var i` is moved to the top of the nearest function/global scope
+3. **One variable, multiple references** - All callbacks reference the same `i` variable
+4. **Timing issue** - The loop finishes before any setTimeout callback executes
+
+### Step-by-Step Breakdown
+
+```javascript
+console.log("=== What happens with var ===");
+
+for (var i = 0; i < 3; i++) {
+  console.log(`Iteration ${i}: scheduling callback that will read 'i' later`);
+
+  setTimeout(function () {
+    console.log(`Callback executed: i = ${i}`);
+  }, 100);
+}
+
+console.log(`Loop finished: i = ${i}`); // i = 3
+
+// Output:
+// Iteration 0: scheduling callback that will read 'i' later
+// Iteration 1: scheduling callback that will read 'i' later
+// Iteration 2: scheduling callback that will read 'i' later
+// Loop finished: i = 3
+// Callback executed: i = 3
+// Callback executed: i = 3
+// Callback executed: i = 3
+```
+
+**Key insight:** Callbacks don't capture the **value** of `i` (0,1,2) - they capture a **reference** to the variable `i`. When they finally execute, `i` has changed to 3.
+
+### The Solution: `let` Creates Block Scope
+
+```javascript
+console.log("=== What happens with let ===");
+
+for (let j = 0; j < 3; j++) {
+  console.log(`Iteration ${j}: creating NEW variable for this iteration`);
+
+  setTimeout(function () {
+    console.log(`Callback executed: j = ${j}`);
+  }, 100);
+}
+
+// j is not accessible here - it's block scoped
+
+// Output:
+// Iteration 0: creating NEW variable for this iteration
+// Iteration 1: creating NEW variable for this iteration
+// Iteration 2: creating NEW variable for this iteration
+// Callback executed: j = 0
+// Callback executed: j = 1
+// Callback executed: j = 2
+```
+
+**Why `let` works:**
+
+- `let` has **block scope** - it respects the `{ }` boundaries
+- Each loop iteration creates a **separate variable**
+- Each callback captures its own variable: `j₀ = 0`, `j₁ = 1`, `j₂ = 2`
+
+### Variable Creation Comparison
+
+```javascript
+// With var: 1 variable, modified 3 times
+function demonstrateVar() {
+  console.log("Creating variables with var...");
+
+  for (var i = 0; i < 3; i++) {
+    console.log(`Iteration ${i}: using the SAME variable 'i'`);
+  }
+
+  console.log(`After loop: i = ${i} (same variable, final value)`);
+}
+
+// With let: 3 variables, each with its own value
+function demonstrateLet() {
+  console.log("Creating variables with let...");
+
+  for (let i = 0; i < 3; i++) {
+    console.log(`Iteration ${i}: NEW variable 'i${i}' created`);
+  }
+
+  // console.log(i); // Error - i is not accessible outside the loop
+  console.log("After loop: 'i' is not accessible (block scoped)");
+}
+```
+
+### Mental Model: Shared vs Private Notepads
+
+- **`var`**: Everyone shares 1 notepad → everyone sees the final value
+- **`let`**: Everyone gets their own notepad → everyone keeps their value
+
 Understanding scope helps you:
 
 - Avoid variable naming conflicts
 - Create more secure code
 - Debug errors more effectively
 - Write cleaner, more organized code
+- Understand the difference between `var` and `let`
 
 Scope can be tricky at first, but with practice, it becomes second nature!
 
