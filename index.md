@@ -1,6 +1,6 @@
 ---
 title: Technical Documentation Hub
-layout: default
+layout: clean
 permalink: /
 ---
 
@@ -73,11 +73,17 @@ Architecture patterns and principles for scalable system design.
 - [Design Issues Review](System%20Design/40_Review%20Design%20Issues%20in%20Node.md) - Common Node.js design problems and solutions
 - [Code Smells in Node.js](System%20Design/50_00_CodeSmells_NodeJS.md) - Identifying and fixing code quality issues
 
+<div class="getting-started">
+
 ## 🚀 Getting Started
 
 1. **Browse by Topic**: Use the table of contents above to navigate to specific topics
 2. **Search**: Use your browser's search functionality (Ctrl/Cmd + F) to find specific concepts
 3. **Follow Learning Paths**: Start with fundamentals and progress to advanced topics
+
+</div>
+
+<div class="how-to-use">
 
 ## 📖 How to Use This Documentation
 
@@ -87,6 +93,8 @@ This documentation is organized into two main sections:
 - **System Design**: Covers architecture principles, system design patterns, and platform-specific best practices
 
 Each section contains both theoretical concepts and practical examples to help you understand and apply the knowledge in real-world scenarios.
+
+</div>
 
 ## 🔄 Recent Updates
 
