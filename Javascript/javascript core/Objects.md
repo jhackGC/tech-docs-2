@@ -1,3 +1,8 @@
+---
+title: JavaScript Objects
+layout: clean
+---
+
 # JavaScript Objects
 
 Objects are one of the most important concepts in JavaScript. They allow you to group related data together, making your code more organized and easier to work with.

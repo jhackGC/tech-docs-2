@@ -1,3 +1,8 @@
+---
+title: JavaScript Data Types - Numbers, Strings & Booleans
+layout: clean
+---
+
 # JavaScript: Numbers, Strings, and Booleans
 
 In programming, we work with different types of data. The three fundamental data types in JavaScript are numbers, strings, and booleans. Let's explore each one.
@@ -230,3 +235,22 @@ console.log(`Total: $${total}`);
 5. **Template strings are your friend**: Use `${variable}` syntax for embedding values
 
 These three data types form the foundation of all JavaScript programming. Master them, and you'll be ready to tackle more complex concepts!
+
+---
+
+## Practice & Next Steps
+
+1. **Practice**: Try the [interactive examples](17_numbers_strings_booleans_example.html) to test these concepts
+2. **Next**: [Control Flow](18_Control_Flow.md) - Learn to make decisions in your code
+3. **Review**: Go back to [JavaScript Introduction](01_intro.md) if you need a refresher
+
+## Navigation
+
+- [⬅️ Previous: Introduction](01_intro.md)
+- [🏠 JavaScript Core Index](index.md)
+- [➡️ Next: Control Flow](18_Control_Flow.md)
+- [🧪 Interactive Examples](17_numbers_strings_booleans_example.html)
+
+---
+
+_Last updated: July 17, 2025_

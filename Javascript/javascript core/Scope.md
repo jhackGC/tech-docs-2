@@ -1,3 +1,8 @@
+---
+title: JavaScript Scope & Variable Visibility
+layout: clean
+---
+
 # JavaScript Scope
 
 Scope determines where variables can be accessed in your code. Understanding scope is crucial for writing bug-free JavaScript and avoiding common errors.
@@ -17,10 +22,11 @@ function addFive(number) {
 }
 
 addFive(10);
-console.log(someVariable);  // ReferenceError: someVariable is not defined
+console.log(someVariable); // ReferenceError: someVariable is not defined
 ```
 
 **What happens:**
+
 1. `someVariable` exists only inside the `addFive` function
 2. Once the function finishes, `someVariable` is discarded
 3. Trying to access it outside the function causes an error
@@ -34,10 +40,11 @@ let friendsAtYourParty = 0;
 for (let i = 0; i <= 10; i++) {
   friendsAtYourParty++;
 }
-console.log(i);  // ReferenceError: i is not defined
+console.log(i); // ReferenceError: i is not defined
 ```
 
 **What happens:**
+
 1. `i` exists only inside the for loop block
 2. After the loop ends, `i` is thrown away
 3. You can't access `i` outside the loop
@@ -47,11 +54,12 @@ console.log(i);  // ReferenceError: i is not defined
 **General rule**: A variable is "alive" (accessible) between the closest `{` until its corresponding `}`.
 
 ```javascript
-{  // Scope starts here
+{
+  // Scope starts here
   const message = "Hello";
-  console.log(message);  // Works - we're inside the scope
-}  // Scope ends here
-console.log(message);  // Error - message is out of scope
+  console.log(message); // Works - we're inside the scope
+} // Scope ends here
+console.log(message); // Error - message is out of scope
 ```
 
 ## Scope Examples
@@ -59,42 +67,44 @@ console.log(message);  // Error - message is out of scope
 Let's work through a complex example:
 
 ```javascript
-const A = "A";        // Global scope
-let F;                // Global scope
+const A = "A"; // Global scope
+let F; // Global scope
 
-function doStuff(B) {     // B is a parameter (function scope)
-  console.log(B);         // ✅ Works - B is in scope
-  const C = "C";          // Function scope
-  let H = "H";            // Function scope
-  
+function doStuff(B) {
+  // B is a parameter (function scope)
+  console.log(B); // ✅ Works - B is in scope
+  const C = "C"; // Function scope
+  let H = "H"; // Function scope
+
   if (1 + 1 === 2) {
-    const D = "D";        // Block scope (inside if)
+    const D = "D"; // Block scope (inside if)
     H = "something else"; // Modifying H from outer scope
   }
-  
-  console.log(D);         // ❌ Error - D is out of scope
-  console.log(H);         // ✅ Works - H is in function scope
-  F = "F";                // Modifying global variable
+
+  console.log(D); // ❌ Error - D is out of scope
+  console.log(H); // ✅ Works - H is in function scope
+  F = "F"; // Modifying global variable
 }
 
-let E = 0;                // Global scope
+let E = 0; // Global scope
 while (E < 3) {
   E++;
-  console.log(A);         // ✅ Works - A is global
-  const G = "G";          // Block scope (inside while)
+  console.log(A); // ✅ Works - A is global
+  const G = "G"; // Block scope (inside while)
 }
-console.log(E);           // ✅ Works - E is global
-console.log(G);           // ❌ Error - G is out of scope
+console.log(E); // ✅ Works - E is global
+console.log(G); // ❌ Error - G is out of scope
 
 doStuff("B");
-console.log(B);           // ❌ Error - B was a parameter
-console.log(C);           // ❌ Error - C was in function scope
-console.log(F);           // ✅ Works - F is global
+console.log(B); // ❌ Error - B was a parameter
+console.log(C); // ❌ Error - C was in function scope
+console.log(F); // ✅ Works - F is global
 ```
 
 ## Types of Scope
 
 ### 1. Global Scope
+
 Variables declared outside any function or block:
 
 ```javascript
@@ -102,36 +112,38 @@ const globalVar = "I'm global";
 let anotherGlobal = "Me too";
 
 function anyFunction() {
-  console.log(globalVar);     // ✅ Works - can access global variables
+  console.log(globalVar); // ✅ Works - can access global variables
   console.log(anotherGlobal); // ✅ Works
 }
 ```
 
 ### 2. Function Scope
+
 Variables declared inside a function:
 
 ```javascript
 function myFunction() {
   const functionVar = "I'm local to this function";
   let anotherFunctionVar = "Me too";
-  
-  console.log(functionVar);  // ✅ Works inside the function
+
+  console.log(functionVar); // ✅ Works inside the function
 }
 
-console.log(functionVar);  // ❌ Error - not accessible outside
+console.log(functionVar); // ❌ Error - not accessible outside
 ```
 
 ### 3. Block Scope
+
 Variables declared inside any block (`if`, `for`, `while`, etc.):
 
 ```javascript
 if (true) {
   const blockVar = "I'm in a block";
   let anotherBlockVar = "Me too";
-  console.log(blockVar);  // ✅ Works inside the block
+  console.log(blockVar); // ✅ Works inside the block
 }
 
-console.log(blockVar);  // ❌ Error - not accessible outside the block
+console.log(blockVar); // ❌ Error - not accessible outside the block
 ```
 
 ## Scope Chain
@@ -148,16 +160,16 @@ const global = "I'm global";
 
 function outer() {
   const outerVar = "I'm in outer";
-  
+
   function inner() {
     const innerVar = "I'm in inner";
-    
-    console.log(innerVar);  // Found in current scope
-    console.log(outerVar);  // Found in outer scope
-    console.log(global);    // Found in global scope
-    console.log(notFound);  // Error - not found anywhere
+
+    console.log(innerVar); // Found in current scope
+    console.log(outerVar); // Found in outer scope
+    console.log(global); // Found in global scope
+    console.log(notFound); // Error - not found anywhere
   }
-  
+
   inner();
 }
 
@@ -167,82 +179,87 @@ outer();
 ## Common Scope Issues
 
 ### 1. Accessing Variables Too Early
+
 ```javascript
-console.log(myVar);  // ❌ Error - can't access before declaration
+console.log(myVar); // ❌ Error - can't access before declaration
 const myVar = "Hello";
 ```
 
 ### 2. Loop Variables Leaking
+
 ```javascript
 // Problem with var (old way)
 for (var i = 0; i < 3; i++) {
   // loop body
 }
-console.log(i);  // 3 - var leaks out of the loop
+console.log(i); // 3 - var leaks out of the loop
 
 // Solution with let (modern way)
 for (let j = 0; j < 3; j++) {
   // loop body
 }
-console.log(j);  // ❌ Error - let stays in the loop
+console.log(j); // ❌ Error - let stays in the loop
 ```
 
 ### 3. Unintentional Global Variables
+
 ```javascript
 function problematic() {
   // Forgot to declare with const/let
-  accidentalGlobal = "Oops!";  // Creates global variable
+  accidentalGlobal = "Oops!"; // Creates global variable
 }
 
 problematic();
-console.log(accidentalGlobal);  // "Oops!" - accessible globally
+console.log(accidentalGlobal); // "Oops!" - accessible globally
 ```
 
 ## Practical Examples
 
 ### Shopping Cart with Scope
+
 ```javascript
 function createShoppingCart() {
-  let items = [];  // Private to this function
-  let total = 0;   // Private to this function
-  
+  let items = []; // Private to this function
+  let total = 0; // Private to this function
+
   function addItem(name, price) {
     items.push({ name, price });
     total += price;
     console.log(`Added ${name} for $${price}`);
   }
-  
+
   function getTotal() {
     return total;
   }
-  
+
   function getItems() {
-    return items.slice();  // Return a copy, not the original
+    return items.slice(); // Return a copy, not the original
   }
-  
+
   // Return public interface
   return {
     add: addItem,
     total: getTotal,
-    items: getItems
+    items: getItems,
   };
 }
 
 const cart = createShoppingCart();
 cart.add("Shirt", 25);
 cart.add("Pants", 40);
-console.log(cart.total());  // 65
+console.log(cart.total()); // 65
 
 // Can't access items directly - they're private!
-console.log(items);  // ❌ Error - items is not accessible
+console.log(items); // ❌ Error - items is not accessible
 ```
 
 ### Counter with Closure
+
 ```javascript
 function createCounter() {
-  let count = 0;  // Private variable
-  
-  return function() {
+  let count = 0; // Private variable
+
+  return function () {
     count++;
     return count;
   };
@@ -251,15 +268,16 @@ function createCounter() {
 const counter1 = createCounter();
 const counter2 = createCounter();
 
-console.log(counter1());  // 1
-console.log(counter1());  // 2
-console.log(counter2());  // 1 - different counter
-console.log(counter1());  // 3
+console.log(counter1()); // 1
+console.log(counter1()); // 2
+console.log(counter2()); // 1 - different counter
+console.log(counter1()); // 3
 ```
 
 ## Best Practices
 
 ### 1. Minimize Global Variables
+
 ```javascript
 // Avoid
 var userName = "John";
@@ -270,21 +288,23 @@ var userEmail = "john@example.com";
 const user = {
   name: "John",
   age: 30,
-  email: "john@example.com"
+  email: "john@example.com",
 };
 ```
 
 ### 2. Use const and let (Not var)
+
 ```javascript
 // Old way (avoid)
 var name = "Alice";
 
 // Modern way
-const name = "Alice";        // Won't change
-let age = 25;               // Might change
+const name = "Alice"; // Won't change
+let age = 25; // Might change
 ```
 
 ### 3. Declare Variables Close to Where You Use Them
+
 ```javascript
 function processUsers(users) {
   // Declare variables when you need them
@@ -297,13 +317,14 @@ function processUsers(users) {
 ```
 
 ### 4. Use Functions to Create Private Scope
+
 ```javascript
 function processData() {
   // All variables here are private to this function
   const data = fetchSomeData();
   const processed = transformData(data);
   const result = analyzeData(processed);
-  
+
   return result;
 }
 ```
@@ -320,17 +341,18 @@ When you get a "ReferenceError":
 ```javascript
 function debugExample() {
   const message = "Hello";
-  
+
   if (true) {
-    console.log(message);  // ✅ Works - message is in outer scope
+    console.log(message); // ✅ Works - message is in outer scope
     const innerMessage = "Hi";
   }
-  
-  console.log(innerMessage);  // ❌ Error - innerMessage is out of scope
+
+  console.log(innerMessage); // ❌ Error - innerMessage is out of scope
 }
 ```
 
 Understanding scope helps you:
+
 - Avoid variable naming conflicts
 - Create more secure code
 - Debug errors more effectively

@@ -1,3 +1,8 @@
+---
+title: JavaScript Arrays
+layout: clean
+---
+
 # JavaScript Arrays
 
 Arrays are ordered collections of data. Unlike objects which store data using keys, arrays store data in a specific order that you can access by position (index).

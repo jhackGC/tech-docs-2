@@ -1,12 +1,7 @@
-# JavaScript Introduction
-
-Welcome to the world of programming! This section introduces you to JavaScript, your first programming language. Whether you're completely new to coding or coming from another language, this guide will help you understand the fundamentals.
-
-## Target Audience
-
-This section is optimized for beginners who are completely new to coding. If you already know another programming language, you can skim through to familiarize yourself with JavaScript syntax and concepts.
-
-Think of it like learning languages: if you already know Spanish, learning Italian becomes easier because you apply similar concepts with minor variations.
+---
+title: JavaScript Introduction
+layout: clean
+---
 
 ## What is Code?
 
@@ -178,3 +173,23 @@ The second version tells a story about what you're calculating.
 5. **The console is your friend** - use it to test and debug
 
 Programming is about breaking down complex problems into simple, clear steps. Start with these fundamentals and build up from here!
+
+---
+
+## Next Steps
+
+Ready to continue? Here's your learning path:
+
+1. **Next**: [Numbers, Strings & Booleans](17_Numbers_Strings_Booleans.md) - Learn JavaScript's fundamental data types
+2. **Then**: [Control Flow](18_Control_Flow.md) - Make decisions in your code
+3. **After**: [Loops](19_Loops.md) - Repeat actions efficiently
+
+## Navigation
+
+- [🏠 JavaScript Core Index](index.md)
+- [➡️ Next: Data Types](17_Numbers_Strings_Booleans.md)
+- [📚 Resources](00_resources.md)
+
+---
+
+_Last updated: July 17, 2025_

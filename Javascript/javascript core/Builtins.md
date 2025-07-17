@@ -1,3 +1,8 @@
+---
+title: JavaScript Built-ins (Beginner Guide)
+layout: clean
+---
+
 # JavaScript Built-ins
 
 JavaScript comes with many built-in functions and methods that handle common tasks. These are pre-written functions created by smart people to solve problems you'll encounter frequently.
@@ -334,3 +339,59 @@ console.log(modified); // "HELLO" (new value)
 ```
 
 Built-in functions save you time and effort. Instead of writing complex code to solve common problems, you can use these pre-built, tested, and optimized functions. Always check if a built-in exists before writing your own solution!
+
+---
+
+## Summary
+
+### What You've Learned
+
+1. **String Methods**: toLowerCase(), toUpperCase(), includes(), trim(), replace(), split()
+2. **Math Object**: round(), floor(), ceil(), random(), max(), min(), abs()
+3. **Date Object**: new Date(), getFullYear(), getMonth(), getDate()
+4. **Number Methods**: parseInt(), parseFloat(), Number(), isNaN()
+5. **Array Basics**: push(), pop(), length, includes()
+6. **Global Functions**: Type conversion and validation
+
+### Key Concepts
+
+- **Method Chaining**: You can combine methods like `text.trim().toLowerCase()`
+- **Immutability**: Most methods don't change the original value
+- **Documentation**: Always check MDN when you need help with a method
+- **Practice**: The best way to learn is by using these methods in real projects
+
+---
+
+## Practice Exercises
+
+Try these exercises to reinforce what you've learned:
+
+1. **String Challenge**: Take a user's full name input and format it properly (first letter capitalized, rest lowercase)
+2. **Math Challenge**: Create a dice rolling function that returns numbers 1-6
+3. **Date Challenge**: Calculate how many days until your next birthday
+4. **Array Challenge**: Create a simple shopping list with add/remove functionality
+
+---
+
+## Next Steps
+
+Ready to continue your JavaScript journey?
+
+1. **Next Topic**: [Objects](23_Objects.md) - Learn to group related data together
+2. **Advanced Reference**: Check [Built-in Functions Reference](built-in-functions.md) for complete method lists
+3. **Practice**: Try the [interactive examples](20_functions_example.html) to test your knowledge
+
+---
+
+## Navigation
+
+- [⬅️ Previous: Scope](21_Scope.md)
+- [🏠 JavaScript Core Index](index.md)
+- [➡️ Next: Objects](23_Objects.md)
+- [📖 Advanced Reference](built-in-functions.md)
+
+---
+
+_Remember: You don't need to memorize everything! Professional developers look up documentation constantly. Focus on understanding the concepts and knowing what's available._ 💡
+
+_Last updated: July 17, 2025_

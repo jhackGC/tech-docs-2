@@ -1,3 +1,8 @@
+---
+title: JavaScript Loops & Iteration
+layout: clean
+---
+
 # JavaScript Loops
 
 Loops allow you to repeat code multiple times without writing the same thing over and over. They're essential for handling repetitive tasks efficiently.

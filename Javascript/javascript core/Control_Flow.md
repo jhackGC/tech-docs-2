@@ -1,3 +1,8 @@
+---
+title: JavaScript Control Flow & Conditionals
+layout: clean
+---
+
 # JavaScript Control Flow
 
 Control flow allows you to modify how your program runs based on conditions. Instead of executing code line by line, you can make decisions and skip or repeat certain parts.

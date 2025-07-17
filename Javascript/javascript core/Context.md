@@ -1,3 +1,8 @@
+---
+title: JavaScript Context & the `this` Keyword
+layout: clean
+---
+
 # JavaScript Context (The `this` Keyword)
 
 The `this` keyword in JavaScript refers to the context in which a function is called. It's one of the more complex concepts in JavaScript, but understanding the basics will help you write better object-oriented code.

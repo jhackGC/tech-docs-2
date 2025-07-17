@@ -1,3 +1,8 @@
+---
+title: JavaScript Functions
+layout: clean
+---
+
 # JavaScript Functions
 
 Functions are reusable blocks of code that perform specific tasks. They're like recipes - you write them once and can use them many times with different ingredients (parameters).
