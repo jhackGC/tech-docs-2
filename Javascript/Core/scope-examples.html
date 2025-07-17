@@ -30,7 +30,7 @@
           sans-serif;
         line-height: 1.6;
         margin: 0;
-        padding: 20px;
+        padding: 0;
         background-color: var(--bg-color);
         color: var(--text-color);
       }
@@ -169,45 +169,72 @@
         border-radius: 0 4px 4px 0;
       }
 
-      .navigation {
+      .sidebar {
         position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 250px;
+        top: 0;
+        left: 0;
+        width: 280px;
+        height: 100vh;
         background-color: var(--code-bg);
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid var(--border-color);
-        z-index: 1000;
-        max-height: calc(100vh - 40px);
+        border-right: 2px solid var(--border-color);
+        padding: 20px;
         overflow-y: auto;
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
       }
 
-      .navigation h3 {
+      .sidebar h3 {
         margin-top: 0;
+        margin-bottom: 20px;
+        color: var(--text-color);
+        font-size: 18px;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 10px;
       }
 
-      .navigation ul {
+      .sidebar ul {
         list-style: none;
         padding: 0;
+        margin: 0;
       }
 
-      .navigation li {
-        margin: 5px 0;
+      .sidebar li {
+        margin: 8px 0;
       }
 
-      .navigation a {
+      .sidebar a {
         color: var(--button-bg);
         text-decoration: none;
         font-size: 14px;
+        display: block;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.2s, color 0.2s;
       }
 
-      .navigation a:hover {
-        text-decoration: underline;
+      .sidebar a:hover {
+        background-color: var(--button-bg);
+        color: white;
+        text-decoration: none;
+      }
+
+      .main-content {
+        margin-left: 300px;
+        padding: 20px;
       }
 
       @media (max-width: 768px) {
-        body {
+        .sidebar {
+          position: static;
+          width: 100%;
+          height: auto;
+          border-right: none;
+          border-bottom: 2px solid var(--border-color);
+          box-shadow: none;
+        }
+
+        .main-content {
+          margin-left: 0;
           padding: 10px;
         }
 
@@ -216,55 +243,48 @@
           gap: 10px;
           align-items: flex-start;
         }
-
-        .navigation {
-          position: static;
-          width: 100%;
-          margin-bottom: 20px;
-          right: auto;
-          top: auto;
-        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>JavaScript Scope Examples - Interactive</h1>
+    <div class="sidebar">
+      <h3>Quick Navigation</h3>
+      <ul>
+        <li><a href="#function-scope">Function Scope</a></li>
+        <li><a href="#block-scope">Block Scope</a></li>
+        <li><a href="#scope-chain">Scope Chain</a></li>
+        <li><a href="#common-issues">Common Issues</a></li>
+        <li><a href="#practical-examples">Practical Examples</a></li>
+        <li>
+          <a href="#setinterval-examples">setTimeout/setInterval Issues</a>
+        </li>
+      </ul>
+    </div>
 
-      <div
-        class="security-warning"
-        style="
-          background-color: #2a2a2a;
-          border: 2px solid var(--warning-color);
-          border-radius: 8px;
-          padding: 15px;
-          margin-bottom: 20px;
-        "
-      >
-        <h3 style="color: var(--warning-color); margin-top: 0">
-          ⚠️ Security Notice
-        </h3>
-        <p style="margin-bottom: 0; font-size: 14px">
-          This page allows you to run JavaScript code in your browser for
-          educational purposes. Basic security measures are in place, but only
-          run code you trust. The code executes only in your browser and cannot
-          access external resources.
-        </p>
-      </div>
+    <div class="main-content">
+      <div class="container">
+        <h1>JavaScript Scope Examples - Interactive</h1>
 
-      <div class="navigation">
-        <h3>Quick Navigation</h3>
-        <ul>
-          <li><a href="#function-scope">Function Scope</a></li>
-          <li><a href="#block-scope">Block Scope</a></li>
-          <li><a href="#scope-chain">Scope Chain</a></li>
-          <li><a href="#common-issues">Common Issues</a></li>
-          <li><a href="#practical-examples">Practical Examples</a></li>
-          <li>
-            <a href="#setinterval-examples">setTimeout/setInterval Issues</a>
-          </li>
-        </ul>
-      </div>
+        <div
+          class="security-warning"
+          style="
+            background-color: #2a2a2a;
+            border: 2px solid var(--warning-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+          "
+        >
+          <h3 style="color: var(--warning-color); margin-top: 0">
+            ⚠️ Security Notice
+          </h3>
+          <p style="margin-bottom: 0; font-size: 14px">
+            This page allows you to run JavaScript code in your browser for
+            educational purposes. Basic security measures are in place, but only
+            run code you trust. The code executes only in your browser and cannot
+            access external resources.
+          </p>
+        </div>
 
       <section id="function-scope">
         <h2>Function Scope</h2>
@@ -793,7 +813,9 @@ console.log("• let: 3 variables, each callback has its own → each prints dif
 
         <div class="example-container">
           <div class="example-header">
-            <span class="example-title">Visual Analogy: Shared vs Private Notepads</span>
+            <span class="example-title"
+              >Visual Analogy: Shared vs Private Notepads</span
+            >
             <div class="example-buttons">
               <button class="btn" onclick="runCode(this)">Run</button>
               <button class="btn btn-clear" onclick="clearOutput(this)">
@@ -1139,10 +1161,18 @@ console.log("F after function:", F); // ✅ Works - F is global</textarea
       </section>
 
       <!-- Variable Creation Demonstration -->
-      <div class="example-block">
-        <div class="code-block">
+      <div class="example-container">
+        <div class="example-header">
           <span class="example-title">Variable Creation Count: var vs let</span>
-          <textarea class="code-input">
+          <div class="example-buttons">
+            <button class="btn" onclick="runCode(this)">Run</button>
+            <button class="btn btn-clear" onclick="clearOutput(this)">
+              Clear
+            </button>
+          </div>
+        </div>
+        <div class="code-editor">
+          <textarea>
 console.log("=== VARIABLE CREATION DEMONSTRATION ===");
 console.log("");
 
@@ -1202,11 +1232,13 @@ console.log("• var in loop: 1 variable, modified 3 times");
 console.log("• let in loop: 3 variables, each with its own value");
 console.log("• This is why callbacks with 'var' all see the final value");
 console.log("• And callbacks with 'let' each see their captured value");</textarea
+          >
         </div>
         <div class="output-container">
           <div class="output-header">Output:</div>
           <div class="output-content"></div>
         </div>
+      </div>
       </div>
     </div>
 
@@ -1353,8 +1385,8 @@ console.log("• And callbacks with 'let' each see their captured value");</text
         });
       });
 
-      // Smooth scrolling for navigation links
-      document.querySelectorAll(".navigation a").forEach((link) => {
+      // Smooth scrolling for sidebar links
+      document.querySelectorAll(".sidebar a").forEach((link) => {
         link.addEventListener("click", function (e) {
           e.preventDefault();
           const targetId = this.getAttribute("href").substring(1);

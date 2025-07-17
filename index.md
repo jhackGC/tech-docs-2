@@ -16,32 +16,32 @@ A structured learning path from AI fundamentals to advanced applications. **[Vie
 
 #### Level 1: AI Fundamentals (Beginner)
 
-- [Core Concepts](AI/fundamentals/what-is-ai.md) - Introduction to AI, types, and ethics
-- [Math Foundation](AI/math/linear-algebra.md) - Linear algebra, statistics, and calculus
-- [Python for AI](AI/programming/python-basics.md) - Essential programming skills
+- Core Concepts - Introduction to AI, types, and ethics
+- Math Foundation - Linear algebra, statistics, and calculus
+- Python for AI - Essential programming skills
 
 #### Level 2: Machine Learning (Intermediate)
 
-- [Supervised Learning](AI/ml/linear-regression.md) - Regression, classification algorithms
-- [Unsupervised Learning](AI/ml/kmeans.md) - Clustering and dimensionality reduction
-- [Model Evaluation](AI/ml/cross-validation.md) - Testing and improving models
+- Supervised Learning - Regression, classification algorithms
+- Unsupervised Learning - Clustering and dimensionality reduction
+- Model Evaluation - Testing and improving models
 
 #### Level 3: Deep Learning (Intermediate-Advanced)
 
-- [Neural Networks](AI/deep-learning/perceptron.md) - Fundamentals and architectures
-- [Advanced Architectures](AI/deep-learning/cnn.md) - CNNs, RNNs, Transformers
-- [Frameworks](AI/frameworks/tensorflow.md) - TensorFlow, PyTorch, Keras
+- Neural Networks - Fundamentals and architectures
+- Advanced Architectures - CNNs, RNNs, Transformers
+- Frameworks - TensorFlow, PyTorch, Keras
 
 #### Level 4: Generative AI (Advanced)
 
-- [Large Language Models](AI/generative/llm-basics.md) - Understanding and working with LLMs
-- [RAG Systems](AI/advanced/rag.md) - Retrieval-Augmented Generation
-- [Fine-tuning & Prompt Engineering](AI/advanced/fine-tuning.md) - Model customization
+- Large Language Models - Understanding and working with LLMs
+- RAG Systems - Retrieval-Augmented Generation
+- Fine-tuning & Prompt Engineering - Model customization
 
 #### Level 5: Production AI (Expert)
 
-- [MLOps & Deployment](AI/production/versioning.md) - Scaling and maintaining AI systems
-- [Advanced Topics](AI/advanced/reinforcement-learning.md) - RL, transfer learning, explainable AI
+- MLOps & Deployment - Scaling and maintaining AI systems
+- Advanced Topics - RL, transfer learning, explainable AI
 
 ### 🌐 Web Development
 
@@ -129,8 +129,8 @@ Architecture patterns and principles for scalable system design.
 
 #### Node.js Architecture & Best Practices
 
-- [Node.js Architecture](System%20Design/00_00_NodeJS-Architecture) - Node.js system architecture patterns
-- [Secure Node Applications](System%20Design/30_Secure_Node_Apps) - Security practices for Node.js applications
+- Node.js Architecture - Node.js system architecture patterns
+- Secure Node Applications - Security practices for Node.js applications
 - [Design Issues Review](System%20Design/40_Review%20Design%20Issues%20in%20Node.md) - Common Node.js design problems and solutions
 - [Code Smells in Node.js](System%20Design/50_00_CodeSmells_NodeJS.md) - Identifying and fixing code quality issues
 
