@@ -1,3 +1,9 @@
+---
+title: Technical Documentation Hub
+layout: default
+permalink: /
+---
+
 # Technical Documentation Hub
 
 Welcome to the Technical Documentation Hub - a comprehensive collection of software engineering principles, system design patterns, and development best practices.

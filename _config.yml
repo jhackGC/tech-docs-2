@@ -1,0 +1,53 @@
+title: Technical Documentation Hub
+description: A comprehensive collection of software engineering principles, system design patterns, and development best practices.
+
+# Jekyll configuration
+markdown: kramdown
+highlighter: rouge
+theme: minima
+
+# Include files and directories
+include:
+  - README.md
+  - index.md
+
+# Process markdown files in all directories
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Collections for better organization
+collections:
+  design_patterns:
+    output: true
+    permalink: /:collection/:name/
+  system_design:
+    output: true
+    permalink: /:collection/:name/
+
+# Default layouts
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Software Engineering
+    url: /SoftEngineering/
+  - title: System Design
+    url: /System%20Design/
+
+# Build settings
+future: false
+show_drafts: false
+safe: true
