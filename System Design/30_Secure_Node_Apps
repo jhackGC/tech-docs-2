@@ -1,0 +1,198 @@
+# Securing Node apps
+
+To build secure Node.js applications, you need to protect your app across **multiple layers**: code, dependencies, runtime, and infrastructure. Below is a **practical security checklist** organized by areas of responsibility, with examples, tools, and how each aligns with secure design principles.
+
+---
+
+## 🔐 1. **Input Validation & Sanitization**
+
+### ✅ What to do:
+
+- Validate all user input: forms, query params, headers, request bodies.
+- Sanitize to prevent SQL/NoSQL injection, XSS, etc.
+
+### 🛠 Tools:
+
+#### Node JS
+
+- [`express-validator`](https://express-validator.github.io/docs/)
+- [`zod`](https://zod.dev/) or [`joi`](https://joi.dev/)
+- Use `helmet()` to prevent header-based attacks
+
+### 🔐 Principles:
+
+- **Fail Fast**, **Encapsulation**, **Least Privilege**
+
+---
+
+## 🔐 2. **Authentication & Authorization**
+
+### ✅ What to do:
+
+- Use strong authentication (e.g., OAuth, JWT, sessions with CSRF protection).
+- Enforce role-based access control (RBAC).
+- Never trust client-side data for auth decisions.
+
+### 🛠 Tools:
+
+- `passport.js` for strategies
+- `jsonwebtoken` for JWT tokens
+- Middleware to guard routes (e.g., `req.user.role === 'admin'`)
+
+### 🔐 Principles:
+
+- **Encapsulation**, **Least Privilege**, **Separation of Concerns**
+
+---
+
+## 🔐 3. **Avoid Common Vulnerabilities (OWASP Top 10)**
+
+### ✅ What to do:
+
+- Prevent **XSS**: escape user data in templates, avoid inline JS.
+- Prevent **CSRF**: use CSRF tokens for forms.
+- Avoid **insecure deserialization**: validate structure of incoming data.
+- Protect against **path traversal**: sanitize file paths.
+- Prevent **DoS** attacks: validate payload size, throttle requests.
+
+### 🛠 Tools:
+
+- [`helmet`](https://www.npmjs.com/package/helmet) – secure HTTP headers
+- [`express-rate-limit`](https://www.npmjs.com/package/express-rate-limit)
+- [`csurf`](https://www.npmjs.com/package/csurf)
+
+---
+
+## 🔐 4. **Secure Dependencies**
+
+### ✅ What to do:
+
+- Audit packages regularly (`npm audit`)
+- Prefer mature, maintained libraries
+- Lock versions with `package-lock.json` or `yarn.lock`
+
+### 🛠 Tools:
+
+- `npm audit fix`
+- [`snyk`](https://snyk.io/) for automated scans
+- [`depcheck`](https://www.npmjs.com/package/depcheck) to remove unused packages
+
+### 🔐 Principles:
+
+- **YAGNI**, **KISS**, **Encapsulation**
+
+---
+
+## 🔐 5. **Environment & Configuration Management**
+
+### ✅ What to do:
+
+- Never hard-code secrets (use `.env`, secrets manager)
+- Set `NODE_ENV=production` to enable performance and security features
+- Whitelist CORS domains
+
+### 🛠 Tools:
+
+- [`dotenv`](https://www.npmjs.com/package/dotenv)
+- AWS Secrets Manager / HashiCorp Vault
+- `cors` middleware with tight settings
+
+---
+
+## 🔐 6. **HTTPS & Secure Headers**
+
+### ✅ What to do:
+
+- Enforce HTTPS (e.g., via reverse proxy or app middleware)
+- Add security headers like `Content-Security-Policy`, `Strict-Transport-Security`, etc.
+
+### 🛠 Tools:
+
+- `helmet()` middleware
+- Cloudflare or NGINX for HTTPS enforcement
+
+---
+
+## 🔐 7. **Logging & Monitoring**
+
+### ✅ What to do:
+
+- Log errors securely, exclude PII
+- Monitor for anomalies or intrusions
+- Detect repeated failures (e.g., brute force)
+
+### 🛠 Tools:
+
+- `winston`, `pino` – structured logs
+- Sentry, LogRocket, Datadog – monitoring and error tracking
+
+---
+
+## 🔐 8. **Protect Sensitive Data**
+
+### ✅ What to do:
+
+- Hash passwords with `bcrypt` (never store plain text)
+- Encrypt sensitive data in storage
+- Obfuscate sensitive logs
+
+### 🛠 Tools:
+
+- `bcrypt`, `argon2` for hashing
+- `crypto` module for encryption
+
+---
+
+## 🔐 9. **Secure Deployment Practices**
+
+### ✅ What to do:
+
+- Use read-only file systems where possible
+- Apply least privilege to containers/VMs
+- Keep OS and Node updated
+
+### 🛠 Tools:
+
+- Docker security best practices
+- `nvm` to manage Node versions
+- CI pipelines with lint/security checks
+
+---
+
+## 🔐 10. **Webhooks & External APIs**
+
+### ✅ What to do:
+
+- Validate signatures (e.g., HMAC)
+- Rate-limit inbound requests
+- Isolate logic and sanitize input
+
+---
+
+## Bonus: Add a Security Checklist to CI
+
+### ✅ Automate:
+
+- Lint with `eslint-plugin-security`
+- `npm audit` in CI
+- Run unit tests for edge cases
+- Static analysis (`semgrep`, `SonarQube`)
+
+---
+
+## 🧭 Summary: Secure Node.js Principles
+
+| Area         | Key Principle                |
+| ------------ | ---------------------------- |
+| Input        | Validate, sanitize           |
+| Logic        | Least privilege, encapsulate |
+| Auth         | Never trust the client       |
+| Dependencies | Trust but verify             |
+| Secrets      | Keep them out of code        |
+| Logging      | Structure, sanitize          |
+| Monitoring   | Visibility = safety          |
+| Deployment   | Hardened, updated, minimal   |
+
+---
+
+Would you like a template project or GitHub repo that incorporates all of these best practices?
