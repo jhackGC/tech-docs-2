@@ -1,3 +1,15 @@
+---
+title: JavaScript Documentation
+layout: clean
+---
+
+## 🔗 Navigation
+
+- [← Back to Main Index](../index.html)
+- [Browse all documentation sections](../index.html#table-of-contents)
+
+---
+
 # JavaScript Documentation
 
 Comprehensive JavaScript development resources covering modern JavaScript, frameworks, tools, and best practices.
@@ -33,11 +45,6 @@ Comprehensive JavaScript development resources covering modern JavaScript, frame
 
 - [TypeScript](typescript/) - Typed superset of JavaScript
 - [GraphQL](GraphQL/) - Query language and runtime for APIs
-
-## Navigation
-
-- [← Back to Main Index](../index.html)
-- [Browse all documentation sections](../index.html#table-of-contents)
 
 ---
 

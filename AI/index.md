@@ -3,6 +3,12 @@ title: Artificial Intelligence Learning Path
 layout: clean
 ---
 
+## 🔗 Navigation
+
+- [← Back to Main Documentation](../index.html)
+
+---
+
 # 🤖 Artificial Intelligence - Learning Path
 
 A structured journey from AI fundamentals to advanced applications. Follow this path to build a solid foundation and progress to cutting-edge AI development.
@@ -197,10 +203,6 @@ Deploy, scale, and maintain AI systems in production.
 3. **Join Communities**: Participate in AI/ML forums and discussions
 4. **Read Papers**: Stay updated with latest research (start with survey papers)
 5. **Experiment**: Try different approaches and learn from failures
-
-## 🔗 Navigation
-
-- [← Back to Main Documentation](../index.html)
 
 ---
 

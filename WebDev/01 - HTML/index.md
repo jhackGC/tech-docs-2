@@ -52,11 +52,6 @@ By the end of this section, you will be able to:
 - Implement proper document metadata
 - Build accessible and SEO-friendly web pages
 
-## 🔗 Navigation
-
-- [← Back to Main Documentation](../../index.html)
-- [Continue to CSS Styling →](../02%20-%20CSS/index.html)
-
 ---
 
 _Start with HTML Tags to begin your journey into web development!_

@@ -3,6 +3,13 @@ title: JavaScript Core Concepts
 layout: clean
 ---
 
+## 🔗 Navigation
+
+- [← Back to JavaScript](../index.html)
+- [← Back to Main Index](../../index.html)
+
+---
+
 # JavaScript Core
 
 A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced concepts. This section covers core language features that every JavaScript developer should master.
@@ -169,11 +176,6 @@ _Start with [JavaScript Introduction](Intro.md) and follow the recommended seque
 - **[ Organization Report](ORGANIZATION_REPORT.md)** - Folder structure and status
 - **[🎯 Learning Resources](Resources.md)** - External tutorials and practice
 - **[🧪 Interactive Examples](.)** - HTML files for hands-on practice
-
-## Navigation
-
-- [← Back to JavaScript](../index.html)
-- [← Back to Main Index](../../index.html)
 
 ---
 

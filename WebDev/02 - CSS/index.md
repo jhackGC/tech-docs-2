@@ -3,6 +3,14 @@ title: CSS Styling
 layout: clean
 ---
 
+## 🔗 Navigation
+
+- [← Back to HTML Fundamentals](../01%20-%20HTML/index.html)
+- [← Back to Main Documentation](../../index.html)
+- [Continue to JavaScript →](../../Javascript/Core/index.html)
+
+---
+
 # CSS Styling
 
 Master the art of styling web pages with CSS (Cascading Style Sheets). This section covers everything from basic CSS syntax to advanced layout techniques and animations.
@@ -52,12 +60,6 @@ By the end of this section, you will be able to:
 - Create responsive layouts with Flexbox and Grid
 - Implement smooth animations and transitions
 - Build beautiful, modern web interfaces
-
-## 🔗 Navigation
-
-- [← Back to HTML Fundamentals](../01%20-%20HTML/index.html)
-- [← Back to Main Documentation](../../index.html)
-- [Continue to JavaScript →](../../Javascript/Core/index.html)
 
 ---
 
