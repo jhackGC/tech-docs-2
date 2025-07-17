@@ -1,0 +1,23 @@
+
+# IDE files
+.idea/
+
+# System files  
+.DS_Store
+
+# Jekyll build files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Backup files
+*_backup.*
+*_Version*.*
+
+# Excel files (likely personal notes)
+*.xls
+*.xlsx
+
+# Docs subdirectory (since we're deploying from root now)
+/not_ready/
