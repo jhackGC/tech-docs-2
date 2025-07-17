@@ -60,8 +60,8 @@ Follow this progressive learning path to build solid JavaScript foundations:
 
 #### 4.2 Advanced Topics
 
-- [RxJS](RxJS/) - Reactive programming with observables
-- [Course Materials](01_courses/) - Additional learning resources
+- [RxJS](RxJS.md) - Reactive programming with observables
+- [Course Materials](Courses/) - Additional learning resources
 
 ---
 
@@ -75,9 +75,9 @@ Follow this progressive learning path to build solid JavaScript foundations:
 
 ### **By Topic:**
 
-- **Data & Variables**: [Data Types](Numbers_Strings_Booleans.md), [Objects](23_Objects.md), [Arrays](Arrays.md)
+- **Data & Variables**: [Data Types](Numbers_Strings_Booleans.md), [Objects](Objects.md), [Arrays](Arrays.md)
 - **Logic & Flow**: [Control Flow](Control_Flow.md), [Loops](Loops.md), [Functions](Functions.md)
-- **Advanced Features**: [Scope](21_Scope.md), [Context](24_Context.md), [Built-ins](22_Builtins.md)
+- **Advanced Features**: [Scope](Scope.md), [Context](Context.md), [Built-ins](Builtins.md)
 - **Browser & DOM**: [Events](Events.md), [DOM Examples](Events.html)
 
 ---
@@ -86,7 +86,7 @@ Follow this progressive learning path to build solid JavaScript foundations:
 
 ### **Week 1-2: Foundation**
 
-1. Read [JavaScript Introduction](01_intro.md)
+1. Read [JavaScript Introduction](Intro.md)
 2. Master [Data Types](Numbers_Strings_Booleans.md)
 3. Practice with [interactive examples](Numbers_Strings_Booleans.html)
 
@@ -100,17 +100,17 @@ Follow this progressive learning path to build solid JavaScript foundations:
 
 1. Understand [Functions](Functions.md)
 2. Explore [interactive demos](Functions.html)
-3. Learn [Scope](21_Scope.md) and variable visibility
+3. Learn [Scope](Scope.md) and variable visibility
 
 ### **Week 7-8: Data Structures**
 
-1. Master [Objects](23_Objects.md)
+1. Master [Objects](Objects.md)
 2. Learn [Arrays](Arrays.md)
-3. Practice with [Built-in Functions](22_Builtins.md)
+3. Practice with [Built-in Functions](Builtins.md)
 
 ### **Week 9-10: Advanced Concepts**
 
-1. Understand [Context](24_Context.md) and `this`
+1. Understand [Context](Context.md) and `this`
 2. Learn [Event Handling](Events.md)
 3. Practice [DOM manipulation](Events.html)
 
@@ -132,23 +132,21 @@ By completing this guide, you will:
 ## 📚 **Additional Resources**
 
 - **Practice**: Use the interactive HTML examples to test concepts
-- **Reference**: Check [Built-in Functions Reference](built-in-functions.md) for quick lookups
-- **Quick Navigation**: Use the [Quick Reference Guide](QUICK_REFERENCE.md) to find topics fast
-- **Advanced**: Explore [RxJS](RxJS/) for reactive programming
-- **Deep Dive**: Review [course materials](01_courses/) for comprehensive learning
+- **Reference**: Check [Built-in Functions Reference](Builtins.md) for quick lookups
+- **Advanced**: Explore [RxJS](RxJS.md) for reactive programming
+- **Deep Dive**: Review [course materials](Courses/) for comprehensive learning
 - **Organization**: See [Organization Report](ORGANIZATION_REPORT.md) for folder structure details
 
 ---
 
-_Start with [JavaScript Introduction](01_intro.md) and follow the recommended sequence for the best learning experience!_ 🚀
+_Start with [JavaScript Introduction](Intro.md) and follow the recommended sequence for the best learning experience!_ 🚀
 
 ---
 
 ## 🔗 Quick Links
 
-- **[📖 Quick Reference](QUICK_REFERENCE.md)** - Fast topic lookup and navigation
-- **[📊 Organization Report](ORGANIZATION_REPORT.md)** - Folder structure and status
-- **[🎯 Learning Resources](00_resources.md)** - External tutorials and practice
+- **[ Organization Report](ORGANIZATION_REPORT.md)** - Folder structure and status
+- **[🎯 Learning Resources](Resources.md)** - External tutorials and practice
 - **[🧪 Interactive Examples](.)** - HTML files for hands-on practice
 
 ## Navigation

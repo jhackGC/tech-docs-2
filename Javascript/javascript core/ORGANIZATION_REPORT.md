@@ -34,20 +34,21 @@
 ```
 javascript core/
 ├── index.md                    # Main guide with learning paths ✅
-├── 00_resources.md            # Learning resources ✅
-├── 01_intro.md               # JavaScript introduction ✅
-├── 17_Numbers_Strings_Booleans.md  # Data types ✅
-├── 18_Control_Flow.md        # Conditionals ✅
-├── 19_Loops.md              # Iteration ✅
-├── 20_Functions.md          # Functions ✅
-├── 21_Scope.md              # Variable scope ✅
-├── 22_Builtins.md           # Built-ins (beginner) ✅
-├── 23_Objects.md            # Objects ✅
-├── 24_Context.md            # this keyword ✅
-├── 25_Arrays.md             # Arrays ✅
-├── built-in-functions.md    # Built-ins (advanced) ✅
-├── events.md                # Event handling ✅
-├── *.html                   # Interactive examples
+├── Resources.md               # Learning resources ✅
+├── Intro.md                   # JavaScript introduction ✅
+├── Numbers_Strings_Booleans.md  # Data types ✅
+├── Control_Flow.md            # Conditionals ✅
+├── Loops.md                   # Iteration ✅
+├── Functions.md               # Functions ✅
+├── Scope.md                   # Variable scope ✅
+├── Builtins.md                # Built-ins (beginner) ✅
+├── Objects.md                 # Objects ✅
+├── Context.md                 # this keyword ✅
+├── Arrays.md                  # Arrays ✅
+├── Events.md                  # Event handling ✅
+├── *.html                     # Interactive examples
+├── RxJS.md                    # Reactive programming ✅
+├── Courses/                   # Course materials
 ├── 01_courses/              # Course materials
 └── RxJS/                    # Advanced reactive programming
 ```

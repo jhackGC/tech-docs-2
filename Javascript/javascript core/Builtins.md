@@ -377,18 +377,18 @@ Try these exercises to reinforce what you've learned:
 
 Ready to continue your JavaScript journey?
 
-1. **Next Topic**: [Objects](23_Objects.md) - Learn to group related data together
-2. **Advanced Reference**: Check [Built-in Functions Reference](built-in-functions.md) for complete method lists
-3. **Practice**: Try the [interactive examples](20_functions_example.html) to test your knowledge
+1. **Next Topic**: [Objects](Objects.md) - Learn to group related data together
+2. **Advanced Reference**: Check out advanced array and object methods in other guides
+3. **Practice**: Try the [interactive examples](Functions.html) to test your knowledge
 
 ---
 
 ## Navigation
 
-- [⬅️ Previous: Scope](21_Scope.md)
+- [⬅️ Previous: Scope](Scope.md)
 - [🏠 JavaScript Core Index](index.md)
-- [➡️ Next: Objects](23_Objects.md)
-- [📖 Advanced Reference](built-in-functions.md)
+- [➡️ Next: Objects](Objects.md)
+- [🎯 Learning Resources](Resources.md)
 
 ---
 
