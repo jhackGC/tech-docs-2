@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Scope Examples - Interactive</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-color: #1a1a1a;
+        --text-color: #e0e0e0;
+        --border-color: #333;
+        --code-bg: #2d2d2d;
+        --button-bg: #4a90e2;
+        --button-hover: #357abd;
+        --success-color: #28a745;
+        --error-color: #dc3545;
+        --warning-color: #ffc107;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--text-color);
+        margin-top: 2em;
+        margin-bottom: 1em;
+      }
+
+      h1 {
+        text-align: center;
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+      }
+
+      .example-container {
+        margin: 2em 0;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: var(--code-bg);
+      }
+
+      .example-header {
+        background-color: var(--border-color);
+        padding: 10px 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .example-title {
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      .example-buttons {
+        display: flex;
+        gap: 10px;
+      }
+
+      .btn {
+        background: var(--button-bg);
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        transition: background-color 0.2s;
+      }
+
+      .btn:hover {
+        background: var(--button-hover);
+      }
+
+      .btn-clear {
+        background: var(--warning-color);
+      }
+
+      .btn-clear:hover {
+        background: #e0a800;
+      }
+
+      .code-editor {
+        position: relative;
+      }
+
+      .code-editor textarea {
+        width: 100%;
+        min-height: 200px;
+        background: var(--code-bg);
+        color: var(--text-color);
+        border: none;
+        padding: 15px;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 14px;
+        resize: vertical;
+        outline: none;
+      }
+
+      .code-display {
+        background: var(--code-bg);
+        margin: 0;
+        overflow-x: auto;
+      }
+
+      .code-display code {
+        display: block;
+        padding: 15px;
+        background: transparent;
+      }
+
+      .output-container {
+        border-top: 1px solid var(--border-color);
+        background-color: #1e1e1e;
+        min-height: 60px;
+        max-height: 300px;
+        overflow-y: auto;
+      }
+
+      .output-header {
+        background-color: var(--border-color);
+        padding: 5px 15px;
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--text-color);
+      }
+
+      .output-content {
+        padding: 10px 15px;
+        font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+        font-size: 13px;
+        white-space: pre-wrap;
+        color: #00ff00;
+      }
+
+      .error {
+        color: var(--error-color) !important;
+      }
+
+      .description {
+        background-color: #2a2a2a;
+        padding: 15px;
+        margin: 1em 0;
+        border-left: 4px solid var(--button-bg);
+        border-radius: 0 4px 4px 0;
+      }
+
+      .navigation {
+        position: sticky;
+        top: 20px;
+        background-color: var(--code-bg);
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid var(--border-color);
+      }
+
+      .navigation h3 {
+        margin-top: 0;
+      }
+
+      .navigation ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .navigation li {
+        margin: 5px 0;
+      }
+
+      .navigation a {
+        color: var(--button-bg);
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .navigation a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .example-header {
+          flex-direction: column;
+          gap: 10px;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>JavaScript Scope Examples - Interactive</h1>
+
+      <div class="navigation">
+        <h3>Quick Navigation</h3>
+        <ul>
+          <li><a href="#function-scope">Function Scope</a></li>
+          <li><a href="#block-scope">Block Scope</a></li>
+          <li><a href="#scope-chain">Scope Chain</a></li>
+          <li><a href="#common-issues">Common Issues</a></li>
+          <li><a href="#practical-examples">Practical Examples</a></li>
+          <li>
+            <a href="#setinterval-examples">setTimeout/setInterval Issues</a>
+          </li>
+        </ul>
+      </div>
+
+      <section id="function-scope">
+        <h2>Function Scope</h2>
+        <div class="description">
+          Every function creates its own scope. Variables defined inside a
+          function are not accessible outside.
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Function Scope Example</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+function addFive(number) {
+  const someVariable = "you can't see me outside this function";
+  console.log("Inside function:", someVariable);
+  return number + 5;
+}
+
+const result = addFive(10);
+console.log("Result:", result);
+
+try {
+  console.log(someVariable); // This will cause an error
+} catch (error) {
+  console.log("Error:", error.message);
+}</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="block-scope">
+        <h2>Block Scope</h2>
+        <div class="description">
+          Variables declared with <code>let</code> and <code>const</code> are
+          confined to their block.
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Block Scope with let</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+let friendsAtYourParty = 0;
+
+for (let i = 0; i <= 10; i++) {
+  friendsAtYourParty++;
+  if (i === 5) {
+    console.log("Halfway there! i =", i);
+  }
+}
+
+console.log("Final count:", friendsAtYourParty);
+
+try {
+  console.log("i outside loop:", i); // This will cause an error
+} catch (error) {
+  console.log("Error:", error.message);
+}</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">var vs let in Loops</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== Using var (function scope) ===");
+for (var i = 0; i < 3; i++) {
+  console.log("Inside loop with var:", i);
+}
+console.log("After loop with var:", i); // i is still accessible
+
+console.log("\n=== Using let (block scope) ===");
+for (let j = 0; j < 3; j++) {
+  console.log("Inside loop with let:", j);
+}
+
+try {
+  console.log("After loop with let:", j); // This will cause an error
+} catch (error) {
+  console.log("Error:", error.message);
+}</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="scope-chain">
+        <h2>Scope Chain</h2>
+        <div class="description">
+          JavaScript looks for variables in this order: current scope → outer
+          scope → global scope → error.
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Scope Chain Example</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+const global = "I'm global";
+
+function outer() {
+  const outerVar = "I'm in outer";
+  console.log("From outer - global:", global);
+  
+  function inner() {
+    const innerVar = "I'm in inner";
+    
+    console.log("From inner - innerVar:", innerVar);   // Current scope
+    console.log("From inner - outerVar:", outerVar);   // Outer scope  
+    console.log("From inner - global:", global);       // Global scope
+    
+    try {
+      console.log("From inner - notFound:", notFound); // Error
+    } catch (error) {
+      console.log("Error in inner:", error.message);
+    }
+  }
+  
+  inner();
+  
+  try {
+    console.log("From outer - innerVar:", innerVar); // Error - not in scope
+  } catch (error) {
+    console.log("Error in outer:", error.message);
+  }
+}
+
+outer();</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="common-issues">
+        <h2>Common Scope Issues</h2>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Accidental Global Variables</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+function problematic() {
+  // Forgot to declare with const/let - creates global variable!
+  accidentalGlobal = "Oops! I'm global now";
+  console.log("Inside function:", accidentalGlobal);
+}
+
+problematic();
+console.log("Outside function:", accidentalGlobal); // This works but shouldn't!
+
+// Better way:
+function fixed() {
+  const properVariable = "I'm properly scoped";
+  console.log("Inside fixed function:", properVariable);
+  return properVariable;
+}
+
+const result = fixed();
+console.log("Returned value:", result);
+
+try {
+  console.log("Outside fixed function:", properVariable); // This will error
+} catch (error) {
+  console.log("Error:", error.message);
+}</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="practical-examples">
+        <h2>Practical Examples</h2>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title"
+              >Shopping Cart with Private Variables</span
+            >
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+function createShoppingCart() {
+  let items = []; // Private to this function
+  let total = 0;  // Private to this function
+  
+  function addItem(name, price) {
+    items.push({ name, price });
+    total += price;
+    console.log(`Added ${name} for $${price}. Total: $${total}`);
+  }
+  
+  function getTotal() {
+    return total;
+  }
+  
+  function getItems() {
+    return items.slice(); // Return a copy, not the original
+  }
+  
+  function showCart() {
+    console.log("=== Shopping Cart ===");
+    items.forEach(item => console.log(`- ${item.name}: $${item.price}`));
+    console.log(`Total: $${total}`);
+  }
+  
+  // Return public interface
+  return {
+    add: addItem,
+    total: getTotal,
+    items: getItems,
+    show: showCart
+  };
+}
+
+const cart = createShoppingCart();
+cart.add("Shirt", 25);
+cart.add("Pants", 40);
+cart.add("Shoes", 60);
+cart.show();
+
+console.log("\nCart total:", cart.total());
+
+// Can't access items directly - they're private!
+try {
+  console.log("Direct access to items:", items);
+} catch (error) {
+  console.log("Error accessing private items:", error.message);
+}</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Counter with Closure</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+function createCounter(startValue = 0, step = 1) {
+  let count = startValue; // Private variable
+  
+  function increment() {
+    count += step;
+    console.log(`Counter incremented to: ${count}`);
+    return count;
+  }
+  
+  function decrement() {
+    count -= step;
+    console.log(`Counter decremented to: ${count}`);
+    return count;
+  }
+  
+  function getValue() {
+    return count;
+  }
+  
+  function reset() {
+    count = startValue;
+    console.log(`Counter reset to: ${count}`);
+    return count;
+  }
+  
+  return {
+    increment,
+    decrement,
+    value: getValue,
+    reset
+  };
+}
+
+const counter1 = createCounter(0, 1);
+const counter2 = createCounter(100, 5);
+
+console.log("=== Counter 1 (starts at 0, step 1) ===");
+counter1.increment(); // 1
+counter1.increment(); // 2
+counter1.increment(); // 3
+
+console.log("\n=== Counter 2 (starts at 100, step 5) ===");
+counter2.increment(); // 105
+counter2.decrement(); // 100
+counter2.increment(); // 105
+
+console.log("\n=== Independent counters ===");
+console.log("Counter 1 value:", counter1.value()); // 3
+console.log("Counter 2 value:", counter2.value()); // 105
+
+counter1.reset();
+console.log("Counter 1 after reset:", counter1.value()); // 0</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="setinterval-examples">
+        <h2>setTimeout/setInterval Scope Issues</h2>
+        <div class="description">
+          These examples demonstrate the classic closure problem with timing
+          functions.
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title"
+              >The Classic Problem (var with setTimeout)</span
+            >
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== The Problem: Using var with setTimeout ===");
+console.log("This will print '5' five times instead of 0,1,2,3,4");
+
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log('Value of i with var:', i);
+  }, 100 * (i + 1));
+}
+
+console.log("Loop finished, i =", i);
+console.log("Why? Because 'var' has function scope, not block scope");
+console.log("By the time setTimeout callbacks run, the loop has finished and i = 5");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title"
+              >Solution 1: Using let (Block Scope)</span
+            >
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== Solution 1: Using let ===");
+console.log("This will correctly print 0,1,2,3,4");
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log('Value of i with let:', i);
+  }, 100 * (i + 1));
+}
+
+console.log("Why it works: 'let' creates a new binding for each iteration");
+console.log("Each setTimeout callback captures its own copy of i");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Solution 2: Using IIFE (Closure)</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+console.log("=== Solution 2: Using IIFE (Immediately Invoked Function Expression) ===");
+console.log("This will also correctly print 0,1,2,3,4");
+
+for (var i = 0; i < 5; i++) {
+  (function(index) {
+    setTimeout(function() {
+      console.log('Value of index with IIFE:', index);
+    }, 100 * (index + 1));
+  })(i);
+}
+
+console.log("Why it works: The IIFE creates a new scope for each iteration");
+console.log("The parameter 'index' captures the current value of i");</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title"
+              >Real setInterval Example (Auto-cleanup)</span
+            >
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+// Clear any existing intervals first
+if (window.scopeIntervalIds) {
+  window.scopeIntervalIds.forEach(id => clearInterval(id));
+}
+window.scopeIntervalIds = [];
+
+console.log('=== Real setInterval with Scope Issues ===');
+console.log('Starting intervals with var (broken):');
+
+// Broken version with var
+for (var i = 0; i < 3; i++) {
+  const intervalId = setInterval(function() {
+    console.log('Broken - i value:', i);
+  }, 800);
+  
+  // Store interval ID for cleanup
+  window.scopeIntervalIds.push(intervalId);
+  
+  // Auto-clear after 2.5 seconds
+  setTimeout(() => {
+    clearInterval(intervalId);
+    console.log('Cleared broken interval');
+  }, 2500);
+}
+
+console.log('All intervals will show i =', i, 'because var has function scope');
+
+// Fixed version with let (starts after broken version clears)
+setTimeout(() => {
+  console.log('\n=== Fixed version with let ===');
+  
+  if (window.fixedIntervalIds) {
+    window.fixedIntervalIds.forEach(id => clearInterval(id));
+  }
+  window.fixedIntervalIds = [];
+  
+  for (let j = 0; j < 3; j++) {
+    const intervalId = setInterval(function() {
+      console.log('Fixed - j value:', j);
+    }, 800);
+    
+    window.fixedIntervalIds.push(intervalId);
+    
+    setTimeout(() => {
+      clearInterval(intervalId);
+      console.log('Cleared fixed interval for j =', j);
+    }, 2500);
+  }
+}, 3000);</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="complex-example">
+        <h2>Complex Scope Example</h2>
+
+        <div class="example-container">
+          <div class="example-header">
+            <span class="example-title">Multi-Scope Variable Access</span>
+            <div class="example-buttons">
+              <button class="btn" onclick="runCode(this)">Run</button>
+              <button class="btn btn-clear" onclick="clearOutput(this)">
+                Clear
+              </button>
+            </div>
+          </div>
+          <div class="code-editor">
+            <textarea>
+const A = "A"; // Global scope
+let F; // Global scope
+
+function doStuff(B) {
+  // B is a parameter (function scope)
+  console.log("Parameter B:", B);
+  const C = "C"; // Function scope
+  let H = "H"; // Function scope
+  
+  console.log("Before if block - H:", H);
+  
+  if (1 + 1 === 2) {
+    const D = "D"; // Block scope (inside if)
+    console.log("Inside if block - D:", D);
+    H = "something else"; // Modifying H from outer scope
+    console.log("Inside if block - modified H:", H);
+  }
+  
+  try {
+    console.log("After if block - D:", D); // ❌ Error - D is out of scope
+  } catch (error) {
+    console.log("Error accessing D:", error.message);
+  }
+  
+  console.log("After if block - H:", H); // ✅ Works - H is in function scope
+  F = "F"; // Modifying global variable
+}
+
+let E = 0; // Global scope
+while (E < 3) {
+  E++;
+  console.log("In while loop - A (global):", A);
+  const G = "G"; // Block scope (inside while)
+  console.log("In while loop - G (block):", G);
+}
+
+console.log("After while loop - E:", E); // ✅ Works - E is global
+
+try {
+  console.log("After while loop - G:", G); // ❌ Error - G is out of scope
+} catch (error) {
+  console.log("Error accessing G:", error.message);
+}
+
+console.log("\n=== Calling doStuff ===");
+doStuff("Parameter Value");
+
+console.log("\n=== Testing variable access after function call ===");
+
+try {
+  console.log("B after function:", B); // ❌ Error - B was a parameter
+} catch (error) {
+  console.log("Error accessing B:", error.message);
+}
+
+try {
+  console.log("C after function:", C); // ❌ Error - C was in function scope
+} catch (error) {
+  console.log("Error accessing C:", error.message);
+}
+
+console.log("F after function:", F); // ✅ Works - F is global</textarea
+            >
+          </div>
+          <div class="output-container">
+            <div class="output-header">Output:</div>
+            <div class="output-content"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+      // Custom console to capture output
+      function createCustomConsole(outputElement) {
+        const originalConsole = {
+          log: console.log,
+          error: console.error,
+          warn: console.warn,
+        };
+
+        return {
+          log: function (...args) {
+            const message = args
+              .map((arg) =>
+                typeof arg === "object"
+                  ? JSON.stringify(arg, null, 2)
+                  : String(arg)
+              )
+              .join(" ");
+            outputElement.textContent += message + "\n";
+            originalConsole.log(...args);
+          },
+          error: function (...args) {
+            const message = args.map((arg) => String(arg)).join(" ");
+            const errorSpan = document.createElement("span");
+            errorSpan.className = "error";
+            errorSpan.textContent = "ERROR: " + message + "\n";
+            outputElement.appendChild(errorSpan);
+            originalConsole.error(...args);
+          },
+          warn: function (...args) {
+            const message = args.map((arg) => String(arg)).join(" ");
+            outputElement.textContent += "WARNING: " + message + "\n";
+            originalConsole.warn(...args);
+          },
+        };
+      }
+
+      function runCode(button) {
+        const container = button.closest(".example-container");
+        const textarea = container.querySelector("textarea");
+        const outputContent = container.querySelector(".output-content");
+
+        // Clear previous output
+        outputContent.textContent = "";
+
+        const code = textarea.value;
+        const customConsole = createCustomConsole(outputContent);
+
+        try {
+          // Create a new function scope with custom console
+          const func = new Function("console", code);
+          func(customConsole);
+        } catch (error) {
+          const errorSpan = document.createElement("span");
+          errorSpan.className = "error";
+          errorSpan.textContent = "SYNTAX ERROR: " + error.message + "\n";
+          outputContent.appendChild(errorSpan);
+        }
+      }
+
+      function clearOutput(button) {
+        const container = button.closest(".example-container");
+        const outputContent = container.querySelector(".output-content");
+        outputContent.textContent = "";
+      }
+
+      // Add syntax highlighting to textareas
+      document.addEventListener("DOMContentLoaded", function () {
+        // Apply syntax highlighting to all code displays
+        Prism.highlightAll();
+
+        // Add line numbers and make textareas auto-resize
+        document.querySelectorAll("textarea").forEach((textarea) => {
+          textarea.addEventListener("input", function () {
+            this.style.height = "auto";
+            this.style.height = this.scrollHeight + "px";
+          });
+
+          // Initial resize
+          textarea.style.height = "auto";
+          textarea.style.height = textarea.scrollHeight + "px";
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll(".navigation a").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute("href").substring(1);
+          const targetElement = document.getElementById(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

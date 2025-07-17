@@ -1,3 +1,8 @@
+---
+title: JavaScript Learning Resources
+layout: clean
+---
+
 # JavaScript: Numbers, Strings, and Booleans
 
 In programming, we work with different types of data. The three fundamental data types in JavaScript are numbers, strings, and booleans. Let's explore each one.

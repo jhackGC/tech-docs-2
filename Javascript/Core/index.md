@@ -16,8 +16,6 @@ A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced 
 
 #### Data Types & Variables
 
-- [Variables & Declarations](Variables.md) - var, let, const, hoisting
-- [Type Coercion](Type_Coercion.md) - How JavaScript converts types
 - [Numbers, Strings & Booleans](Numbers_Strings_Booleans.md) - Fundamental data types
 
 #### Program Control
@@ -34,8 +32,7 @@ A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced 
 
 #### 2.2 Built-in Features
 
-- [Built-in Functions](Builtins.md) - JavaScript's native methods (beginner-friendly)
-- [Built-in Reference](Builtins.md) - Quick reference guide (advanced)
+- [Built-in Functions](Builtins.md) - JavaScript's native methods and quick reference guide
 
 ### **🏗️ Objects & Context**
 
@@ -46,9 +43,7 @@ A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced 
 
 ### **🏛️ Level 4.5: Object-Oriented Programming** (Advanced)
 
-- [Prototypes](Prototypes.md) - JavaScript inheritance
-- [Classes](Classes.md) - ES6 class syntax
-- [Modules](Modules.md) - Code organization and imports
+- [Context (`this` keyword)](Context.md) - Understanding JavaScript context
 
 #### Advanced Concepts
 
@@ -58,20 +53,20 @@ A comprehensive guide to JavaScript fundamentals, from basic syntax to advanced 
 
 ### **🛠️ Level 3.5: Advanced Functions** (Intermediate-Advanced)
 
-- [Arrow Functions](Arrow_Functions.md) - Modern function syntax
-- [Higher-Order Functions](Higher_Order_Functions.md) - Functions as values
-- [Closures](Closures.md) - Function scope and memory
+- Arrow Functions - Modern function syntax
+- Higher-Order Functions - Functions as values
+- Closures - Function scope and memory
 
 ### **⚡ Asynchronous JavaScript**
 
-- [Callbacks & Promises](Async_Basics.md) - Handling async operations
-- [Async/Await](Async_Advanced.md) - Modern async syntax
-- [Event Loop](Event_Loop.md) - How JavaScript handles timing
+- Callbacks & Promises - Handling async operations
+- Async/Await - Modern async syntax
+- Event Loop - How JavaScript handles timing
 
 ### **🔧 Error Handling & Debugging**
 
-- [Error Handling](Error_Handling.md) - Try/catch and error types
-- [Debugging](Debugging.md) - Tools and techniques
+- Error Handling - Try/catch and error types
+- Debugging - Tools and techniques
 
 #### ES6
 
@@ -161,7 +156,7 @@ By completing this guide, you will:
 - **Reference**: Check [Built-in Functions Reference](Builtins.md) for quick lookups
 - **Advanced**: Explore [RxJS](RxJS.md) for reactive programming
 - **Deep Dive**: Review [course materials](Courses/) for comprehensive learning
-- **Organization**: See [Organization Report](ORGANIZATION_REPORT.md) for folder structure details
+- **Organization**: See Organization Report for folder structure details
 
 ---
 

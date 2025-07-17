@@ -359,3 +359,11 @@ Understanding scope helps you:
 - Write cleaner, more organized code
 
 Scope can be tricky at first, but with practice, it becomes second nature!
+
+# Interactive examples
+
+- [Scope examples](./scope-examples.html)
+
+# ADVANCED - from ydnjs
+
+[You dont Know JavaScript Chapter - scope](Courses/ydnjs/scope.md)
