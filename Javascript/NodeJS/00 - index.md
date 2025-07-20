@@ -12,6 +12,10 @@ Node.js server-side JavaScript development, tools, and deployment.
 - [Node Core Modules](node%20core%20modules/) - Built-in Node.js modules and APIs
 - [Node.js with Babel](node_babel.md) - Using modern JavaScript with Node.js
 
+## Security
+
+## Performance
+
 ## Package Management
 
 - [NPM](NPM/) - Node Package Manager documentation
@@ -19,6 +23,8 @@ Node.js server-side JavaScript development, tools, and deployment.
 ## Build Tools
 
 - [Gulp](gulp/) - Task runner and build automation
+
+## APIs with Node
 
 ## Deployment
 

@@ -9,6 +9,14 @@ layout: clean
 
 ---
 
+- Large language models (LLMs)
+- Fine-tuning LLMs
+- Prompt engineering
+- LangChain for building AI-powered applications
+- Vector databases
+- Diffusion models
+- AI agents and smart chatbots
+
 # 🤖 Artificial Intelligence - Learning Path
 
 A structured journey from AI fundamentals to advanced applications. Follow this path to build a solid foundation and progress to cutting-edge AI development.
@@ -159,51 +167,3 @@ Deploy, scale, and maintain AI systems in production.
 - [Transfer Learning](advanced/transfer-learning.md) - Leveraging pre-trained models
 - [Few-Shot Learning](advanced/few-shot.md) - Learning with limited data
 - [Explainable AI](advanced/explainable-ai.md) - Understanding model decisions
-
----
-
-## 🗓️ **Suggested Timeline**
-
-### **Months 1-2: Foundations**
-
-- Complete Level 1 (AI Fundamentals)
-- Build strong Python and math foundation
-- Understand basic AI concepts
-
-### **Months 3-5: Core ML**
-
-- Master Level 2 (Machine Learning)
-- Implement algorithms from scratch
-- Work on real-world projects
-
-### **Months 6-8: Deep Learning**
-
-- Learn Level 3 (Deep Learning)
-- Build neural networks
-- Specialize in area of interest (NLP, Computer Vision, etc.)
-
-### **Months 9-12: Generative AI**
-
-- Explore Level 4 (Generative AI)
-- Work with LLMs and modern architectures
-- Build generative applications
-
-### **Year 2+: Mastery**
-
-- Advanced production skills (Level 5)
-- Contribute to open source
-- Research and innovation
-
----
-
-## 🎯 **Learning Tips**
-
-1. **Practice Regularly**: Code every day, even if just for 30 minutes
-2. **Build Projects**: Apply what you learn to real-world problems
-3. **Join Communities**: Participate in AI/ML forums and discussions
-4. **Read Papers**: Stay updated with latest research (start with survey papers)
-5. **Experiment**: Try different approaches and learn from failures
-
----
-
-_Start with Level 1 and progress sequentially. Each level builds upon the previous one!_ 🚀
