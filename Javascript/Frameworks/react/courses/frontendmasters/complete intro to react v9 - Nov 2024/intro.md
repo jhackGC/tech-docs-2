@@ -1,3 +1,0 @@
-# up to
-ESLint
-

@@ -1,16 +1,16 @@
-Last updated 14/01/2021
+Last updated 21/07/2025
 
 # Index
 
-01 - Introduction
-
+- Intro
 - Pure React
 - Tooling:
   - npm
   - ESLint
   - Prettier
   - emmet: for HTML code completion
-- Parcel
+- Vite
+
 - JSX
 - Hooks
 - Effects
@@ -64,10 +64,6 @@ var ReactDOM = require('react-dom').
 To install react-dom, type one of these two commands in the terminal:
 
 > npm install --save react-dom
-
-# prettier
-
-#
 
 ## NPM SCRIPTS
 

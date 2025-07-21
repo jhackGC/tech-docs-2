@@ -1,3 +1,7 @@
+# Repo
+
+https://github.com/jhackGC/react-ecomm/tree/main/00-pure-react
+
 # React with No Tooling or Build
 
 A simple HTML page importing React and ReactDOM libraries:
@@ -208,22 +212,30 @@ root.render(React.createElement(App));
 
 Now we have a more flexible component that accepts props from its parent. Props are variables that a parent (`App`) passes to its children (the instances of `Pizza`). Now each one can be different! Now that is far more useful than it was since this `Pizza` component can represent not just a pepperoni, but any Pizza. This is the power of React! We can make multiple, re-usable components. We can then use these components to build larger components, which in turn make up yet-larger components. This is how React apps are made!
 
+### props / attributes
+
+    // second arg are the props ...
+    React.createElement(MyTitleComponent, { title: 'Hey'}),
+
+    // first arg are the props now
+    const MyTitleComponent = function(props){
+        return ce('div', null,
+          ce('h1', null, props.title)
+        )
+    }
+
+One of the props can be the style, which has have an object value, easier to work with, compared to css.
+
+    ce('h1', { style: {color: props.color} }, props.title)
+
+more on styling in another chapter.
+React style is actually interacting with the Javascript API for DOM elements, and thats how styling works.
+in the DOM API regarding the style.
+
+When the element to render is another component, props will be passed as the first arg in the creation function, as we
+have seen.
+But when the elem to render is a string it is taken a a html tag and the props are going to be rendered as the
+attributes. Note that those tags and props/attrs are not checked if they are actually real html tags/attrs !!!
+React does it naively, that's what we use tooling to fix that. e.g. Flow. to statically type check.
+
 ---
-
-## Conclusion
-
-React broke away from the MVC approach at the time, favoring a component-based architecture that promotes reusability and Single Responsibility Principle (SRP). All the view, model, and controller logic is encapsulated within components, making it easier to manage and much more productive.
-
-React components do encapsulate aspects of Model, View, and Controller, but not in the traditional MVC sense. In React:
-
-- **View**: The JSX (or the return value of the render function) defines what is displayed—this is the "View".
-- **Model**: The component's state (using `useState`, `useReducer`, or class state) holds the data—this is the "Model".
-- **Controller**: The event handlers and functions inside the component (such as `onClick`, `handleChange`, etc.) act as the "Controller", managing user input and updating state.
-
-**In summary:**
-
-- The **View** is the rendered output.
-- The **Model** is the state/data managed by the component.
-- The **Controller** is the logic (event handlers) that updates the state in response to user actions.
-
-React components blend these roles together, making each component self-contained and responsible for its own data, UI, and logic. This is a key difference from classic MVC, where these concerns are separated into different layers.

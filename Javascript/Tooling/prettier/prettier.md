@@ -2,8 +2,6 @@
 
 https://github.com/prettier/prettier
 
-
-
 ## Definition
 Code formatter to help readability. Stylistic helper.
 DOES NOT verify syntax ... (that is ESLint for)
@@ -32,8 +30,7 @@ npx prettier
 
 Prettier can also understand Flow and TypeScript.
 
-Prettier is great to use with Visual Studio Code. 
-Just download this extension. 
+Prettier is great to use with Visual Studio Code. Just download the extension. 
 
 Pro tip: set it to only run Prettier when it detects a Prettier config file. 
 
@@ -41,7 +38,7 @@ Makes it so you never have to turn it off. In order to do that, set prettier.req
 
 So to define the config, create a file called .prettierrc and put {} in it. This lets everyone know this is a Prettier project that uses the default configuration. You can put other configs here if you hold strong formatting opinions.
 
-## npm scripts
+## npm script
 So it can be painful to try to remember the various CLI commands to run on your project. You can put CLI commands into it and then run the name of the tag and it'll run that script. Let's go see how that works. 
 
 Put the following into your package.json.
@@ -52,13 +49,15 @@ npm install -D prettier@latest
 ```
  -D means it's for development only.
 
-
-"scripts": {
-"format": "prettier --write \"src/\*_/_.{js,jsx}\""
-},
+```json
+{
+  "scripts": {
+    "format": "prettier --write --single-quote --trailing-comma=all --print-width=120 \"src/**/*.{js,jsx}\""
+  }
+}
+```
 
 Now you can run npm run format and it will run that command. This means we don't have to remember that mess of a command and just have to remember format.
-
 
 ## Installation
 
@@ -118,12 +117,26 @@ in package.json
     },
 
 ## move config to file instead of command line
-.prettierrc.json
+.prettierrc.json // json
+.prettierrc.js // js object
+.prettierrc // json
 
+```json
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "printWidth": 120,
+  "tabWidth": 2,
+  "parser": "flow"
+}
+```
 
+Note: you can use {} as the config here and the empty object will use all the defaults.
+Its probably controversial, but explicitly setting the defaults as {} is a good idea, so that you can see what we are using prettier for and change them if they want to.
 
+Then you can run prettier with just `prettier --write .` and it will use the config file.
 
 ### Double check consistency between methods
-
+ 
 We want both methods, per file on save and npm script, to run the same set of formatting.
 To ensure that double check they use the same exact params (e.g. --single-quote)
