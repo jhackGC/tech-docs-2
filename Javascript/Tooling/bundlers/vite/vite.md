@@ -4,11 +4,13 @@ The end result is a tool that is both easy to use and produces a great end resul
 
 Our end result that we want from a build tool is that
 
-We can separate files out for code organization and have a tool stitch them together for us
+- We can separate files out for code organization and have a tool stitch them together for us
 
-We can include external, third-party libraries from npm (like React!)
-The tool will optimize the code for us by minifying and other optimizing techniques
-Previous versions of this course used Parcel, another tool near-and-dear to my heart. It is still an amazing tool and one I recommend you check out. We ended up moving to Vite because the React community has selected it as the tool-of-choice for the moment and this course aims to give you the community norms of React. Even older versions of this course previously taught Webpack.
+- We can include external, third-party libraries from npm (like React!)
+- The tool will optimize the code for us by minifying and other optimizing techniques
+
+Others use Parcel. It is still an amazing tool.
+We use Vite because the React community has selected it as the tool-of-choice for the moment and this course aims to give you the community norms of React
 
 Vite is primarily used for building front-end applications, especially with frameworks like React, Vue, and Svelte.
 
@@ -28,9 +30,12 @@ Vite is primarily used for building front-end applications, especially with fram
 First, let's install the things we need for Vite.
 
 ```bash
-npm install -D vite@5.4.2 @vitejs/plugin-react@4.3.1
+npm install -D vite @vitejs/plugin-react
 ```
 
 The `@vitejs/plugin-react` is the React plugin for Vite. It provides support for React features like JSX and Fast Refresh. The `vite` package is the core Vite tool.
 
 The former is the tool itself and the latter is all the React specific features we will need.
+
+example config
+[vite.config.js](https://github.com/jhackGC/react-ecomm/blob/main/01-tooling/vite.config.js)
