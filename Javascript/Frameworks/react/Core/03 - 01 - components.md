@@ -222,6 +222,14 @@ export default function Cart({ cart, checkout }) {
 }
 ```
 
+### controlled vs uncontrolled components
+
+In React, controlled components are those whose form data is handled by the component's state.
+The input value is set by the state, and any changes to the input are handled by an event handler that updates the state.
+
+Uncontrolled components, on the other hand, store their own state internally and do not rely on React state to manage their values. They can be useful for integrating with non-React code or when you don't need to control the input value.
+Internally stored means that the DOM element itself (like an <input> or <form>) keeps track of its value, not React. **_The value is stored in the browser's DOM_**, and React does not manage or track it in component state. You access or modify this value using refs, not React state or props.
+
 ### Summary
 
 React uses one-way data flow.

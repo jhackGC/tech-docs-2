@@ -2,10 +2,16 @@
 
 A reusable function that calls other hooks.
 
-Pieces of code, logic, or stateful behavior to share between components.
+Pieces of code, logic, or stateful **_behavior_** to share between components.
+
 Custom hooks are a way to extract and reuse logic across multiple components in React. They allow you to encapsulate stateful logic and side effects, making your components cleaner and more maintainable.
 
 They are different from util functions because they can use other hooks, like `useState` or `useEffect`, and they can return stateful values or functions (they can store state, and they can perform side effects).
+
+They do not share state, each component using the hook gets its own state. Custom hooks help you organize, reuse, and abstract logic, but the data and state remain local to each component instance.
+
+Each component gets its own independent copy of the state managed by the hook. The state is scoped to the component instance, not to the hook function itself.
+If you want to share state between components, you need to use context or a state management library.
 
 ### Creating a Custom Hook
 
