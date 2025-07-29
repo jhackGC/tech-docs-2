@@ -24,9 +24,6 @@ TypeScript is a superset of JavaScript that adds static typing and other feature
 
 ## 3. How do you declare variables with types in TypeScript?
 
-**Explanation:**
-In TypeScript, you declare variables with explicit types to help catch errors and clarify intent. This makes your code safer and easier to understand.
-
 **Example:**
 
 ```ts
@@ -40,7 +37,7 @@ let isActive: boolean = true;
 ## 4. What is an interface in TypeScript?
 
 **Answer:**
-An interface in TypeScript is used to define the structure of an object, including its properties and their types. Interfaces are great for enforcing contracts in your code and for working with objects that have a known shape. You can also extend interfaces to create more complex types.
+An interface defines the shape of an object, specifying property names and types.
 
 **Example:**
 
@@ -62,7 +59,7 @@ const user: User = {
 ## 5. What is a type alias?
 
 **Answer:**
-A type alias lets you create a new name for any type, including primitives, objects, unions, intersections, and more. Type aliases are useful for simplifying complex types and making your code more readable.
+A type alias gives a name to a type, which can be a primitive, union, intersection, or object type.
 
 **Example:**
 
@@ -77,17 +74,12 @@ type Status = "active" | "inactive";
 
 **Answer:**
 
-- Interfaces are best for describing object shapes and can be extended or merged. They are ideal for defining contracts for classes and objects, and support declaration merging.
-- Types are more flexible and can represent primitives, unions, intersections, tuples, and objects. Type aliases can combine types, create unions, intersections, and mapped types, and describe things interfaces cannot.
-
-Types are a general-purpose tool for describing any kind of type, while interfaces are specialized for object shapes and inheritance. Use interfaces for object contracts and types for more complex or varied type definitions.
+- Interfaces are best for describing object shapes and can be extended or merged.
+- Types are more flexible and can represent primitives, unions, intersections, and objects.
 
 ---
 
 ## 7. How do you define a function with typed parameters and return value?
-
-**Explanation:**
-You can specify the types of function parameters and the return value in TypeScript. This helps catch errors and makes your code self-documenting.
 
 **Example:**
 
@@ -102,7 +94,7 @@ function greet(name: string): string {
 ## 8. What are generics in TypeScript?
 
 **Answer:**
-Generics are a way to write reusable and flexible code that works with any type. They allow you to create functions, classes, and interfaces that can operate on different types without losing type safety.
+Generics allow you to write reusable code that works with any type.
 
 **Example:**
 
@@ -118,9 +110,6 @@ const str = identity<string>("hello");
 ---
 
 ## 9. How do you use enums in TypeScript?
-
-**Explanation:**
-Enums are a way to define a set of named constants. They make your code more readable and help prevent errors from using invalid values.
 
 **Example:**
 
@@ -140,7 +129,7 @@ let dir: Direction = Direction.Up;
 ## 10. What is type assertion?
 
 **Answer:**
-Type assertion is a way to tell TypeScript to treat a value as a specific type, even if TypeScript can't infer it automatically. It's useful when you know more about the value than TypeScript does.
+Type assertion tells TypeScript to treat a value as a specific type.
 
 **Example:**
 
@@ -152,9 +141,6 @@ const strLength: number = (value as string).length;
 ---
 
 ## 11. How do you handle optional and default parameters in functions?
-
-**Explanation:**
-You can make function parameters optional by adding a `?`, and provide default values using `=`. This makes your functions more flexible and easier to use.
 
 **Example:**
 
@@ -173,7 +159,7 @@ function multiply(a: number, b: number = 2): number {
 ## 12. What is the "never" type?
 
 **Answer:**
-The `never` type is used for values that never occur. It's most commonly used for functions that always throw an error or have infinite loops, meaning they never return to the caller. This helps TypeScript catch unreachable code and ensures type safety.
+The `never` type represents values that never occur, such as functions that always throw or never return.
 
 **Example:**
 
@@ -183,17 +169,9 @@ function throwError(msg: string): never {
 }
 ```
 
-**Difference from `void`:**
-
-- `void`: function returns nothing (but can finish).
-- `never`: function never returns (it throws or loops forever).
-
 ---
 
 ## 13. How do you use union and intersection types?
-
-**Explanation:**
-Union types (`|`) let you specify that a value can be one of several types. Intersection types (`&`) combine multiple types into one, requiring all properties from each type.
 
 **Example:**
 
@@ -209,9 +187,6 @@ type SuperUser = Admin & User; // intersection
 
 ## 14. How do you use mapped types?
 
-**Explanation:**
-Mapped types let you create new types by transforming properties of existing types. TypeScript provides built-in mapped types like `Readonly`, `Partial`, and `Required`.
-
 **Example:**
 
 ```ts
@@ -222,9 +197,6 @@ type PartialUser = Partial<User>;
 ---
 
 ## 15. How do you use utility types like Partial, Readonly, Pick, and Record?
-
-**Explanation:**
-Utility types are built-in TypeScript types that help you transform and work with existing types. They make your code more concise and expressive.
 
 **Example:**
 
@@ -251,9 +223,6 @@ const userRecord: Record<number, User> = {
 
 ## 16. How do you use type guards?
 
-**Explanation:**
-Type guards are functions or expressions that check the type of a value at runtime. They help TypeScript narrow down types and provide better type safety in your code.
-
 **Example:**
 
 ```ts
@@ -272,9 +241,6 @@ function printValue(value: unknown) {
 
 ## 17. How do you use modules and import/export in TypeScript?
 
-**Explanation:**
-TypeScript uses ES6 module syntax for organizing code. You can export functions, classes, or variables from one file and import them into another, making your code modular and maintainable.
-
 **Example:**
 
 ```ts
@@ -291,9 +257,6 @@ console.log(add(2, 3));
 ---
 
 ## 18. How do you use classes in TypeScript?
-
-**Explanation:**
-Classes in TypeScript let you define blueprints for objects, including properties, constructors, and methods. You can use access modifiers and inheritance to create robust object-oriented code.
 
 **Example:**
 
@@ -315,9 +278,6 @@ dog.speak();
 ---
 
 ## 19. How do you use access modifiers (public, private, protected) in TypeScript classes?
-
-**Explanation:**
-Access modifiers control the visibility of class properties and methods. `public` means accessible anywhere, `private` means only within the class, and `protected` means within the class and its subclasses. This helps encapsulate and protect your data.
 
 **Example:**
 
@@ -342,9 +302,6 @@ class Person {
 ---
 
 ## 20. How do you use decorators in TypeScript?
-
-**Explanation:**
-Decorators are special functions that can modify classes, methods, properties, or parameters. They are used for meta-programming and can add functionality like logging, validation, or dependency injection. Decorators are an experimental feature in TypeScript and require enabling in your configuration.
 
 **Example:**
 
