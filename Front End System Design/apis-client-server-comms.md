@@ -176,20 +176,29 @@ The RPC runtime is the actual software program that does the heavy lifting and g
 
 RPC follows a request-response model. The client initiates a call, and data is packed and forwarded to the RPC runtime. A network connection is established to transmit the request to the remote server. The server processes the request and sends back the response through the same process.
 
-Request and response
+### Request and response
+
 Before we discuss the request initialization, we must understand the two IDL header types.
 
-Import module: A component added to the client side, specifying a list of functions it can call.
+**_Import module_**
+A component added to the client side, specifying a list of functions it can call.
 
-Export module: A component added to the server side, specifying a list of functions it can perform.
+**_Export module_**
+A component added to the server side, specifying a list of functions it can perform.
 
-The import and export modules defined in the IDL headers maintain a list of remote functions provided by the API, along with the format of input parameters and returned responses. A client initiates an RPC request, which must specify a function identifier and parameter list consistent with the signatures provided by the IDL import module.
+The import and export modules defined in the IDL headers maintain a list of remote functions provided by the API, along with the format of input parameters and returned responses.
 
-Let’s look at a hypothetical example of an RPC available at the example.com/rpc-demo endpoint. We’ll call the demo RPC that accepts a single string parameter of greeting. The request and response headers sent and received by a JSON-RPC client are as follows:
+A client initiates an RPC request, which must specify a function identifier and parameter list consistent with the signatures provided by the IDL import module.
 
-Request
+Let’s look at a hypothetical example of an RPC available at the example.com/rpc-demo endpoint.
+
+We’ll call the demo RPC that accepts a single string parameter of greeting. The request and response headers sent and received by a JSON-RPC client are as follows:
+
+**_Request_**
+
 The HTTP post request headers for the JSON-RPC service are as follows:
 
+```bash
 POST example.com/rpc-demo HTTP/1.1
 Content-Type: application/json
 Content-Length: xxx
@@ -200,9 +209,12 @@ Content-Length: xxx
 "params": ["greeting": "Hi"],
 "id": "99"
 }
+```
+
 Response
 For a successful API call, the returned HTTP response headers look like this:
 
+```bash
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: xxx
@@ -212,128 +224,96 @@ Content-Length: xxx
 "id": "99" ,
 "result": "Hello!"
 }
+```
 
-Note: For simplicity, we’ve removed unnecessary fields from the request and response headers given above. Also, we’ll learn more about data formats, for example, JSON, in the coming lessons.
+Note: For simplicity, we’ve removed unnecessary fields from the request and response headers given above.
 
-Points to Ponder!
+# WebSockets
 
-1.  How does the server know that a particular request is intended for it?
+WebSocket was introduced in 2011 to enable **_full-duplex asynchronous communication_** over a single TCP connection to use resources efficiently.
 
-Show Answer
-Q1 / Q2
-WebSockets
-WebSocket was introduced in 2011 to enable full-duplex asynchronous communication over a single TCP connection to use resources efficiently. HTTP connection restricts TCP to a one-sided communication, where the client always starts the communication due to the request-response model. In other words, the client first sends requests, then the server responds to them, which is a half-duplex communication. In contrast, WebSockets fully utilize the TCP connection, allowing clients and servers to send or receive data on demand, as follows:
+HTTP connection restricts TCP to a one-sided communication, where the client always starts the communication due to the request-response model.
 
-Press
+In other words, the client first sends requests, then the server responds to them, which is a half-duplex communication.
 
-- to interact
+In contrast,**_ WebSockets fully utilize the TCP connection, allowing clients and servers to send or receive data on demand_**, as follows:
 
-Half-duplex HTTP and full-duplex WebSocket connections
+![Web Sockets](./websockets.png)
 
 Half-duplex HTTP and full-duplex WebSocket connections
+
 WebSocket leverages the core TCP channel utilizing its full-duplex nature. Data can be sent and received simultaneously by the client and the server. Websocket is a stateful protocol that performs relatively faster than HTTP because it’s lightweight and carries the overhead of large headers with each request.
 
-Note: The WebSocket protocol is detailed in IETF's RFC 6455, whereas its API documentation maintained by W3C is available here.
+## How does it work?
 
-How does it work?
-A WebSocket connection starts with an HTTP connection established through a three-way TCP handshake. Afterward, an HTTP GET request is initiated to switch the protocol to WebSocket. The connection upgrade request can be accepted or rejected by the HTTP server. If the server is compatible with the WebSocket protocol and the upgrade request is valid, the connection is upgraded to a WebSocket connection. The response contains the status code 101 (Switching Protocols) and the value for the field, Sec-WebSocket-Accept.
+A WebSocket connection starts with an HTTP connection established through a three-way TCP handshake.
+Afterward, an HTTP GET request is initiated to switch the protocol to WebSocket.
+The connection upgrade request can be accepted or rejected by the HTTP server.
+
+If the server is compatible with the WebSocket protocol and the upgrade request is valid, the connection is upgraded to a WebSocket connection.
+
+The response contains the status code 101 (Switching Protocols) and the value for the field, Sec-WebSocket-Accept.
 
 HTTP Upgrade headers
 The headers of the initial switching protocol request are shown below:
 
 The Upgrade request
+
+```bash
 GET / HTTP/1.1
 Connection: Upgrade
 Upgrade: websocket
 Sec-WebSocket-Key: eB9AWsQe8+SDcwWRjpGSow==
 sec-websocket-version: 13
+```
+
 The Upgrade response
+
+```bash
 HTTP/1.1 101 Switching Protocols
 Upgrade: websocket
 Connection: Upgrade
 Sec-WebSocket-Accept: zglqWZt8l79gwpiFBgKihrobE8I=
+```
+
 Note: For simplicity, we have removed some fields from the headers above.
 
 The headers above contain the following noticeable fields:
 
-Status code 101 shows that the protocol is successfully upgraded and can send WebSocket frames.
+- **_Status code 101_** shows that the protocol is successfully upgraded and can send WebSocket frames.
 
-The Sec-WebSocket-Key is a base64-encoded 16-byte value that the server uses to verify that the upgrade request is coming from a legitimate client that understands the WebSocket protocol, and not a malformed HTTP request. This value is then encrypted using a hashing algorithm like SHA, MD5, and so on.
+- The **_Sec-WebSocket-Key_** is a base64-encoded 16-byte value that the server uses to verify that the upgrade request is coming from a legitimate client that understands the WebSocket protocol, and not a malformed HTTP request. This value is then encrypted using a hashing algorithm like SHA, MD5, and so on.
 
-The server decrypts the value of the Sec-WebSocket-Key and generates the Sec-WebSocket-Accept field by prepending a Globally Unique Identifier (GUID) value to the client-provided Sec-WebSocket-Key. The value of Sec-WebSocket-Accept is also encrypted and sent back to the client, indicating that the server has accepted the connection upgrade.
+- The server decrypts the value of the **_Sec-WebSocket-Key_** and generates the **_Sec-WebSocket-Accept_** field by prepending a Globally Unique Identifier (GUID) value to the client-provided **_Sec-WebSocket-Key_**. The value of **_Sec-WebSocket-Accept_** is also encrypted and sent back to the client, indicating that the server has accepted the connection upgrade.
 
 Initial control frames are exchanged once the connection is established and successfully upgraded to WebSocket protocol. WebSocket has two types of frames: control and data frames, identified by a 4-bit opcode.
 
-Point to Ponder!
+> Q: Why is it difficult to scale WebSockets horizontally?
 
-Why is it difficult to scale WebSockets horizontally?
+> A: Due to WebSocket’s stateful nature, both endpoints are bound to the channel, and we cannot add more machines to reroute requests and distribute the workload among different servers.
 
-Show Answer
-Did you find this helpful?
+> While horizontally scaling a single WebSocket connection is difficult, distributing different WebSocket connections to different servers can be achieved by an appropriate intermediary, such as a load balancer or an API gateway.
+
 After discussing different communication protocols, let’s recap the findings. The following table summarizes and compares the communication protocols against different features:
 
-Feature
+### Protocol Comparison Table
 
-HTTP
+| Feature            | HTTP                            | RPC                                                   | WebSockets                                   |
+| ------------------ | ------------------------------- | ----------------------------------------------------- | -------------------------------------------- |
+| Communication type | Request-Response (Stateless)    | Request-Response (Can be Stateful)                    | Full-Duplex (Bidirectional)                  |
+| Transport protocol | HTTP (Mostly over TCP)          | TCP (Uses HTTP/2 in gRPC)                             | TCP                                          |
+| Message format     | Text (JSON, HTML, XML)          | Binary (Protobuf, Thrift, etc.)                       | Binary or Text (JSON, Protobuf, etc.)        |
+| Performance        | Moderate                        | High (Optimized for speed)                            | High (Persistent connection)                 |
+| Use cases          | Request-response interactions   | Service-service communication, Remote Procedure Calls | Real-time applications, Chat, Live Streaming |
+| Connections        | Opens and closes per request    | Can maintain persistent connections                   | Persistent connection                        |
+| Overhead           | High (Headers in every request) | Lower than HTTP (Binary format, efficient encoding)   | Low (Single connection, minimal overhead)    |
 
-RPC
+# Conclusion
 
-WebSockets
+This lesson discussed HTTP, RPC, and WebSockets, comparing their communication models, performance, and use cases. Each protocol serves different needs:
 
-Communication type
+- HTTP for standard web requests
+- RPC for efficient service-to-service communication
+- WebSockets for real-time interactions
 
-Request-Response (Stateless)
-
-Request-Response (Can be Stateful)
-
-Full-Duplex (Bidirectional)
-
-Transport protocol
-
-HTTP (Mostly over TCP)
-
-TCP (Uses HTTP/2 in gRPC)
-
-TCP
-
-Message format
-
-Text (JSON, HTML, XML)
-
-Binary (Protobuf, Thrift, etc.)
-
-Binary or Text (JSON, Protobuf, etc.)
-
-Performance
-
-Moderate
-
-High (Optimized for speed)
-
-High (Persistent connection)
-
-Use cases
-
-Request-response interactions
-
-Service-service communication, Remote Procedure Calls
-
-Real-time applications, Chat, Live Streaming
-
-Connections
-
-Opens and closes per request
-
-Can maintain persistent connections
-
-Persistent conncetion
-
-Overhead
-
-High (Headers in every request)
-
-Lower than HTTP (Binary format, efficient encoding)
-
-Low (Single connection, minimal overhead)
-
-This lesson discussed HTTP, RPC, and WebSockets, comparing their communication models, performance, and use cases. Each protocol serves different needs, HTTP for standard web requests, RPC for efficient service-to-service communication, and WebSockets for real-time interactions, allowing us to choose the best fit based on our use case.
+Allowing us to choose the best fit based on our use case.
