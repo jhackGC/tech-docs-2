@@ -14,6 +14,34 @@ Design tokens are named entities that store visual design attributes. Instead of
 - **Scalability**: Easy to add themes and variants
 - **Collaboration**: Shared language between design and development
 
+# Importnat Notes
+In this current setup, no one uses the typed tokens (e.g. colors.primary.50) directly from the tokens' TypeScript files.
+
+The TypeScript tokens (like colors.primary.50) are currently only used for:
+
+Type definitions - Creating types like ColorToken = keyof typeof colors
+Reference/documentation - Showing what colors exist
+But the actual values (#eff6ff) are only consumed through the CSS variables (var(--color-primary-50)).
+
+In a more advanced setup, you might see the TypeScript tokens used directly like:
+```html
+<div style={{ backgroundColor: colors.primary[50] }}>
+```
+
+Or in styled-components:
+
+```javascript
+// Also not used in this project
+const StyledDiv = styled.div`
+  background: ${colors.primary[50]};
+`;
+```
+But in this design system, we've chosen to use CSS variables for all styling, so the TypeScript tokens are mainly for type safety and keeping the values organized. 
+
+The CSS variables are directly consumed by the components CSS stylesheets and NOT IN SYNC with the token values. They are synched manually ...
+
+The design system works best when these values stay in sync. In a production system, you'd typically have a build tool that generates the CSS variables from the TypeScript tokens to prevent this kind of drift.
+
 ## Implementation in Our Codebase
 
 ### 1. Color Tokens
@@ -176,7 +204,14 @@ export type ColorShade = keyof typeof colors.primary;
 
 // Usage in components:
 interface ButtonProps {
-  variant?: 'primary' | 'secondary';  // Maps to color tokens
+  variant?: ColorToken;  // Automatically includes all color tokens
+}
+
+// Or for more specific control:
+export type ButtonVariant = Extract<ColorToken, 'primary' | 'secondary' | 'success' | 'error'>;
+
+interface ButtonProps {
+  variant?: ButtonVariant;  // Only allows specific color tokens that make sense for buttons
 }
 ```
 
@@ -184,6 +219,8 @@ This gives you:
 - **Autocomplete**: IDE knows available color tokens
 - **Type Safety**: Can't use non-existent colors
 - **Refactor Safety**: Renaming updates everywhere
+- **Automatic Sync**: Adding new colors to `colors.ts` automatically makes them available as variants
+- **Real Connection**: Creates an actual link between TypeScript tokens and component props
 
 ## Theming Support
 
@@ -248,6 +285,8 @@ This gives you:
 - **Tailwind CSS**: `blue-500`, `text-lg`, `p-4` utility classes
 - **Shopify Polaris**: Semantic tokens like `action`, `critical`, `highlight`
 - **GitHub Primer**: `primer-border-color`, `primer-text-primary`
+
+
 
 ## Next Steps
 

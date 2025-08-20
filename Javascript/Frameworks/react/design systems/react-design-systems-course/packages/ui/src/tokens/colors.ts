@@ -68,5 +68,6 @@ export const colors = {
   }
 } as const;
 
+// keyof typeof colors gives you a type that is all the keys of the colors object ("primary" | "secondary" | "success" | "warning" | "error" | "neutral").
 export type ColorToken = keyof typeof colors;
 export type ColorShade = keyof typeof colors.primary;
