@@ -199,6 +199,8 @@ Our design tokens are converted to CSS custom properties for runtime theming:
 **File**: `packages/ui/src/tokens/colors.ts`
 
 ```typescript
+
+// tokens file
 export type ColorToken = keyof typeof colors;
 export type ColorShade = keyof typeof colors.primary;
 
