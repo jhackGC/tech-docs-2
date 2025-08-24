@@ -1,0 +1,11 @@
+- Use Web Workers (run JavaScript in background threads, separate from UI thread)
+
+  - **What Web Workers do:**
+    - Execute JavaScript code in parallel to the main thread
+    - Handle CPU-intensive tasks without blocking the UI
+    - Cannot directly access DOM, but can communicate via message passing
+    - Examples: data processing, image manipulation, calculations
+  - **Service Workers** (different from Web Workers):
+    - Act as proxy between app and network
+    - Enable offline functionality and caching
+    - Handle background sync and push notifications
