@@ -32,13 +32,13 @@ Polling involves periodically sending requests to check for new data. It can be 
 
 ### Short polling to fetch data
 
-With short polling, the client initiates a request to the server for a particular kind of data at regular intervals (usually < 1 minute). When the server gets the request, it must respond with either the updated data or an empty message. Even though the small polling interval is nearly real time, deciding the polling frequency is crucial. Short polling is viable if we know the exact time frame when the information will be available on the server. The illustration below represents the short polling procedure between the client and server:
+![Short polling](./short_polling.png)
 
-Press
+With short polling, the client initiates a request to the server for a particular kind of data at regular intervals (usually < 1 minute).
 
-- to interact
+When the server gets the request, it must respond with either the updated data or an empty message.
 
-Short polling approach making needless requests to a particular server
+Even though the small polling interval is nearly real time, deciding the polling frequency is crucial. Short polling is viable if we know the exact time frame when the information will be available on the server.
 
 Short polling approach making needless requests to a particular server
 
@@ -47,31 +47,21 @@ Short polling approach making needless requests to a particular server
 - Unnecessary requests when there are no frequent updates on the server side. In this case, clients will mostly get empty responses as a result.
 - When the server has an update, it can’t send it to the client until the request comes.
 
-Let’s take a look at the following illustration to understand the problems mentioned above better:
-
-Press
-
-- to interact
-
-Short polling problem: Delay in fetching updates
-
-Short polling problem: Delay in fetching updates
-
-The illustration shows the server has new data to send immediately after the first response. However, the client has to wait for a predetermined interval until the next request to receive the data arrives.
+So, the server has new data to send immediately after the first response. However, the client has to wait for a predetermined interval until the next request to receive the data arrives.
 
 ---
 
 ### Long polling to fetch data
 
-Long polling operates the same way as short polling, but the client stays connected and waits for the response from the server until it has new updates. This approach is also referred to as hanging get. In long polling, the server does not give an empty response; there is an acceptable waiting time after which the client has to request again. However, this strategy is appropriate when data is processed in real time to minimize long waiting intervals for a response. However, it does not deliver significant performance because the client may have to reconnect to the server multiple times after a timeout to get new data. Let’s see the illustration below to understand how the client faces idle time and places a new request if there is no server-side update after an interval:
+![Long polling](./long_polling.png)
 
-Press
+Long polling operates the same way as short polling, but the client stays connected and waits for the response from the server until it has new updates.
 
-- to interact
+This approach is also referred to as hanging get. In long polling, the server does not give an empty response; there is an acceptable waiting time after which the client has to request again.
 
-Long polling problem: long wait time for updates
+However, this strategy is appropriate when data is processed in real time to minimize long waiting intervals for a response.
 
-Long polling problem: long wait time for updates
+However, it does not deliver significant performance because the client may have to reconnect to the server multiple times after a timeout to get new data. Let’s see the illustration below to understand how the client faces idle time and places a new request if there is no server-side update after an interval:
 
 **Problems that come with long polling include:**
 
@@ -87,23 +77,29 @@ To overcome these challenges, we need to opt for a real-time data fetching techn
 
 ## WebSocket for real-time data retrieval
 
-WebSocket is a persistent full-duplex communication protocol that runs on a single TCP connection. In real-time applications, clients sometimes need to send requests frequently to the server. For instance, if the client initiates a request and receives part of the response instead of a complete response, the client can send another request over the same TCP connection. This is achieved by requesting to upgrade the connection from TCP to WebSocket. At the same time, we need low latency and efficient resource utilization. For this, WebSocket is ideal, allowing full-duplex communication over a single TCP connection, as shown below:
+WebSocket is a persistent full-duplex communication protocol (The client and server can communicate concurrently), that runs on a single TCP connection.
 
-Press
+![Web Sockets](./websockets.png)
 
-- to interact
+In real-time applications, clients sometimes need to send requests frequently to the server. For instance, if the client initiates a request and receives part of the response instead of a complete response, the client can send another request over the same TCP connection.
 
-Data fetching through WebSocket
+This is achieved by requesting to upgrade the connection from TCP to WebSocket. At the same time, we need low latency and efficient resource utilization. For this, WebSocket is ideal, allowing full-duplex communication over a single TCP connection, as shown below:
 
-Data fetching through WebSocket
+In the illustration above, the client and server can communicate data whenever needed, and such scenarios are important for many real-time applications.
 
-In the illustration above, the client and server can communicate data whenever needed, and such scenarios are important for many real-time applications. The stateful attribute of the WebSocket also gives an advantage by allowing for the reuse of the same open TCP connection. This approach suits multimedia chat, multiplayer games, notification systems, etc. A WebSocket connection must be upgraded from a typical HTTP connection.
+The stateful attribute of the WebSocket also gives an advantage by allowing for the reuse of the same open TCP connection. This approach suits multimedia chat, multiplayer games, notification systems, etc. A WebSocket connection must be upgraded from a typical HTTP connection.
+
+Cons:
+
+- It needs a lot of energy to keep the connection alive, not great for mobile devices.
+- Costs for infrastructure can be high. As well as engineering costs.
 
 ### How does WebSocket work?
 
 WebSockets is great for specific scenarios, such as multiplayer gaming, live streaming, and video conferencing, but it also has some limitations:
 
 - Horizontal scaling is complex because we can’t load balance and reroute requests coming from a client once the connection is upgraded to WebSocket.
+
 - Connection failures greatly affect the sending and receiving ends. As the connection is stateful and the request headers carry no information about the sending and receiving ends, it’s difficult to recover the lost connection.
 
 Although WebSockets excel in interactive applications like chat or gaming, they introduce complexity in scenarios that only require server-to-client updates. This is where Server-Sent Events (SSE) shine, offering a simpler, more reliable solution for streaming updates like news feeds and stock prices.
@@ -112,39 +108,55 @@ Although WebSockets excel in interactive applications like chat or gaming, they 
 
 ## Server-sent events
 
-Server-sent events (SSE) are a unidirectional (server-to-client) server push approach and a component of the HTML5 specification. A server push means that the specified client automatically gets data from the server after the initial connection has been set up. In SSE, the client requests the URL through a standard EventSource interface to enable an event stream from the server. Additionally, the client defines the text/event-stream under the Accept header in the request. Here, the event-stream represents a media type known as MIME. Before initiating the request, the client-side application also checks the server-sent event support on the client (browser).
+Server-sent events (SSE) are a unidirectional (server-to-client) server push approach and a component of the HTML5 specification.
+
+A server push means that the specified client automatically gets data from the server after the initial connection has been set up.
+
+In SSE, the client requests the URL through a standard EventSource interface to enable an event stream from the server.
+
+Additionally, the client defines the text/event-stream under the Accept header in the request.
+
+Here, the event-stream represents a media type known as MIME.
+
+Before initiating the request, the client-side application also checks the server-sent event support on the client (browser).
 
 This approach is mainly used for the notification system, where clients get notified by the server upon update. Let’s see the illustration below to understand the SSE approach:
 
-Press
-
-- to interact
-
-Data fetching using SSE
-
+![Data fetching using SSE](./server_side_events.png)
 Data fetching using SSE
 
 In the illustration above, the client automatically gets notifications until the client or server terminates the connection.
 
 **The drawbacks that come with the SSE approach are as follows:**
 
-- When we use SSE over HTTP/1.1, the browsers allow limited connections per domain because each requested resource requires a separate TCP connection. However, HTTP/2 has resolved this issue by multiplexing all requests and responses over a single TCP connection; we must ensure this compatibility in our applications if we opt for SSE.
+- When we use SSE over HTTP/1.1, the browsers allow limited connections per domain (5) because each requested resource requires a separate TCP connection. However, HTTP/2 has resolved this issue by multiplexing all requests and responses over a single TCP connection; we must ensure this compatibility in our applications if we opt for SSE.
+
 - Another major problem with SSE is that it only allows text-based streaming due to data format limitations, such as not supporting binary data. So, we can’t use it for other streaming data such as video, audio, etc.
 
-Applications use SSE for different purposes. For example, Twitter, Instagram, and Meta use SSE for newsfeed updates. Stock applications use SSE for real-time stock updates. Sports applications use SSE for live score updates.
+Applications use SSE for different purposes. For example, Twitter, Instagram, and Meta use SSE for newsfeed updates.
+
+Stock applications use SSE for real-time stock updates. Sports applications use SSE for live score updates.
 
 ---
 
-## Points to Ponder!
+### Q and As
 
-1.  Assuming that a network is flaky between the client and the server, it isn’t easy to guarantee consistent connections in real-world applications. How will SSE recover when the connection drops?
+> Q: Assuming that a network is flaky between the client and the server, it isn’t easy to guarantee consistent connections in real-world applications. How will SSE recover when the connection drops?
 
-Show Answer
-Q1 / Q2
+> A: SSE mitigates this issue by sending the last event ID to the specified client. The last event ID is specified in the HTTP header Last-Event-ID through a new HTTP request. When the server receives this request, it sends the event from that provided ID.
 
-Imagine you're building a live sports score or stock market dashboard where the server continuously pushes updates to thousands of users. In this case, why might Server-Sent Events (SSE) be a better choice than WebSockets? Provide your response in the widget located below.
+---
 
-Want to know the correct answer?
+> Q: Why is SSE preferred over HTTP streaming for live streaming of an event?
+
+> A: SSE is preferred over HTTP streaming for lightweight, real-time text updates, such as live scores, notifications, or stock price updates.
+> SSE maintains a persistent connection with a single, server-initiated data stream, making it more efficient than long polling while requiring less overhead than WebSockets for unidirectional updates.
+> Note: SSE is not preferred over HTTP streaming for live event streaming when it involves high-bandwidth media like video or audio. Instead, HTTP-based adaptive streaming protocols such as HLS (HTTP Live Streaming) or MPEG-DASH are used for efficient media delivery.
+
+> Q: Imagine you're building a live sports score or stock market dashboard where the server continuously pushes updates to thousands of users. In this case, why might Server-Sent Events (SSE) be a better choice than WebSockets?
+
+> A: SSE is well-suited for one-way, real-time data streaming from the server to the client, which fits this use case perfectly. It runs over standard HTTP, making it easier to implement and scale, especially in environments with many users. Unlike WebSockets, which support two-way communication and require more complex infrastructure, SSE offers a lightweight solution for broadcasting updates efficiently without the overhead of maintaining full-duplex connections.
+
 SSE for Live Updates
 
 ---
